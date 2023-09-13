@@ -2,14 +2,12 @@ import './style.css'
 import cartucho from "../../assets/img/cartuchos.png"
 import Aside from "../../components/Aside"
 
-
-function ColetasFinalizadas() {
-
+export default function ColetasFinalizadas() {
 
     return (
         <>
             <main>
-                <h1>página coletas finalizadas ecosystem &amp; recycle</h1>
+                <h1>página coletas finalizadas ecosystem & recycle</h1>
                 <section>
                     <div className="conteudo_doacoes wrapper">
                         <Aside />
@@ -54,10 +52,10 @@ function ColetasFinalizadas() {
                                         </div>
                                     </div>
                                     {/* <div className="btnVoltar">
-                                        <a href="#" onClick={history.back}>
-                                            voltar
-                                        </a>
-                                    </div> */}
+                                                <a href="#" onClick={history.back}>
+                                                    voltar
+                                                </a>
+                                            </div> */}
                                 </div>
                             </div>
                         </div>
@@ -68,4 +66,3 @@ function ColetasFinalizadas() {
     )
 }
 
-export default ColetasFinalizadas;
