@@ -1,23 +1,25 @@
 import './style.css';
 
 import Aside from '../../components/Aside';
-import Card from '../../components/Card';
+// import Card from '../../components/Card';
 import { Link, useNavigate } from 'react-router-dom';
 import ColetasFinalizadas from '../../components/ColetasFinalizadas';
 import ColetasAgendadas from '../../components/ColetasAgendadas'
 
 
 
-function AgendarColeta() {
+function AgendarColeta(props:any) {
 
     const navigate = useNavigate()
     function troca() {
-        navigate(ColetasFinalizadas)
+        // navigate(ColetasFinalizadas)
     }
 
     function teste() {
         return (
             alert('teste ok')
+            // props.teste = "teste"0
+
         )
     }
 
@@ -35,7 +37,7 @@ function AgendarColeta() {
 
                             {/* TITULO BASE */}
                             <div className="title">
-                                <h2>coletas agendadas</h2>
+                                <h2>{props.title ? props.title : "coletas agendadas"}</h2>
                                 <p>Visualize o histórico e agendamentos ativos aqui</p>
                             </div>
                             <div>
@@ -50,6 +52,7 @@ function AgendarColeta() {
                                     <a href="#" onClick={teste}>
                                         teste
                                     </a>
+                                    <div>{props.teste}</div>
                                 </div>
 
                                 {/* CONTAINER DOS CARDS */}

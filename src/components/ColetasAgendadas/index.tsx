@@ -4,25 +4,76 @@ import ico_edit from '../../assets/img/ico_edit.svg';
 import ico_eye from '../../assets/img/ico_eye.svg'
 import ico_delete from '../../assets/img/ico_delete.svg'
 import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 export default function ColetasAgendadas() {
 
-    const navigate = useNavigate()
+    // const navigate = useNavigate()
 
-    function clique() {
-        navigate('ColetasFinalizadas')
+    // function clique() {
+    //     navigate('ColetasFinalizadas')
+    // }
+
+    // function msgDeletarColeta() {
+    //     alert('A doação foi cancelada! O doador irá ser notificado');
+    // };
+
+
+    // usestate => array do tipo any e começa vazio
+    const [itensRenderizados, setItensRenderizados] = useState<any[]>([])
+
+    const listaAtivos: any[] = [
+        {
+            tituloCard: "Celulares antigos",
+            conteudoCardData: '30/03/2023',
+            conteudoCardQuantidade: '3'
+        },
+        {
+            tituloCard: "Celulares novos",
+            conteudoCardData: '30/03/2022',
+            conteudoCardQuantidade: '5'
+        }
+    ]
+
+    // abaixo será necessário replicar a mesma ideia
+    const listaFinalizados: any[] = []
+
+  
+
+    // 0   ao clicar no botao ativo irá setar com valor da lista ativos
+
+    function mostrarAtivos() {
+        setItensRenderizados(listaAtivos)
+        // console.log("funcao ok")
     }
+    // onclick seguido 
 
-    function msgDeletarColeta() {
-        alert('A doação foi cancelada! O doador irá ser notificado');
-    };
+    // 3 listas sendo uma lista de itens ativos, uma itens finalizadas e a terceira itens renderizados
+
+    // ao clicar ano botao ativos, setar itens renderizados com o valor de itens ativos
+    // ao clicar no botao finalizados, setar itens renderizados com o valor de itens finalizados
+    // map ites renderizados
+
+    // listas de itens
+
 
     return (
         <>
+            <button onClick={mostrarAtivos}>teste</button>
             <div className="Conteudo_Cards">
 
+                {
+                    itensRenderizados.map((item: any, index: number) => {
+                        return <Card key={index}
+                            tituloCard={item.tituloCard}
+                            conteudoCardData={item.conteudoCardData}
+                            conteudoCardQuantidade={item.conteudoCardQuantidade}
+                        />
+                    })
+                }
+
                 {/* Importação do Card */}
-                <Card
+                {/* <Card
                     tituloCard='Celulares antigos'
                     conteudoCardData='30/03/2023'
                     conteudoCardQuantidade='3'
@@ -44,9 +95,9 @@ export default function ColetasAgendadas() {
                     descricao2='Iphone 2'
                     localizacao='SBC-SP'
                 />
-                <Card />
+                <Card /> */}
 
-                <div className="cards">
+                {/* <div className="cards">
                     <h4>Celulares diversos</h4>
                     <img
                         src={img_card_002}
@@ -91,7 +142,7 @@ export default function ColetasAgendadas() {
                             </a>
                         </div>
                     </div>
-                </div>
+                </div> */}
             </div>
         </>
     )
