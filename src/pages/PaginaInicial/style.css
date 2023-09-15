@@ -1,14 +1,13 @@
-
-.bannerCarrousel{
+.bannerCarrousel {
     position: relative;
     display: flex;
-    justify-content: center; 
+    justify-content: center;
     max-width: 1920px;
     margin: 0 auto;
     width: 100%;
 }
 
-.txtBtn_banner{
+.txtBtn_banner {
     position: absolute;
 
     display: flex;
@@ -20,14 +19,14 @@
     z-index: 2;
 }
 
-.txtBtn_banner h2{
+.txtBtn_banner h2 {
     font-family: var(--font1);
     color: var(--branco);
     font-size: 40px;
     line-height: 50px;
 }
 
-.txtBtn_banner p{
+.txtBtn_banner p {
     font-family: var(--font2);
     color: var(--branco);
     font-size: 22px;
@@ -35,7 +34,7 @@
     padding: 80px 200px;
 }
 
-.txtBtn_banner a{
+.txtBtn_banner a {
     font-family: var(--font1);
     color: var(--branco);
     font-weight: bolder;
@@ -44,50 +43,50 @@
     padding: 3px 50px;
 }
 
-.txt_chamativo1{
+.txt_chamativo1 {
     display: flex;
     flex-direction: column;
     text-align: center;
     padding: 50px 0 80px 0;
 }
 
-.txt_chamativo1 h3{
+.txt_chamativo1 h3 {
     font-family: var(--font1);
     font-size: 28px;
 }
 
-.txt_chamativo1 p{
+.txt_chamativo1 p {
     font-family: var(--font2);
     font-size: 16px;
     padding: 0 300px;
 }
 
-.sobre_O_lixo{
+.sobre_O_lixo {
     padding-bottom: 160px;
 }
 
-.lixo_conteudo{
+.lixo_conteudo {
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
 }
 
-.lixo_conteudo h5{
+.lixo_conteudo h5 {
     font-family: var(--font1);
     font-size: 25px;
-    font-weight:bolder ;
+    font-weight: bolder;
     padding-top: 200px;
 }
 
-.lixo_conteudo p{
+.lixo_conteudo p {
     font-family: var(--font2);
     font-size: 18px;
     padding: 100px 0;
 }
 
-.lixo_conteudo a{
-    
-/* acrescimo fonte family */
+.lixo_conteudo a {
+
+    /* acrescimo fonte family */
     font-family: var(--font1);
 
     border: 7px solid #642966;
@@ -101,13 +100,13 @@
     /* margin-top: 70px; */
 }
 
-.lixo_conteudo img{
+.lixo_conteudo img {
     width: 60%;
     /* height: 80%; */
     max-width: 635px;
 }
 
-.lixo_conteudo div{
+.lixo_conteudo div {
     display: flex;
     flex-direction: column;
     /* justify-content: flex-end; */
@@ -116,11 +115,11 @@
 }
 
 
-.doador_parceiro{
+.doador_parceiro {
     padding-bottom: 160px;
 }
 
-.conteudo_parceirosDoador{
+.conteudo_parceirosDoador {
     display: flex;
     justify-content: space-between;
 
@@ -128,16 +127,17 @@
     color: var(--branco);
 }
 
-.cad_doador{
+.cad_doador {
     background-image: url(../../assets/img/home_sejaDoador.png);
 }
 
-.cad_parceiro{
+.cad_parceiro {
     background-image: url(../../assets/img/home_sejaparceiro.png);
 }
 
 
-.cad_doador, .cad_parceiro{
+.cad_doador,
+.cad_parceiro {
     background-repeat: no-repeat;
     background-size: cover;
 
@@ -155,21 +155,24 @@
 }
 
 
-.cad_doador h3, .cad_parceiro h3 {
+.cad_doador h3,
+.cad_parceiro h3 {
     font-family: var(--font1);
     font-size: 35px;
     text-transform: uppercase;
     padding-top: 100px;
 }
 
-.cad_doador p, .cad_parceiro p{
+.cad_doador p,
+.cad_parceiro p {
     padding: 0 50px 50px 50px;
     font-family: var(--font2);
     font-size: 16px;
 }
 
 
-.cad_doador a, .cad_parceiro a{
+.cad_doador a,
+.cad_parceiro a {
     background-color: var(--verde1);
     width: 100%;
 
@@ -186,7 +189,7 @@
     border-end-start-radius: 25px;
 }
 
-.Porcentagem_Descarte{
+.Porcentagem_Descarte {
     background-image: url(../../assets/img/home_bg_porcentagem.png);
     background-repeat: no-repeat;
     background-size: cover;
@@ -196,30 +199,30 @@
     margin-bottom: 160px;
 }
 
-.conteudo_porcentagem{
+.conteudo_porcentagem {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
 }
 
-.conteudo_porcentagem h3{
+.conteudo_porcentagem h3 {
     font-family: var(--font1);
     font-size: 35px;
     text-align: end;
     padding: 15px 0;
 }
 
-.conteudo_porcentagem p{
+.conteudo_porcentagem p {
     margin-left: 450px;
     font-family: var(--font2);
     font-size: 16px;
 }
 
-.conteudo_porcentagem p:nth-child(2){
+.conteudo_porcentagem p:nth-child(2) {
     padding-bottom: 20px;
 }
 
-.conteudo_porcentagem a{
+.conteudo_porcentagem a {
     color: var(--branco);
     font-family: var(--font2);
     font-size: 14px;
@@ -230,7 +233,7 @@
     padding: 10px 0;
 }
 
-.exe_conteudo{
+.exe_conteudo {
     display: flex;
     justify-content: space-between;
 
@@ -239,7 +242,7 @@
 
 
 
-.exe_conteudo div{
+.exe_conteudo div {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -249,59 +252,60 @@
     width: 45%;
 }
 
-.exe_conteudo img{
+.exe_conteudo img {
     width: 45%;
     max-width: 600px;
 }
-.exe_conteudo div h4{
+
+.exe_conteudo div h4 {
     font-family: var(--font1);
     font-size: 28px;
     font-weight: bold;
     padding-bottom: 30px;
 }
 
-.exe_conteudo div p{
+.exe_conteudo div p {
     font-family: var(--font2);
     font-size: 18px;
 }
 
-.btn_saibaMais:hover{
+.btn_saibaMais:hover {
     background-color: yellow;
 }
 
 @media screen and (max-width: 1250px) {
 
 
-    .lixo_conteudo h5{
+    .lixo_conteudo h5 {
         font-size: 20px;
     }
 
-    .lixo_conteudo p{
+    .lixo_conteudo p {
         font-size: 16px;
         padding: 30px 0;
     }
 
-    .lixo_conteudo a{
+    .lixo_conteudo a {
         font-size: 15px;
     }
 
-    .lixo_conteudo img{
-        width: 50%;  
+    .lixo_conteudo img {
+        width: 50%;
     }
 
-    .conteudo_porcentagem{
+    .conteudo_porcentagem {
         display: flex;
         flex-direction: column;
         align-items: center;
     }
 
-    .conteudo_porcentagem p{
+    .conteudo_porcentagem p {
         margin: 15px 50px;
         font-size: 14px;
 
     }
 
-    .conteudo_porcentagem h3{
+    .conteudo_porcentagem h3 {
         font-size: 28px;
         text-align: center;
         /* padding: 15px 0; */
@@ -312,48 +316,54 @@
     .txt_chamativo1 p {
         padding: 0 150px;
     }
-    
+
     .txt_chamativo1 {
         padding: 50px 0px 10px 0;
     }
 
-.cad_doador, .cad_parceiro{
-    min-width: 370px;
-    margin: 0 10px;
-}
- 
+    .cad_doador,
+    .cad_parceiro {
+        min-width: 370px;
+        margin: 0 10px;
+        height: 530px;
+    }
+
+    /* .conteudo_parceirosDoador{
+    height: 400px;
+} */
+
 }
 
 
 /* ############ @Media Responsivo do Banner Carrousel ########### */
 @media screen and (max-width: 878px) {
-    .txtBtn_banner{
+    .txtBtn_banner {
         top: 100px;
     }
 
-    .txtBtn_banner h2{
+    .txtBtn_banner h2 {
         font-size: 32px;
     }
 
-    .txtBtn_banner p{
+    .txtBtn_banner p {
         padding: 60px 180px;
         font-size: 18px;
     }
 
-    .txtBtn_banner a{
+    .txtBtn_banner a {
         font-size: 16px;
     }
 
-    .conteudo_parceirosDoador{
+    .conteudo_parceirosDoador {
         justify-content: center;
         flex-wrap: wrap;
     }
 
-    .cad_doador{
+    .cad_doador {
         margin-bottom: 70px;
     }
-    
-    .lixo_conteudo h5{
+
+    .lixo_conteudo h5 {
         padding-top: 30px;
     }
 
@@ -361,84 +371,131 @@
         padding: 30px 20px;
     }
 
-    .txtBtn_banner p{
+    .txtBtn_banner p {
         padding: 30px 60px;
         font-size: 16px;
+    }
+
+    .cad_doador,
+    .cad_parceiro {
+        height: 450px;
     }
 }
 
 @media screen and (max-width: 713px) {
-    .lixo_conteudo img{
+    .lixo_conteudo img {
         padding: 20px 10px 0 10px;
         width: 80%;
     }
 
-    .lixo_conteudo a{
+    .lixo_conteudo a {
         text-align: center;
     }
-    .lixo_conteudo{
+
+    .lixo_conteudo {
         flex-wrap: wrap;
     }
 
-    .lixo_conteudo div{
+    .lixo_conteudo div {
         align-items: center;
     }
 
-    .exe_conteudo img{
+    .exe_conteudo {
+        justify-content: space-around;
+
+    }
+
+    .exe_conteudo img {
         min-width: 310px;
         padding-right: 10px;
     }
-    
+
     .lixo_conteudo {
         /* display: flex; */
         justify-content: center;
     }
+
+    .lixo_conteudo h5 {
+        text-align: center;
+    }
+
+    .lixo_conteudo p {
+        text-align: center;
+    }
 }
 
 @media screen and (max-width: 590px) {
-    .txtBtn_banner{
+    .txtBtn_banner {
         top: 100px;
     }
 
-    .txtBtn_banner h2{
+    .txtBtn_banner h2 {
+        font-size: 30px;
         font-size: 28px;
     }
 
-    .txtBtn_banner p{
-        padding: 50px 120px;
-        font-size: 16px;
-    }
-
-    .txtBtn_banner a{
-        font-size: 14px;
-}
-
-}
-
-@media screen and (max-width: 532px) {
-    .cad_doador, .cad_parceiro{
-        min-width: 250px;
-        width: 90%;
-        margin: 50px 0;
-    }
-
     .txtBtn_banner p {
-        padding: 50px 45px;
+        /* padding: 50px 120px; */
+        padding: 50px 70px;
+        font-size: 18px;
+        /* background-color: #642966; */
     }
 
+    .txtBtn_banner a {
+        font-size: 14px;
+    }
+
+    .exe_conteudo img {
+        min-width: 410px;
+        height: 380px;
+        padding-right: 10px;
+    }
+
+    
     .exe_conteudo{
-        flex-wrap: wrap;
-        justify-content: center;
-        text-align: center;
+        flex-direction: column-reverse;
+        align-items: center;
+        /* background-color: #642966; */
+        /* height: 1000px; */
+    }
+    .exe_conteudo>div>h4 {
+        /* background-color: #642966; */
+        /* font-size: 25px; */
     }
 
-    .exe_conteudo div{
-        width: 100%;
-        text-align: center;
-    }
-
-    .exe_conteudo img{
-        margin-bottom: 30px;
-        padding: 0;
+    .exe_conteudo>div>p {
+        font-size: 20px;
+        margin-bottom: 50px;
+        background-color: #642966;
     }
 }
+
+    @media screen and (max-width: 532px) {
+
+        .cad_doador,
+        .cad_parceiro {
+            min-width: 250px;
+            width: 90%;
+            margin: 50px 0;
+        }
+
+        .txtBtn_banner p {
+            padding: 50px 45px;
+        }
+
+        .exe_conteudo {
+            flex-wrap: wrap;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .exe_conteudo div {
+            width: 100%;
+            text-align: center;
+        }
+
+        .exe_conteudo img {
+            margin-bottom: 30px;
+            padding: 0;
+        }
+    }
