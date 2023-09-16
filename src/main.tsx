@@ -31,7 +31,7 @@ import QueroDoarParte2 from './pages/QueroDoarParte2'
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <BrowserRouter> 
-      <Header />
+      {/* <Header /> */}
       <Routes>
         <Route path='/minhasdoacoes' element={ <MinhasDoacoes /> } />
         <Route path='/agendarcoleta' element={ <AgendarColeta/> }/>
@@ -53,7 +53,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
         <Route path='/querodoarpt2' element={ <QueroDoarParte2 /> } />
 
       </Routes>
-      <Footer />
+      {/* <Footer /> */}
     </BrowserRouter>
   </React.StrictMode>,
 )

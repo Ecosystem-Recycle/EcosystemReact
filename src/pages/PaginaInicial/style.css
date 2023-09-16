@@ -470,7 +470,7 @@
 
     .cad_doador,
     .cad_parceiro {
-        height: 425px;
+        height: 430px;
     }
 
     .cad_doador h3 {
@@ -514,7 +514,6 @@
 
     .cad_doador,
     .cad_parceiro {
-        height: 405px;
         width: 80%;
     }
 
@@ -537,5 +536,41 @@
     .exe_conteudo img {
         margin-bottom: 30px;
         padding: 0;
+    }
+}
+
+@media screen and (max-width: 410px) {
+    .exe_conteudo>div>h4 {
+        width: 90%;
+        margin: 0 auto 0 auto;
+    }
+
+    .exe_conteudo>div>p {
+        width: 80%;
+    }
+
+    .exe_conteudo img {
+        min-width: 280px;
+        height: 260px;
+    }
+
+    .cad_doador,
+    .cad_parceiro {
+        background-color: blueviolet;
+        justify-content: flex-end;
+        height: fit-content;
+
+    }
+
+    .cad_doador>h3,
+    .cad_parceiro>h3 {
+        width: 90%;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .cad_doador p,
+    .cad_parceiro p {
+        padding-bottom: 20px;
     }
 }
