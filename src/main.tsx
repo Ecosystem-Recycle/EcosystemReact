@@ -32,7 +32,7 @@ import Servicos from './pages/Servicos'
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <BrowserRouter> 
-      {/* <Header /> */}
+      <Header />
       <Routes>
         <Route path='/minhasdoacoes' element={ <MinhasDoacoes /> } />
         <Route path='/agendarcoleta' element={ <AgendarColeta/> }/>
