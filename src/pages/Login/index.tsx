@@ -63,7 +63,7 @@ function Login() {
                             className="btn_goole"
                             href="https://accounts.google.com/v3/signin/identifier?dsh=S1963277586%3A1688274570474968&continue=https%3A%2F%2Fwww.google.com.br%2F&ec=GAZAmgQ&hl=pt-BR&ifkv=AeDOFXgCJz1IrXfYbieSY_TrrLvErNRPYDzYGxbHFZ3dchrH_CIWuuEUxtzryf5u7TnsXGlIUhTq4g&passive=true&flowName=GlifWebSignIn&flowEntry=ServiceLogin"
                         >
-                            Conecte-se com o google
+                            Conecte-se com o Google
                             <img src={imgGoogle} alt="logo do google" />
                         </a>
                     </form>
