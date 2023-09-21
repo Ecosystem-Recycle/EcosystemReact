@@ -1,12 +1,3 @@
-h1 {
-    position: absolute;
-    left: -999em;
-    width: 1em;
-    overflow: hidden;
-}
-
-
-
 .sessao_formulario_login {
     display: flex;
     margin: 50px 100px;
@@ -14,7 +5,7 @@ h1 {
     flex-wrap: wrap;
 }
 
-.sessao_formulario_login input{
+.sessao_formulario_login input {
     padding-left: 10px;
 }
 
@@ -89,7 +80,7 @@ h1 {
 
 }
 
-.formulario_login a img{
+.formulario_login a img {
     width: 30px;
     height: 30px;
     margin-left: 10px;
@@ -116,7 +107,8 @@ main input {
     justify-content: space-evenly;
 }
 
-.opcao_doador, .opcao_coletor{
+.opcao_doador,
+.opcao_coletor {
     display: flex;
     justify-content: flex-start;
     flex-direction: row;
@@ -149,7 +141,7 @@ main label {
     .sessao_formulario_login {
         margin: 50px 20px;
     }
-    
+
 }
 
 
@@ -189,15 +181,35 @@ main label {
         margin-left: 5px;
         font-size: small;
     }
+}
 
-    @media screen and (max-width: 433px) {
-        .formulario_login>h2{
-            /* font-size: 30px; */
-        }
-        .formulario_login a {
-           /* width: 65%; */
-           text-align: center;
-        }
+@media screen and (max-width: 433px) {
+    .formulario_login>h2 {
+        font-size: 22px;
     }
-    
+
+    .formulario_login a {
+        /* width: 65%; */
+        text-align: center;
+    }
+
+    main label {
+        font-size: 14px;
+    }
+
+    input::placeholder {
+        font-size: 12px;
+    }
+
+
+
+    .formulario_login label,
+    .formulario_cadastro label {
+        height: 5px;
+    }
+
+    .formulario_login a {
+        width: 65%;
+    }
+
 }
