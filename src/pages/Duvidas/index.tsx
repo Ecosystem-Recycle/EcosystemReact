@@ -4,7 +4,7 @@ import CardDuvidas from '../../components/CardDuvidas';
 
 
 function Duvidas() {
-    const [perguntas, setPerguntas] = useState<any[]>([
+    const [perguntas] = useState<any[]>([
         {
             questao: "Como faço para agendar a coleta?",
             resp: "Faça o cadastro em nosso site, informando seus dados de endereço completo, relação de itens que precisa fazer o descarte e foto dos materiais e programe o dia e hora para que um coletor parceiro faça a retirada.",
@@ -60,15 +60,11 @@ function Duvidas() {
             resp: "Cobrimos a capital de São Paulo e regiões como: Grande ABC, Guarulhos, Itaquaquecetuba, Atibaia, Mogi das Cruzes, Suzano Arujá, Entre outras.", 
             id: 11
         }
+        
 
     ]);
 
-     // Função Esconder Menus -> DUVIDAS
-     const [active, setActive] = useState<any>(false);
 
-     const handleToggle = () => {
-         setActive(!active);
-     };
 
     
 

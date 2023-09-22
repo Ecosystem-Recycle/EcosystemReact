@@ -49,7 +49,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
         <Route path='/informativo' element={ <Informativo /> } />
         <Route path='/login' element={ <Login /> } />
         <Route path='/nossahistoria' element={ <NossaHistoria /> } />
-        <Route path='/' element={ <PaginaInicial /> } /> 
+        <Route path='/EcosystemReact' element={ <PaginaInicial /> } /> 
         <Route path='/querodoarpt1' element={ <QueroDoarParte1 /> } /> 
         <Route path='/querodoarpt2' element={ <QueroDoarParte2 /> } />
         <Route path='/servicos' element={ <Servicos /> } /> 

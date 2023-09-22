@@ -2,26 +2,26 @@ import './style.css';
 
 import img_card_001 from '../../assets/img/img_card_001.png'
 import img_card_002 from '../../assets/img/img_card_002.png'
-import ico_edit from '../../assets/img/ico_edit.svg';
-import ico_eye from '../../assets/img/ico_eye.svg'
-import ico_delete from '../../assets/img/ico_delete.svg'
+// import ico_edit from '../../assets/img/ico_edit.svg';
+// import ico_eye from '../../assets/img/ico_eye.svg'
+// import ico_delete from '../../assets/img/ico_delete.svg'
 import Aside from '../../components/Aside';
 import Card from '../../components/Card';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 
 
 function AgendarColeta() {
 
-    let navigate = useNavigate()
+    // let navigate = useNavigate()
 
-    function click() {
-        navigate('/home')
-    }
+    // function click() {
+    //     navigate('/home')
+    // }
 
-    function msgDeletarColeta() {
-        alert('A doação foi cancelada! O doador irá ser notificado');
-    };
+    // function msgDeletarColeta() {
+    //     alert('A doação foi cancelada! O doador irá ser notificado');
+    // };
 
     return (
         <>

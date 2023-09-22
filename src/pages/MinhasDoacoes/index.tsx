@@ -11,9 +11,9 @@ import imgCard002 from '../../assets/img/img_card_002.png'
 
 function MinhasDoacoes() {
 
-    function msgExcluirDoacao():void{
-        alert('Doação deletada do sistema com sucesso!');
-    };
+    // function msgExcluirDoacao():void{
+    //     alert('Doação deletada do sistema com sucesso!');
+    // };
 
     return (
         <main id='mainMinhasDoacoes'>

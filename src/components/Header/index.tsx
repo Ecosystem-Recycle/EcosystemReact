@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 import './style.css';
 import DoadorLogado from '../../components/DoadorLogado';
-import ColetorLogado from '../ColetorLogado';
+// import ColetorLogado from '../ColetorLogado';
 import imgLogo from "../../assets/img/logo_vertical.png";
 
 
