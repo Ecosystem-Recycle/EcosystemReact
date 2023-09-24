@@ -131,10 +131,10 @@ main label {
     text-align: left;
 }
 
-/* ### Seção @Media ### */
 
 
 
+/* ### RESPONSIVIDADE ### */
 
 
 @media screen and (max-width: 812px) {
@@ -166,7 +166,6 @@ main label {
 @media screen and (max-width: 532px) {
     .formulario_botao {
         min-width: 125px;
-        /* margin-top: 30px; */
     }
 
     .formulario_cadastro h2,
@@ -183,13 +182,14 @@ main label {
     }
 }
 
-@media screen and (max-width: 433px) {
-    .formulario_login>h2 {
+@media screen and (max-width: 435px) {
+
+    .formulario_login>h2,
+    .formulario_cadastro>h2 {
         font-size: 22px;
     }
 
     .formulario_login a {
-        /* width: 65%; */
         text-align: center;
     }
 
@@ -201,8 +201,6 @@ main label {
         font-size: 12px;
     }
 
-
-
     .formulario_login label,
     .formulario_cadastro label {
         height: 5px;
@@ -212,4 +210,40 @@ main label {
         width: 65%;
     }
 
+}
+
+@media screen and (max-width: 375px) {
+    .formulario_login>h2 {
+        width: 190px;
+    }
+
+    .formulario_cadastro>h2 {
+        width: 192px;
+    }
+
+    .formulario_login>a>img {
+        width: 25px;
+        height: 25px;
+
+    }
+
+    .formulario_login>a {
+        padding: 5px 10px;
+    }
+
+    .formulario_botao {
+        min-width: 125px;
+    }
+
+    .formulario_botao {
+        font-size: 14px;
+    }
+
+    .opcao {
+        flex-direction: column;
+    }
+
+    .opcao>div:nth-child(1) {
+        margin-bottom: 5px;
+    }
 }
