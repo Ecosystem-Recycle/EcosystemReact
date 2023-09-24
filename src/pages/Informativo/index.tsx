@@ -7,7 +7,7 @@ function Informativo() {
     return (
         <>
             <main id='mainInformativo'>
-                <h1>página ??????? ecosystem &amp; recycle</h1>
+                <h1>página Informativo ecosystem &amp; recycle</h1>
                 <section className="banner_fundo">
                     <div>
                         <div className="lixo1 wrapper">
@@ -97,16 +97,16 @@ function Informativo() {
                         <p>
                             Realizamos programas de recuperação de materiais essenciais em nossos
                             centros de distribuição e escritórios, com a missão de reinserir os
-                            recursos utilizados no ciclo produtivo. Desde 2015, promovemos um
+                            recursos utilizados no ciclo produtivo.<br />Desde 2015, promovemos um
                             programa regional de reciclagem com esquemas de separação e coleta
                             seletiva dos resíduos no local. Em todos os nossos centros de
                             distribuição, mais de 85% dos materiais são recuperados com parceiros
-                            locais. No caso do papelão, em particular na Argentina e no México, o
+                            locais. <br />No caso do papelão, em particular na Argentina e no México, o
                             material é recuperado e enviado para reciclagem e produção de novas
                             caixas ou papelão. Implementamos também o programa de logística reversa,
                             oferecido a vendedores com um potencial de reutilização de produtos de
                             cerca de 40% do volume total de itens trocados ou devolvidos. Desde seu
-                            lançamento no Brasil,
+                            lançamento no Brasil.
 
 
                         </p>
