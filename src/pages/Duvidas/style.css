@@ -82,7 +82,7 @@
     }
 }
 
-@media screen and (max-width: 950px) {
+@media screen and (max-width: 1020px) {
     .faq {
         width: 95%;
         margin: 20px auto;
