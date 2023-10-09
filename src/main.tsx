@@ -6,6 +6,7 @@ import { Route, Routes, BrowserRouter } from 'react-router-dom'
 //Importar Componentes
 import Header from './components/Header'
 import Footer from './components/Footer'
+import MenuAcessibilidade from './components/MenuAcessibilidade'
 //Importar CSS
 import './index.css'
 //Importar Pages
@@ -28,11 +29,14 @@ import PaginaInicial from './pages/PaginaInicial'
 import QueroDoarParte1 from './pages/QueroDoarParte1'
 import QueroDoarParte2 from './pages/QueroDoarParte2'
 import Servicos from './pages/Servicos'
+import QueroDoarParte3 from './pages/QueroDoarParte3'
+
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <BrowserRouter> 
       <Header />
+      {/* <MenuAcessibilidade /> */}
       <Routes>
         <Route path='/minhasdoacoes' element={ <MinhasDoacoes /> } />
         <Route path='/agendarcoleta' element={ <AgendarColeta/> }/>
@@ -52,6 +56,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
         <Route path='/' element={ <PaginaInicial /> } /> 
         <Route path='/querodoarpt1' element={ <QueroDoarParte1 /> } /> 
         <Route path='/querodoarpt2' element={ <QueroDoarParte2 /> } />
+        <Route path='/querodoarpt3' element={ <QueroDoarParte3 /> } />
         <Route path='/servicos' element={ <Servicos /> } /> 
       </Routes>
       <Footer />

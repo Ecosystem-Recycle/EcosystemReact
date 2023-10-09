@@ -109,7 +109,7 @@
     padding-bottom: 30px;
 }
 
-.descricao label {
+#mainQueroDoarParte2.descricao label {
     font-family: var(--font1);
     font-size: 20px;
 }
@@ -188,7 +188,7 @@
     max-height: 100%;
 }
 
-#add-single-img {
+#mainQueroDoarParte2 #add-single-img {
     margin-bottom: 100px;
     /* height: 50px; */
     width: 100%;

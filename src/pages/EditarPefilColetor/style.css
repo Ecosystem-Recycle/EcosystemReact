@@ -89,37 +89,37 @@
 
 }
 
-.nomeMarca {
+#mainEditarPerfilColetor .nomeMarca {
     border-radius: 10px;
     padding-bottom: 30px;
 }
 
 
-.nomeMarca label {
+#mainEditarPerfilColetor .nomeMarca label {
     display: flex;
     flex-direction: column;
     font-family: var(--font1);
     font-size: 20px;
 }
 
-.nomeMarca input {
+#mainEditarPerfilColetor .nomeMarca input {
     width: 1080px;
 }
 
-.regiao {
+#mainEditarPerfilColetor .regiao {
     display: flex;
     justify-content: space-between;
     padding-bottom: 25px;
     width: 100%;
 }
 
-.regiao input {
+#mainEditarPerfilColetor .regiao input {
     max-width: 820px;
     width: 60%;
 }
 
 
-.selecao {
+#mainEditarPerfilColetor .selecao {
     border: 1px solid #9C9C9C;
     border-radius: 10px;
    
@@ -128,7 +128,7 @@
     font-family: var(--font2);
 }
 
-.cidade {
+#mainEditarPerfilColetor .cidade {
     width: 500px;
     border: 1px solid #9C9C9C;
     border-radius: 10px;
@@ -137,75 +137,75 @@
     font-family: var(--font2);
 }
 
-.descricao {
+#mainEditarPerfilColetor .descricao {
     padding-bottom: 30px;
 }
 
-.descricao label {
+#mainEditarPerfilColetor .descricao label {
     font-family: var(--font1);
     font-size: 20px;
 }
 
-textarea {
+#mainEditarPerfilColetor textarea {
     width: 884px;
     padding-bottom: 30px;
 }
 
-.data {
+#mainEditarPerfilColetor .data {
     font-family: var(--font1);
     font-size: 20px;
     padding-bottom: 30px;
 }
 
-.agendamento {
+#mainEditarPerfilColetor .agendamento {
     padding-bottom: 30px;
 }
 
-.horario {
+#mainEditarPerfilColetor .horario {
     font-family: var(--font1);
     font-size: 20px;
     padding-bottom: 30px;
 }
 
-.tipo {
+#mainEditarPerfilColetor .tipo {
     font-family: var(--font1);
     font-size: 20px;
 }
 
-.tipoEletronico {
+#mainEditarPerfilColetor .tipoEletronico {
     padding-bottom: 30px;
 }
 
-.celular .computador .monitor .perifericos .baterias .outros {
+#mainEditarPerfilColetor .celular .computador .monitor .perifericos .baterias .outros {
     font-family: var(--font2);
     /* font-size: 51px; */
 }
 
-.condicoes {
+#mainEditarPerfilColetor .condicoes {
     font-family: var(--font1);
     font-size: 20px;
 }
 
-.condicoesMateriais {
+#mainEditarPerfilColetor .condicoesMateriais {
     padding-bottom: 30px;
 }
 
-.qtdItens {
+#mainEditarPerfilColetor .qtdItens {
     font-family: var(--font1);
     font-size: 20px;
 }
 
-.itens {
+#mainEditarPerfilColetor .itens {
     padding-bottom: 30px;
 }
 
-.arquivos {
+#mainEditarPerfilColetor .arquivos {
     display: flex;
     justify-content: space-between;
     padding-bottom: 30px;
 }
 
-.adicionarFotos {
+#mainEditarPerfilColetor .adicionarFotos {
     width: 40%;
     display: flex;
     flex-direction: column;
@@ -214,12 +214,12 @@ textarea {
     border-radius: 20px;
 }
 
-.arquivos img {
+#mainEditarPerfilColetor .arquivos img {
     max-width: 100%;
     max-height: 100%;
 }
 
-.adicionarFotos button {
+#mainEditarPerfilColetor .adicionarFotos button {
     height: 50px;
     width: 100%;
     border-radius: 0px 0px 18px 18px;
@@ -237,7 +237,7 @@ textarea {
 
 
 
-.alinhamentoImg {
+#mainEditarPerfilColetor .alinhamentoImg {
     /* display: flex; */
     justify-content: stretch;
     align-items: center;
@@ -253,18 +253,18 @@ textarea {
     box-shadow: 2px 4px 4px 2px rgba(0, 0, 0, 0.25);
 }
 
-.alinhamentoImg img {
+#mainEditarPerfilColetor .alinhamentoImg img {
     justify-content: stretch;
     align-items: center;
 }
 
-.botao {
+#mainEditarPerfilColetor .botao {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
 }
 
-.btnSalvar {
+#mainEditarPerfilColetor .btnSalvar {
     border: 5px solid #9319CC;
     border-radius: 15px;
     padding: 10px 150px;
@@ -274,7 +274,7 @@ textarea {
     color: #9319CC;
 }
 
-.btnCancelar {
+#mainEditarPerfilColetor .btnCancelar {
     border: 5px solid #9319CC;
     border-radius: 15px;
     padding: 10px 150px;
@@ -350,7 +350,7 @@ textarea {
         /* justify-items: center; */
         row-gap: 3rem;
     }
-    .wrapper{
+    #mainEditarPerfilColetor .wrapper{
         width: 95%;
     }
 

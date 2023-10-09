@@ -29,7 +29,7 @@ function Login() {
 
     return (
         <>
-            <main>
+            <main id='mainLogin'>
                 <h1>página Login ecosystem &amp; recycle</h1>
                 <section className="sessao_formulario_login">
                     <form className="formulario_login">
