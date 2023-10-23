@@ -20,17 +20,17 @@ function AgendarColeta() {
     const [comentario, setComentario] = useState<string>("")
 
     return (
-        <main>
+        <main id='agendarColeta' >
             <h1>página agendar coleta ecosystem &amp; recycle</h1>
             <section>
                 <div className="conteudo_doacoes wrapper">
                     <Aside idSeletor={2}/>
-                    <div className="conteudoPublicacoes">
+                    <div id='idConteudoPublicacoes' className="conteudoPublicacoes">
                         <div className="headerPublicacoes">
                             <h2>Agendar Coleta</h2>
                             <p>Agende aqui a sua retirada do material</p>
                         </div>
-                        <div className="containerCard">
+                        <div  id="containerCard"   className="containerCard">
 
                             < CardAgendarColeta />
                             <form onSubmit={cadastroAgendamento} className="cardBottom">
