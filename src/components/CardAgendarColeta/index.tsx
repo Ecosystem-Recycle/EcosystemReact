@@ -2,11 +2,10 @@
 import './style.css'
 import image from "../../assets/img/image 12.png"
 
-
 export default function CardAgendarColeta(props:any) {
 
     return (
-        <div className="card">
+        <div className="card" id='cardAgendarColeta'>
             <div className="cardEsquerda">
                 {/* <h2>Celulares antigos de diversas marcas e modelos</h2> */}
                 <h2>{props.titulo ? props.titulo : "Título"}</h2>

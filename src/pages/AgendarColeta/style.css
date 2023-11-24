@@ -1,102 +1,109 @@
-#mainAgendarColeta .conteudo_doacoes{
+.conteudo_doacoes {
     display: grid;
     column-gap: 3rem;
-    grid-template-columns: minmax(238px,0.25fr) 1fr;
+    grid-template-columns: minmax(238px, 0.25fr) 1fr;
     padding: 60px 0;
 }
 
 
-#mainAgendarColeta .conteudoPublicacoes{
+#agendarColeta .conteudoPublicacoes {
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center
 }
-.headerPublicacoes{
+
+#agendarColeta .headerPublicacoes {
     display: flex;
     flex-direction: column;
     align-self: center;
     width: 90%;
 }
-.headerPublicacoes>h2{
+
+#agendarColeta .headerPublicacoes>h2 {
     font-family: var(--font1);
     font-size: 25px;
 }
-.headerPublicacoes>p{
+
+#agendarColeta .headerPublicacoes>p {
     font-family: var(--font2);
     font-size: 15px;
     color: #9C9C9C;
     margin-bottom: 50px;
 }
-#mainAgendarColeta .containerCard{
+
+#agendarColeta .containerCard {
     width: 90%;
-    border: 1px solid rgba(156, 156, 156, 0.25);
+    border: 3px solid rgba(156, 156, 156, 0.25);
     border-radius: 15px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* background-color: #EAF207; */
     margin-bottom: 100px;
 }
 
 
 
-#mainAgendarColeta .cardBottom{
-    /* background-color: #045328; */
+#agendarColeta .cardBottom {
     width: 90%;
 }
-#mainAgendarColeta .cardBottomPt1{
+
+#agendarColeta .cardBottomPt1 {
     display: flex;
     justify-content: space-between;
     margin-bottom: 30px;
-    /* background-color: aqua; */
 }
-.cardBottomPt1>div:nth-child(1){
-    /* background-color: #9F2FBB; */
+
+#agendarColeta .cardBottomPt1>div>textarea {
+    overflow: hidden;
+}
+
+#agendarColeta .cardBottomPt1>div:nth-child(1) {
     display: flex;
     flex-direction: column;
     width: 45%;
 }
-#mainAgendarColeta .cardBottomPt1>div:nth-child(1)>textarea{
-    /* background-color: #9F2FBB; */
+
+#agendarColeta .cardBottomPt1>div:nth-child(1)>textarea {
     width: 100%;
     height: 35px;
     border: 1px solid #9C9C9C;
     border-radius: 6px;
-    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25); 
-    /* margin-right: 10px; */
-    /* background-color: #EAF207; */
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
-#mainAgendarColeta .cardBottomPt1>div:nth-child(2){
-    /* background-color: #9F2FBB; */
+
+#agendarColeta .cardBottomPt1>div:nth-child(2) {
     width: 45%;
     display: flex;
     flex-direction: column;
 }
-#mainAgendarColeta .cardBottomPt1>div:nth-child(2)>textarea{
-    /* background-color: #9F2FBB; */
+
+#agendarColeta .cardBottomPt1>div:nth-child(2)>textarea {
     width: 100%;
     height: 35px;
     border: 1px solid #9C9C9C;
     border-radius: 6px;
-    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25); 
-    /* background-color: #9319CC; */
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
-#mainAgendarColeta .cardBottomPt2{
+
+#agendarColeta .cardBottomPt2 {
     display: flex;
-    flex-direction: column;  
+    flex-direction: column;
 }
-#mainAgendarColeta .cardBottomPt2>textarea{
-    /* background-color: #9319CC; */
+
+#agendarColeta .cardBottomPt2>textarea {
     height: 200px;
-    border: 1px solid #9C9C9C; 
+    width: 100%;
+    border: 1px solid #9C9C9C;
     border-radius: 6px;
-    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25); 
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
 }
-#mainAgendarColeta .containerCard>a{
+
+#agendarColeta .containerCard>a {
     align-self: flex-end;
-    border-radius:10px;
-    border: 3px solid #9F2FBB; 
+    border-radius: 10px;
+    border: 3px solid #9F2FBB;
     padding: 5px 100px;
     text-transform: uppercase;
     font-family: var(--font2);
@@ -105,4 +112,86 @@
     color: #9F2FBB;
     margin-right: 50px;
     margin-top: 30px;
+}
+
+@media screen and (max-width: 1590px) {
+    .containerCard {
+        width: 700px;
+    }
+
+    .conteudoPublicacoes {
+        width: 780px;
+
+
+    }
+
+    #idConteudoPublicacoes {
+        min-width: 780px;
+    }
+
+}
+
+@media screen and (max-width: 1185px) {
+    .conteudo_doacoes {
+        column-gap: 0rem;
+    }
+
+    #agendarColeta>section>div {
+        column-gap: 0;
+
+    }
+    #idConteudoPublicacoes {
+        width: 100%;
+        min-width: 0;
+
+    }
+
+    #agendarColeta>section>div {
+        justify-content: center;
+
+    }
+}
+
+
+@media screen and (max-width: 997px) {
+    #containerCard {
+        width: 100%;
+    }
+
+    #agendarColeta>section>div {
+        width: 95%;
+    }
+}
+
+@media screen and (max-width: 769px) {
+    #agendarColeta>section>div {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 680px) {
+    .headerPublicacoes>h2 {
+        align-self: center;
+    }
+
+    .headerPublicacoes>p {
+        align-self: center;
+    }
+}
+
+@media screen and (max-width: 580px) {
+    #agendarColeta .conteudo_doacoes {
+        grid-template-rows: none;
+    }
+
+
+}
+
+@media screen and (max-width: 520px) {
+
+    #agendarColeta .conteudo_doacoes {
+        display: flex;
+        flex-direction: column;
+    }
+
 }
