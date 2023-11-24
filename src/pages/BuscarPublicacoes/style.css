@@ -14,8 +14,6 @@
     width: 100%;
 }
 
-
-
 #mainBuscarPublicacoes .title{
     padding-bottom: 40px;
 }
@@ -41,13 +39,22 @@
     /* margin-top: 20px; */
     margin-bottom: 50px;
 }
+
+#mainBuscarPublicacoes .cardAgendar>div>img{
+    /* width: 100%; */
+    width: 206px;
+    height: 144px;
+    border-radius: 5px;
+} 
+
+
 #dois>.conteudoCard>.cardInformacao>h2{
     font-size: 18px;
 }
+
 #quatro{
     margin-bottom: 80px;
 }
-
 
 #mainBuscarPublicacoes .conteudoCard{
     width: 100%;
@@ -100,8 +107,6 @@
     transform: scale(1.05);
 }
 
-
-
 #mainBuscarPublicacoes .cardAgendar img {
     width: 100%;
     height: 100%;
@@ -111,3 +116,68 @@
 #mainBuscarPublicacoes .cardAgendar div:nth-child(1){
     margin-right: 20px;
 }
+
+@media screen and (max-width: 1030px) {
+
+    #mainBuscarPublicacoes .conteudoCard{
+        flex-direction: column;
+    }
+    #mainBuscarPublicacoes .conteudoCard>a{
+        align-self: self-start;
+        margin-top: 20px;
+        width: 120px;
+        text-align: center;
+    }
+}
+
+@media screen and (max-width: 880px){
+    #mainBuscarPublicacoes .cardAgendar{
+        flex-direction: column;
+        align-items: center;
+        margin-right: 0;
+    }
+    #mainBuscarPublicacoes .conteudoCard{
+        align-items: center;
+
+    }
+    #mainBuscarPublicacoes .conteudoCard>a{
+        align-self: center;
+    }
+    #mainBuscarPublicacoes .cardAgendar div:nth-child(1){
+        margin: 0;
+    }
+
+}
+@media screen and (max-width: 700px){
+    #mainBuscarPublicacoes .conteudo_doacoes{
+        gap: 0;
+    }
+    
+    #mainBuscarPublicacoes .title>h2{
+        font-size: 25px;
+    }
+    #mainBuscarPublicacoes .title>p{
+        font-size: 14px;
+        margin-top: 5px;
+    }
+}
+@media screen and (max-width: 520px){
+   #mainBuscarPublicacoes .conteudo_doacoes{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+   }
+   #mainBuscarPublicacoes .menu_Direito{
+    align-items: center;
+   }
+   #mainBuscarPublicacoes .title>h2{
+    text-align: center;
+   }
+}
+@media screen and (max-width: 393px){
+    #mainBuscarPublicacoes .title>p{
+        text-align: center;
+    }
+}
+

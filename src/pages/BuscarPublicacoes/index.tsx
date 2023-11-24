@@ -22,7 +22,7 @@ function BuscarPublicacoes() {
                                 <h2>Buscar por Publicações</h2>
                                 <p>Veja todas as publicações ativas mais próximas de você!</p>
                             </div>
-                            <div>
+                            {/* <div> */}
                                 <div id="um" className="cardAgendar">
                                     <div>
                                         <img src={image12} alt="" />
@@ -111,7 +111,7 @@ function BuscarPublicacoes() {
                                         <Link to="/agendarcoleta">Agendar</Link>
                                     </div>
                                 </div>
-                            </div>
+                            {/* </div> */}
                         </div>
                     </div>
                 </section>
