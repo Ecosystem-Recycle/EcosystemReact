@@ -20,6 +20,7 @@
     font-family: var(--font2);
     font-size: 2rem;
     text-transform: capitalize;
+    margin-bottom: 15px;
 }
 
 #mainColetasConfirmada .title p{
@@ -154,4 +155,78 @@
     font-family: var(--font1);
     text-transform: uppercase;
     padding: 4px 70px;
+}
+
+
+@media screen and (max-width: 1131px) {
+    #mainColetasConfirmada .title>h2 {  
+        font-size: 28px;
+        width: 353px;
+    }
+}
+@media screen and (max-width: 1055px) {
+    #mainColetasConfirmada .Conteudo_Doacao{
+        display: flex;
+        flex-direction: column;
+    }
+    #mainColetasConfirmada .dados_doacao1{
+        display: flex;
+        flex-direction: column;
+    }
+
+    #mainColetasConfirmada .Title_Img_Donation{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    #mainColetasConfirmada .Title_Img_Donation>h5{
+        margin-bottom: 15px;
+        text-align: center;
+
+    }
+    #mainColetasConfirmada .Title_Img_Donation>img{
+        margin-bottom: 40px;
+    }
+    #mainColetasConfirmada .dados_doacao1 div:first-child {
+        margin-right: 0;
+    }
+    #mainColetasConfirmada .dados_doacao1 div:nth-child(2){
+        width: 90%;
+        align-self: center;
+    }
+    #mainColetasConfirmada .dados_horario, .dados_local, .dados_responsavel{
+        width: 90%;
+        align-self: center;
+    }
+
+}
+@media screen and (max-width: 690px) {
+    #mainColetasConfirmada .conteudo_doacoes {
+        column-gap: 0;
+    }
+    #mainColetasConfirmada .title>h2 {  
+        font-size: 25px;
+        width: 100%;
+    }
+    #mainColetasConfirmada .title>p { 
+        font-size: 14px;
+    }
+    #mainColetasConfirmada .margem_Doacao {
+        padding: 3rem 0;
+    }
+    #mainColetasConfirmada .Title_Img_Donation>img{
+        width: 85%;
+    }
+}
+@media screen and (max-width: 520px) {
+    #mainColetasConfirmada .conteudo_doacoes{
+        display: flex;
+        flex-direction: column;
+    }
+    #mainColetasConfirmada .title{
+        text-align: center;
+    }
+    #mainColetasConfirmada .btnRetirar>a{
+        padding: 4px 30px;
+    }
 }
