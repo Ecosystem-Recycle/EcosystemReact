@@ -36,13 +36,14 @@ function ColetasFinalizadas() {
                                         <div className="nada_consta">
                                             <p>cartuchos usados</p>
                                             <img src={cartucho} alt="" />
-
+                                            <div>
                                             <p> Data de publicação: 01/04/2023 </p>
-                                            <p>Quantidade de iten(s): 20</p>
+                                            <p> Quantidade de iten(s): 20</p>
                                             <p> Responsável: André Martins </p>
                                             <p> Descrição: 10x Cartuchos HP vazio</p>
                                             <p> 10x Cartuchos Epson vazio </p>
                                             <p> Localização: Santo André - SP </p>
+                                            </div>
                                             <form action="">
                                                 <input
                                                     type="radio"
