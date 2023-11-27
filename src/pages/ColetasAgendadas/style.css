@@ -113,6 +113,10 @@
 
 @media screen and (max-width: 812px) {
 
+    #mainColetasAgendadas .conteudo_doacoes{
+        column-gap: 0;
+    }
+
     #mainColetasAgendadas .Conteudo_Cards {
         display: grid;
         grid-template-columns: 1fr;
@@ -132,7 +136,7 @@
 
 }
 
-@media screen and (max-width: 580px) {
+@media screen and (max-width: 520px) {
     #mainColetasAgendadas .conteudo_doacoes {
         padding: 25px 0;
         column-gap: 0.5rem;
@@ -151,8 +155,10 @@
     }
 
     #mainColetasAgendadas .title {
-        padding-top: 25px;
         text-align: center;
+    }
+    #mainColetasAgendadas .title>h2 {
+        margin-bottom: 10px;
     }
 
     #mainColetasAgendadas .links_pags {
