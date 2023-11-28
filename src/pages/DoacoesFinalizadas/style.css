@@ -101,7 +101,6 @@
         /* padding: 60px 0; */
     }
 
-
     #mainDoacoesFinalizadas .title{
         padding-bottom: 30px;
     }
@@ -149,6 +148,26 @@
     
     #mainDoacoesFinalizadas .wrapper{
         width: 95%;
+    }
+    #mainDoacoesFinalizadas .Conteudo_Cards {
+        font-size: 35px;
+    }
+    #mainDoacoesFinalizadas .historic_cards{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    #mainDoacoesFinalizadas .imgCadeado{
+        /* background-color: antiquewhite; */
+        width: 90%;
+        align-self: center;
+    }
+    #mainDoacoesFinalizadas .imgCadeado>img{
+        width: 30%;
+    }
+    #mainDoacoesFinalizadas .Conteudo_Cards {
+        padding: 100px 100px 50px 100px;
+        margin: 20px;
     }
 
 }
