@@ -1,7 +1,7 @@
 /* ####### Estilização do Elemento selecionado no ASIDE ########## */
 
-#AsideDoador .contorno a  {
-    color:var(--roxo);
+#AsideDoador .contorno a {
+    color: var(--roxo);
     font-weight: 900;
     border: 3px solid var(--roxo);
     border-radius: 10px;
@@ -10,39 +10,40 @@
 }
 
 
-#AsideDoador{
+#AsideDoador {
     transition: .35s;
 }
 
-#AsideDoador ul:hover > :not(:hover){
+#AsideDoador ul:hover> :not(:hover) {
     opacity: .4;
     transform: scale(0.9);
 }
 
-#AsideDoador ul:hover{
+#AsideDoador ul:hover {
     transform: scale(1.1);
 }
-aside#AsideDoador ul{
+
+aside#AsideDoador ul {
     list-style-type: none;
     color: black;
-    
+
 }
 
 /* ####### ESPAÇO ENTRE SEGUNDO E TERCEIRO LI ########## */
-aside#AsideDoador li:nth-child(2){
+aside#AsideDoador li:nth-child(2) {
     padding: 1rem 0;
     font-size: 12px;
 }
 
 
 
-aside#AsideDoador a{
+aside#AsideDoador a {
     color: black;
     font-family: var(--font2);
     font-size: 16px;
     text-transform: capitalize;
     font-weight: 600;
-    padding: 0 15px;   
+    padding: 0 15px;
 }
 
 
@@ -56,27 +57,20 @@ aside#AsideDoador a{
 
 @media screen and (max-width: 580px) {
     #AsideDoador>ul {
-        /* grid-column: 1/3;
-        grid-row: 1/3;
-        justify-self: center;
-        text-align: center; */
         display: flex;
         align-items: center;
         justify-content: space-around;
-        /* background-color: blue; */
         width: 100%;
         height: 50px;
-        /* margin: 0 20px; */
     }
+
     #AsideDoador .contorno>a {
         display: flex;
         width: 138px;
-        /* background-color: aliceblue; */
-        /* margin: 0 20px; */
         text-align: center;
-        /* padding: 0; */
     }
 }
+
 @media screen and (max-width: 401px) {
     #AsideDoador .contorno>a {
         width: 140px;
