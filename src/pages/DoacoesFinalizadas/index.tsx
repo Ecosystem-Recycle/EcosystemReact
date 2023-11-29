@@ -14,7 +14,7 @@ function DoacoesFinalizadas() {
                 <h1>página minhas doações finalizadas ecosystem &amp; recycle</h1>
                 <section>
                     <div className="conteudo_doacoes wrapper">
-                        <AsideDoador idSeletor={2}/>
+                        <AsideDoador idSeletor={2} />
 
                         <div className="menu_Direito">
                             <div className="title">
@@ -34,7 +34,6 @@ function DoacoesFinalizadas() {
                                 <div className="historic_cards">
                                     <div className="Conteudo_Cards">
                                         <span>Você não possui doações finalizadas no sistema</span>
-        
                                     </div>
                                     <div className="imgCadeado">
                                         <img src={imgCadeado} alt="Imagem de cadeado" />
