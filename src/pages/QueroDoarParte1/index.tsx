@@ -5,7 +5,9 @@ import imgInformatica from '../../assets/img/img_informatica.png'
 import imgLinhaBranca from '../../assets/img/img_linha_branca.png'
 import imgBaterias from '../../assets/img/img_baterias_diversas.png'
 import AsideDoador from '../../components/AsideDoador'
+import CardCategoria from '../../components/CardCategoria'
 import { Link } from 'react-router-dom'
+import Card from '../../components/Card'
 
 function QueroDoarParte1() {
 
@@ -29,36 +31,30 @@ function QueroDoarParte1() {
                                     <div className="Conteudo">
                                         <div>
                                             <div className="parte_de_cima">
-                                                <div className="teste1">
-                                                    <p className="p1">Eletroeletrônicos</p>
-                                                    <img
-                                                        src={imgEletronicos}
-                                                        alt="imagem eletrônicos"
-                                                    />
-                                                </div>
-                                                <div>
-                                                    <p className="p2">Informática</p>
-                                                    <img
-                                                        src={imgInformatica}
-                                                        alt="imagem infrmatica"
-                                                    />
-                                                </div>
+                                                <CardCategoria
+                                                titulo={"Eletroeletrônicos"}
+                                                src={imgEletronicos}
+                                                alt={"imagem eletrônicos"}
+                                                />
+
+                                                <CardCategoria
+                                                titulo={"Informática"}
+                                                src={imgInformatica}
+                                                alt={"imagem infrmatica"}
+                                                />
                                             </div>
                                             <div className="parte_de_baixo">
-                                                <div>
-                                                    <p className="p3">Linha Branca</p>
-                                                    <img
-                                                        src={imgLinhaBranca}
-                                                        alt="imagem linha branca"
-                                                    />
-                                                </div>
-                                                <div>
-                                                    <p className="p4">Baterias Diversas</p>
-                                                    <img
-                                                        src={imgBaterias}
-                                                        alt="imagem baterias diversas"
-                                                    />
-                                                </div>
+                                                <CardCategoria
+                                                titulo={"Linha Branca"}
+                                                src={imgLinhaBranca}
+                                                alt={"imagem linha branca"}
+                                                />
+
+                                                <CardCategoria
+                                                titulo={"Baterias Diversas"}
+                                                src={imgBaterias}
+                                                alt={"imagem baterias diversas"}
+                                                />
                                             </div>
                                         </div>
                                         <div className="btnVoltar">
