@@ -1,6 +1,9 @@
+#cardDoador {
+    width: 90%;
+}
 
 
-.cards{
+#cardDoador .cards {
     border: 1px solid rgba(156, 156, 156, 0.20);
     border-radius: 10px 10px 0px 0px;
     box-shadow: 7px 4px 4px 2px rgba(0, 0, 0, 0.25);
@@ -13,13 +16,13 @@
 
     transition: .35s;
     cursor: pointer;
-} 
+}
 
-.cards img{
+#cardDoador .cards img {
     width: 100%;
 }
 
-.cards h4{
+#cardDoador .cards h4 {
     font-size: 22px;
     font-weight: 700;
     text-transform: capitalize;
@@ -27,48 +30,55 @@
     padding: 9px 0;
 }
 
-.cards p{
+#cardDoador .cards p {
     font-size: 12px;
 }
 
-.Descriocaocards{
-    display: flex;
+#cardDoador .WrapperCard {
+    width: 100%;
 }
 
-.Descriocaocards > div{
+#cardDoador .Descriocaocards {
+    display: flex;
+
+}
+
+#cardDoador .Descriocaocards>div {
     display: flex;
     flex-direction: column;
     padding: 0 0 50px 5px;
 }
 
-.card_Status{
+#cardDoador .card_Status {
     display: flex;
-    justify-content: start; 
+    justify-content: start;
     align-items: center;
 }
 
-.circle_Status{
+#cardDoador .circle_Status {
     width: 12px;
     height: 12px;
     flex-shrink: 0;
     border-radius: 10px;
 }
 
-.circle_Yellow{
+#cardDoador .circle_Yellow {
     background: #F8BD00;
 }
 
-.circle_Orange{
+#cardDoador .circle_Orange {
     background: #ED7016;
 }
 
-.card_Status span{
+#cardDoador .card_Status span {
     padding-left: 5px;
     font-weight: 600;
 }
 
-.iconesCards{
+#cardDoador .iconesCards {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding: 15px 0;
+    width: 100%;
 }

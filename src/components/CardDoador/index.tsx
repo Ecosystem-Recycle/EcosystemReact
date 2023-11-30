@@ -11,6 +11,7 @@ function CardDoador(props:any) {
 
     return (
         <>
+            <div id='cardDoador'>
             <h4>{props.title}</h4>
             <img
                 src={ props.imagem }
@@ -57,6 +58,7 @@ function CardDoador(props:any) {
 
                 </div>
             </div>
+        </div>
         </>
     )
 }

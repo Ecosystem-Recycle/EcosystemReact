@@ -1,44 +1,42 @@
-
-
-#mainMinhasDoacoes .conteudo_doacoes{
+#mainMinhasDoacoes .conteudo_doacoes {
     display: grid;
     column-gap: 3rem;
-    grid-template-columns: minmax(238px,0.25fr) 1fr;
+    grid-template-columns: minmax(238px, 0.25fr) 1fr;
     padding: 60px 0;
 }
 
 
-#mainMinhasDoacoes .menu_Direito{
+#mainMinhasDoacoes .menu_Direito {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     width: 100%;
 }
 
-#mainMinhasDoacoes .title{
+#mainMinhasDoacoes .title {
     padding-bottom: 40px;
 }
 
-#mainMinhasDoacoes .title h2{
+#mainMinhasDoacoes .title h2 {
     font-family: var(--font2);
     font-size: 2rem;
     text-transform: capitalize;
 }
 
-#mainMinhasDoacoes .title p{
+#mainMinhasDoacoes .title p {
     font-family: var(--font2);
     font-size: 1rem;
     color: var(--cinza);
 }
 
-#mainMinhasDoacoes .links_pags{
+#mainMinhasDoacoes .links_pags {
     padding-bottom: 0.4rem;
 }
 
 
-#mainMinhasDoacoes .links_pags a{
+#mainMinhasDoacoes .links_pags a {
     border-radius: 9px;
-    border: 2px solid rgba(156, 156, 156, 0.80);  
+    border: 2px solid rgba(156, 156, 156, 0.80);
     padding: 1px 7px;
     font-family: var(--font1);
     font-size: 20px;
@@ -47,7 +45,7 @@
     color: var(--cinza);
 }
 
-#mainMinhasDoacoes .links_pags span{
+#mainMinhasDoacoes .links_pags span {
     font-size: 22px;
     font-family: var(--font1);
     color: var(--cinza);
@@ -55,12 +53,12 @@
 }
 
 
-#mainMinhasDoacoes .links_pags a:nth-child(1){
+#mainMinhasDoacoes .links_pags a:nth-child(1) {
     border: 2px solid var(--verde2);
     color: var(--verde2);
 }
 
-#mainMinhasDoacoes .historic_cards{
+#mainMinhasDoacoes .historic_cards {
     border: 1px solid var(--cinza);
     border-radius: 20px;
     padding: 3rem 2rem;
@@ -68,7 +66,7 @@
     font-family: var(--font2);
 }
 
-#mainMinhasDoacoes .Conteudo_Cards{
+#mainMinhasDoacoes .Conteudo_Cards {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     justify-items: center;
@@ -77,32 +75,74 @@
 
 }
 
-#mainMinhasDoacoes .Conteudo_Cards:hover > :not(:hover){
+#mainMinhasDoacoes .Conteudo_Cards:hover> :not(:hover) {
     opacity: .4;
     transform: scale(0.9);
 }
 
-#mainMinhasDoacoes .WrapperCard{
-    width: 90%;
-    display: flex;
-    flex-direction: column;
-    padding-top: 10px;
-}
 
-
-
-#mainMinhasDoacoes .btnVoltar{
+#mainMinhasDoacoes .btnVoltar {
     width: 100%;
     display: flex;
     justify-content: center;
 }
 
-#mainMinhasDoacoes .btnVoltar > a{
+#mainMinhasDoacoes .btnVoltar>a {
     border-radius: 15px;
     border: 4px solid var(--roxo);
     padding: 2px 35px;
     font-family: var(--font1);
     font-size: 18px;
-    font-weight:800;
+    font-weight: 800;
     text-transform: uppercase;
+}
+
+@media screen and (max-width: 1210px) {
+    #mainMinhasDoacoes .cards {
+        width: 90%;
+    }
+}
+
+@media screen and (max-width: 945px) {
+    #mainMinhasDoacoes .Conteudo_Cards {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+@media screen and (max-width: 789px) {
+    #mainMinhasDoacoes .links_pags {
+        display: flex;
+        justify-content: center;
+    }
+
+    #mainMinhasDoacoes .links_pags>a {
+        display: flex;
+        width: 150px;
+        text-align: center;
+    }
+
+    #mainMinhasDoacoes .links_pags span {
+        font-size: 40px;
+    }
+
+    #mainMinhasDoacoes .conteudo_doacoes {
+        column-gap: 0;
+    }
+
+    #mainMinhasDoacoes .cards {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 580px) {
+    #mainMinhasDoacoes .conteudo_doacoes {
+        display: flex;
+        flex-direction: column;
+    }
+
+    #mainMinhasDoacoes .title {
+        margin-top: 20px;
+        align-self: center;
+    }
 }
