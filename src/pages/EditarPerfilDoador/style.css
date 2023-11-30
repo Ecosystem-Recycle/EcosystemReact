@@ -97,13 +97,15 @@
 
 .nomeMarca input {
     max-width: 1080px;
-    width: 90%;
+    width: 95%;
 }
 
 #mainEditarPerfilDoador .regiao {
     display: flex;
     justify-content: space-between;
+    width: 100%;
     padding-bottom: 25px;
+    /* background-color: #045328; */
 }
 
 #mainEditarPerfilDoador .regiao .uf {
@@ -312,6 +314,11 @@
         font-size: 16px;
         padding: 2px 20px;
 
+    }
+}
+@media screen and (max-width: 661px) {
+    #mainEditarPerfilDoador .conteudo_doacoes{
+        column-gap: 0;
     }
 }
 
