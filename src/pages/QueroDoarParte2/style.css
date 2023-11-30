@@ -216,10 +216,10 @@
     box-shadow: 2px 4px 4px 2px rgba(0, 0, 0, 0.25);
 }
 
-#mainQueroDoarParte2 .alinhamentoImg img {
+/* #mainQueroDoarParte2 .alinhamentoImg img {
     justify-content: stretch;
     align-items: center;
-}
+} */
 
 #mainQueroDoarParte2 .botao {
     display: flex;
@@ -341,9 +341,9 @@
         height: 300px;
     }
 
-    #mainQueroDoarParte2 .alinhamentoImg>img {
+    /* #mainQueroDoarParte2 .alinhamentoImg>img {
         width: 100px;
-    }
+    } */
 
 }
 

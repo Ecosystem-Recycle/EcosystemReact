@@ -6,6 +6,7 @@ import imgCelular2 from '../../assets/img/img_celular (2).png'
 import pilhaCelular from '../../assets/img/img_celular.png'
 import imgVazia from '../../assets/img/Vector.png'
 import AsideDoador from '../../components/AsideDoador'
+import CardUploadImagem from '../../components/CardUploadImagem'
 import { Link } from 'react-router-dom'
 
 function QueroDoarParte2() {
@@ -274,21 +275,35 @@ function QueroDoarParte2() {
 
                         
                       <div className="alinhamentoImg">
-                        <img src={imgCelular} alt="Um Celular" />
+                      <CardUploadImagem
+                        src={imgCelular}
+                        alt={"Um Celular"}
+                        />
                         {/* <div>
                               <img src="../Tela_Quero_Doar_Parte_2/img/ico_img1.png" alt="Icone de excluir">
                           </div> */}
-                        <img src={imgCelular2} alt="Pilha de Celulares" />
+                           <CardUploadImagem
+                        src={imgCelular2}
+                        alt={"Pilha de Celulares"}
+                        />
                         {/* <div>
                               <img src="../Tela_Quero_Doar_Parte_2/img/ico_img1.png" alt="Icone de excluir">
                           </div> */}
-                        <img src={pilhaCelular} alt="Pilha de Celulares" />
+                        <CardUploadImagem
+                        src={pilhaCelular}
+                        alt={"Pilha de Celulares"}
+                        />
                         {/* <div>
                               <img src="../Tela_Quero_Doar_Parte_2/img/ico_img1.png" alt="Icone de excluir">
                           </div> */}
-                        <img src={imgVazia} alt="Imagem Vazia 1" />
-                        <img src={imgVazia} alt="Imagem Vazia 2" />
-                        <img src={imgVazia} alt="Imagem Vazia 3" />
+                       <CardUploadImagem
+                        src={imgVazia}
+                        alt={"Imagem Vazia 1"}
+                        />
+                        <CardUploadImagem
+                        src={imgVazia}
+                        alt={"Imagem Vazia 1"}
+                        />
                       </div>
                     </div>
                     <div className="btnVoltar">
