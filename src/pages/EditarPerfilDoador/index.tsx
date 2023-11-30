@@ -3,13 +3,13 @@ import './style.css'
 import AsideDoador from '../../components/AsideDoador'
 import { Link } from "react-router-dom";
 
-function EditarPerfilDoador(){
+function EditarPerfilDoador() {
 
-    function msgSalvarPerfil(){
+    function msgSalvarPerfil() {
         alert('Dados Cadastrado com Sucesso');
-      }
+    }
 
-    function historyBack(){
+    function historyBack() {
         alert('')
     }
 
@@ -20,7 +20,7 @@ function EditarPerfilDoador(){
                 <section>
                     <section>
                         <div className="conteudo_doacoes wrapper">
-                            <AsideDoador idSeletor={3}/> 
+                            <AsideDoador idSeletor={3} />
                             <div className="menu_Direito">
                                 <div className="title">
                                     <h2>Editar Perfil</h2>
@@ -34,19 +34,19 @@ function EditarPerfilDoador(){
                                             <div className="nomeMarca">
                                                 <form className='formDoador'>
                                                     <label htmlFor="name">Nome Completo:</label>
-                                                    <input className="input" type="text" id="name" name="name"/> <br/><br/>
+                                                    <input className="input" type="text" id="name" name="name" /> <br /><br />
 
-                                                    <label htmlFor="cpf">CPF:</label> <small>Ex: 123.456.789-10</small> <br/>
-                                                    <input className="input" type="text" id="cpf" name="cpf"/> <br/><br/>
+                                                    <label htmlFor="cpf">CPF:</label> <small>Ex: 123.456.789-10</small> <br />
+                                                    <input className="input" type="text" id="cpf" name="cpf" /> <br /><br />
 
                                                     <label htmlFor="email">E-mail:</label>
-                                                    <input className="input" type="email" id="email" name="email"/> <br/><br/>
+                                                    <input className="input" type="email" id="email" name="email" /> <br /><br />
 
                                                     <label htmlFor="telefone">Telefone:</label> <small>Ex: (DDD)
-                                                        1234-5678</small> <br/>
+                                                        1234-5678</small> <br />
                                                     <input className="input" type="tel" id="telefone" name="telefone"
                                                         placeholder="(11) 1234-5678" pattern="([0-9]){2} [0-9]{4}-[0-9]{4}"
-                                                        required/> <br/><br/>
+                                                        required /> <br /><br />
 
                                                     <label htmlFor="genero">Gênero:</label>
                                                     <select className="selecao" name="genero" id="genero">
@@ -54,15 +54,15 @@ function EditarPerfilDoador(){
                                                         <option value="masculino">Masculino</option>
                                                         <option value="feminino">Feminino</option>
                                                         <option value="feminino">Outros</option>
-                                                    </select> <br/><br/>
+                                                    </select> <br /><br />
 
                                                     <label htmlFor="endereco">Endereço:</label>
-                                                    <input className="input" type="text" id="endereco" name="endereco"/> <br/><br/>
+                                                    <input className="input" type="text" id="endereco" name="endereco" /> <br /><br />
 
                                                     <div className="regiao">
                                                         <div>
                                                             <label htmlFor="endereco">Cidade:</label>
-                                                            <input className="cidade" type="text" id="cidade" name="cidade"/>
+                                                            <input className="cidade" type="text" id="cidade" name="cidade" />
                                                         </div>
 
                                                         <div>
@@ -96,11 +96,11 @@ function EditarPerfilDoador(){
                                                                 <option value="sergipe">SE</option>
                                                                 <option value="tocantins">TO</option>
                                                             </select>
-                                                        </div> <br/><br/>
+                                                        </div> <br /><br />
                                                     </div>
 
                                                     <label htmlFor="cep">CEP:</label><small>Ex: 12345-678</small>
-                                                    <input className="input" type="text" id="cep" required pattern=""/>
+                                                    <input className="input" type="text" id="cep" required pattern="" />
                                                 </form>
                                             </div>
 
