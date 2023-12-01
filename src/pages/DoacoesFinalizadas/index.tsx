@@ -4,6 +4,9 @@ import './style.css'
 import '../../index.css'
 import imgCadeado from '../../assets/img/cadeado.png'
 
+// Aqui receberá a informação de pedido concluído com base do card doador em status finalizado
+import CardDoador from '../../components/CardDoador'
+
 
 function DoacoesFinalizadas() {
 

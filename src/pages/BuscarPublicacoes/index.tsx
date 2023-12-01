@@ -41,7 +41,6 @@ function BuscarPublicacoes() {
                                             </div>
                                             <p>sbc - sp</p>
                                         </div>
-                                        {/* <a href="../Tela_Agendar_Coleta/index.html">Agendar</a> */}
                                         <Link to="/agendarcoleta">Agendar</Link>
                                     </div>
                                 </div>
