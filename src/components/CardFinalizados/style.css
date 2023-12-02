@@ -1,11 +1,11 @@
-#CardColetaAtiva .WrapperCard {
+#CardFinalizada .WrapperCard {
     width: 90%;
     display: flex;
     flex-direction: column;
     padding-top: 10px;
 }
 
-#CardColetaAtiva .cards {
+#CardFinalizada .cards {
     border: 1px solid rgba(156, 156, 156, 0.20);
     border-radius: 10px 10px 0px 0px;
     box-shadow: 7px 4px 4px 2px rgba(0, 0, 0, 0.25);
@@ -17,11 +17,11 @@
     margin: 0 5px;
 }
 
-#CardColetaAtiva .cards img {
+#CardFinalizada .cards img {
     width: 100%;
 }
 
-#CardColetaAtiva .cards h4 {
+#CardFinalizada .cards h4 {
     font-size: 22px;
     font-weight: 700;
     text-transform: capitalize;
@@ -29,48 +29,55 @@
     padding: 9px 0;
 }
 
-#CardColetaAtiva .cards p {
+#CardFinalizada .cards p {
     font-size: 12px;
 }
 
-#CardColetaAtiva .Descricaocards {
+#CardFinalizada .Descricaocards {
     display: flex;
     padding-bottom: 30px;
 }
 
-#CardColetaAtiva .Descricaocards>div {
+#CardFinalizada .Descricaocards>div {
     display: flex;
     flex-direction: column;
     padding-left: 5px;
 }
 
-#CardColetaAtiva .card_Status {
+#CardFinalizada .card_Status {
     display: flex;
     justify-content: start;
     align-items: center;
+    margin-top: 5px;
+    margin-bottom: 50px;
 }
 
-#CardColetaAtiva .circle_Status {
+#CardFinalizada .circle_Status {
     width: 12px;
     height: 12px;
     flex-shrink: 0;
     border-radius: 10px;
 }
 
-#CardColetaAtiva .circle_Yellow {
+#CardFinalizada .circle_Yellow {
     background: #F8BD00;
 }
 
-#CardColetaAtiva .circle_Orange {
+#CardFinalizada .circle_Orange {
     background: #ED7016;
 }
 
-#CardColetaAtiva .card_Status span {
-    padding-left: 5px;
-    font-weight: 600;
+#CardFinalizada .circle_Green {
+    background: green;
 }
 
-#CardColetaAtiva .iconesCards {
+#CardFinalizada .card_Status p {
+    padding-left: 5px;
+    font-weight: 600;
+    height: fit-content;
+}
+
+#CardFinalizada .iconesCards {
     display: flex;
     justify-content: space-between;
     padding: 10px 0 15px 0;

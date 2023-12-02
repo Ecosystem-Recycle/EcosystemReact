@@ -1,16 +1,9 @@
 import './style.css'
 
-import ico_edit from '../../assets/img/ico_edit.svg';
-import ico_eye from '../../assets/img/ico_eye.svg'
-import ico_delete from '../../assets/img/ico_delete.svg'
-import { Link } from 'react-router-dom';
+export default function CardFinalizada(props: any) {
 
-export default function Card(props: any) {
-    function msgDeletarColeta() {
-        alert('A doação foi cancelada! O doador irá ser notificado');
-    };
     return (
-        <div id='CardColetaAtiva'>
+        <div id='CardFinalizada'>
         <div className="cards">
             <h4>{props.tituloCard ? props.tituloCard : "Título"}</h4>
             {/* Arrumar rota de imagem */}
@@ -31,34 +24,10 @@ export default function Card(props: any) {
                     </div>
                 </div>
                 <p>Localização: <strong>{props.localizacao ? props.localizacao : "localização"}</strong></p>
-
                 {/* usar validador abaixo para alterar conforme o status*/}
-
                 <div className="card_Status">
-                    <div className="circle_Status circle_Yellow"></div>
-                    <p> <span>Status: Aguardando confirmação de horário </span>{" "} </p>
-                </div>
-
-
-
-                {/* Confirmar os direcionamentos abaixo e a forma de exibição */}
-
-                <div className="iconesCards">
-                    <Link to="/agendarcoleta">
-                        <img src={ico_edit} alt="Icone de Editar" />
-                    </Link>
-                    <Link to="/agendarcoleta">
-                        <img
-                            src={ico_eye}
-                            alt="Icone de visualizar"
-                        />
-                    </Link>
-                    <a href="#" onClick= { msgDeletarColeta }>
-                        <img
-                            src= { ico_delete }
-                            alt="Icone de Deletar"
-                        />
-                    </a>
+                    <div className="circle_Status circle_Green"></div>
+                    <p>Status: Coleta Finalizada com Sucesso</p>
                 </div>
             </div>
         </div>

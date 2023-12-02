@@ -30,38 +30,6 @@
     color: var(--cinza);
 }
 
-
-#mainColetasAgendadas .links_pags {
-    padding-bottom: 0.4rem;
-}
-
-
-#mainColetasAgendadas .links_pags a {
-    border-radius: 9px;
-    border: 2px solid rgba(156, 156, 156, 0.80);
-    padding: 1px 7px;
-    font-family: var(--font1);
-    font-size: 20px;
-    font-weight: 900;
-    text-transform: capitalize;
-    color: var(--cinza);
-}
-
-#mainColetasAgendadas .links_pags span {
-    font-size: 22px;
-    font-family: var(--font1);
-    color: var(--cinza);
-}
-
-
-#mainColetasAgendadas .links_pags a:nth-child(1) {
-    border: 2px solid var(--verde2);
-    color: var(--verde2);
-}
-
-
-
-
 #mainColetasAgendadas .historic_cards {
     border: 1px solid var(--cinza);
     border-radius: 20px;
@@ -86,7 +54,6 @@
 
         column-gap: 1rem;
         grid-template-columns: minmax(210px, 0.15fr) 1fr;
-        /* padding: 60px 0; */
     }
 
     #mainColetasAgendadas .title {
@@ -101,19 +68,11 @@
         font-size: 0.8rem;
     }
 
-    #mainColetasAgendadas .links_pags a {
-        font-size: 17px;
-    }
-
-    #mainColetasAgendadas .links_pags span {
-        font-size: 19px;
-    }
-
 }
 
 @media screen and (max-width: 812px) {
 
-    #mainColetasAgendadas .conteudo_doacoes{
+    #mainColetasAgendadas .conteudo_doacoes {
         column-gap: 0;
     }
 
@@ -123,11 +82,6 @@
         justify-items: center;
         row-gap: 5rem;
         margin-bottom: 100px;
-    }
-
-    #mainColetasAgendadas .links_pags a {
-        font-size: 14px;
-        padding: 1px 4px;
     }
 
     #mainColetasAgendadas .wrapper {
@@ -150,19 +104,11 @@
         align-items: center;
     }
 
-    #mainColetasAgendadas .links_pags span {
-        padding: 0 5px;
-    }
-
     #mainColetasAgendadas .title {
         text-align: center;
     }
+
     #mainColetasAgendadas .title>h2 {
         margin-bottom: 10px;
-    }
-
-    #mainColetasAgendadas .links_pags {
-        display: flex;
-        justify-content: center;
     }
 }
