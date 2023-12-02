@@ -56,38 +56,35 @@
     text-transform: uppercase;
 }
 
-#mainConfirmarColeta .dados_doacao1 {
+/* #mainConfirmarColeta .dados_doacao1 {
     display: flex;
     justify-content: flex-start;
     padding-bottom: 30px;
-}
+} */
 
 
 
-#mainConfirmarColeta .dados_doacao1 div:first-child {
-    margin-right: 30px;
-}
+/*   */
 
-#mainConfirmarColeta .dados_doacao1>img {
+/* #mainConfirmarColeta .dados_doacao1>img {
     width: 90%;
-}
+} */
 
 
-#mainConfirmarColeta #mainConfirmarColeta .dados_doacao1 h5 {
+/* #mainConfirmarColeta .dados_doacao1 h5 {
     font-family: var(--font2);
     font-size: 18px;
     font-weight: 800;
     padding-bottom: 15px;
     max-width: 310px;
     text-transform: capitalize;
-}
+} */
 
-#mainConfirmarColeta .dados_doacao1 img {
+/* #mainConfirmarColeta .dados_doacao1 img {
     border-radius: 15px;
-}
+} */
 
-#mainConfirmarColeta .dados_doacao1 h4,
-.dados_parceiro h4,
+#mainConfirmarColeta .dados_parceiro h4,
 .dados_horario h4,
 .dados_responsavel h4 {
     font-family: var(--font2);
@@ -96,8 +93,7 @@
     padding-bottom: 34px;
 }
 
-#mainConfirmarColeta .dados_doacao1 p,
-.dados_parceiro p,
+#mainConfirmarColeta .dados_parceiro p,
 .dados_horario p .dados_responsavel p {
     font-family: var(--font2);
     font-size: 13px;
@@ -107,10 +103,10 @@
     margin-bottom: 150px;
 }
 
-#mainConfirmarColeta .dados_doacao1 span {
+/* #mainConfirmarColeta .dados_doacao1 span {
     padding-left: 30px;
     padding-bottom: 10px;
-}
+} */
 
 #mainConfirmarColeta .dados_parceiro {
     padding-bottom: 30px;
@@ -178,17 +174,17 @@
 }
 
 @media screen and (max-width: 1311px) {
-    #mainConfirmarColeta .dados_doacao1>div:nth-child(2) {
+    /* #mainConfirmarColeta .dados_doacao1>div:nth-child(2) {
         width: 50%;
-    }
+    } */
 
     #mainConfirmarColeta .Title_Img_Donation>img {
         width: 90%;
     }
 
-    #mainConfirmarColeta .dados_doacao1 div:nth-child(1) {
+    /* #mainConfirmarColeta .dados_doacao1 div:nth-child(1) {
         margin-right: 0;
-    }
+    } */
 
 }
 
@@ -210,11 +206,11 @@
 }
 
 @media screen and (max-width: 888px) {
-    #mainConfirmarColeta .dados_doacao1 {
+    /* #mainConfirmarColeta .dados_doacao1 {
         display: flex;
         flex-direction: column;
         align-items: center;
-    }
+    } */
 
     #mainConfirmarColeta .Title_Img_Donation {
         display: flex;
@@ -231,9 +227,9 @@
         margin: 10px 0 20px 0;
     }
 
-    #mainConfirmarColeta .dados_doacao1>div:nth-child(2) {
+    /* #mainConfirmarColeta .dados_doacao1>div:nth-child(2) {
         width: 100%;
-    }
+    } */
 }
 
 @media screen and (max-width: 812px) {

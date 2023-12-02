@@ -3,10 +3,11 @@ import Aside from '../../components/Aside'
 import './style.css'
 
 import img001 from '../../assets/img/img_001png.png'
+import CardConfirmarColeta from '../../components/CardConfirmarColeta';
 
 
 
-function ColetasConfirmada() {
+function ColetasConfirmada(props:any) {
   function msgRetirarMaterial() {
     alert('Confira todo o material e Confirme a retirada');
   }
@@ -26,59 +27,30 @@ function ColetasConfirmada() {
             <div>
               <div className="margem_Doacao">
                 <div className="Conteudo_Doacao">
-                  <div className="dados_doacao1">
-                    <div className="Title_Img_Donation">
-                      <h5>Celulares antigos de diversas marcas e modelos</h5>
-                      <img
-                        src={img001}
-                        alt="Imagem com sucata de celulares"
-                      />
-                    </div>
-                    <div>
-                      <h4>Dados da Retirada</h4>
-                      <p>Data de publicação: 30/03/2023</p>
-                      <p>Quantidade de iten(s): 39</p>
-                      <p>Responsável: Luís</p>
-                      <p>Descrição:</p>
-                      <p>
-                        <span>5x Celular Samsung A5</span>
-                      </p>
-                      <p>
-                        <span>2x Iphone 2</span>
-                      </p>
-                      <p>
-                        <span>7x Celular LG 320</span>
-                      </p>
-                      <p>
-                        <span>3x Tablet Samsung Galaxy Tab 2</span>
-                      </p>
-                      <p>
-                        <span>...</span>
-                      </p>
-                      <p>Condição: Para desmontagem/Retirada de peças</p>
-                    </div>
-                  </div>
+                  <CardConfirmarColeta
+                  src={img001}
+                  />
                   <div className="dados_horario">
                     <h4>Horário da retirada</h4>
                     <div>
                       <p>
-                        <span>Data: </span>20/05/23
+                        <span>Data: </span>{props.dataColeta ? props.dataCoelta : "20/05/23"}
                       </p>
                       <p>
-                        <span>Horário: </span>18:30hrs
+                        <span>Horário: </span>{props.horario ? props.horario : "18:30"}hrs
                       </p>
                     </div>
                   </div>
                   <div className="dados_local">
                     <h4>Localização</h4>
                     <p>
-                      AV do Brasil, N° 1000 - apt 25/Bloco D - SBC - SP CEP:
-                      12345-678
+                    {props.localizacao ? props.localizacao : "AV do Brasil, N° 1000 - apt 25/Bloco D - SBC - SP "}
                     </p>
+                    <p>CEP: {props.cep ? props.cep : "12345-678"}</p>
                   </div>
                   <div className="dados_responsavel">
                     <h4>Responsável:</h4>
-                    <p>Luís Monteiro</p>
+                    <p>{props.nome ? props.nome : "Luis Monteiro"}</p>
                   </div>
                 </div>
                 <div className="btnRetirar">

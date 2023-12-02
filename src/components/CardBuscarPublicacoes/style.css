@@ -1,5 +1,5 @@
 
-#mainBuscarPublicacoes .cardAgendar{
+.cardAgendar{
     display:flex;
     border: 10px;
     border-radius: 10px;
@@ -9,15 +9,66 @@
     margin-bottom: 50px;
 }
 
-#mainBuscarPublicacoes .cardAgendar>div>img{
+.cardAgendar>div>img{
     /* width: 100%; */
     width: 206px;
     height: 144px;
     border-radius: 5px;
 } 
 
-#mainBuscarPublicacoes .cardAgendar img {
+ .cardAgendar img {
     width: 100%;
     height: 100%;
     border-radius:10px 0 0 10px;
+}
+
+.conteudoCard>a{
+    align-self: flex-end;
+    border-radius:30px;
+    border: 3px solid var(--roxo); 
+    padding: 3px 12px;
+    text-transform: uppercase;
+    font-family: var(--font2);
+    font-size: 11px;
+    font-weight: bold;
+    color: #9F2FBB;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    transition: .35s
+    
+}
+
+.conteudoCard>a:hover{
+    background: var(--roxo);
+    color: var(--branco);
+    transform: scale(1.05);
+}
+
+
+@media screen and (max-width: 1030px) {
+    .conteudoCard{
+        flex-direction: column;
+    }
+    .conteudoCard>a{
+        align-self: self-start;
+        margin-top: 20px;
+        width: 120px;
+        text-align: center;
+    }
+}
+
+@media screen and (max-width: 880px){
+    .cardAgendar{
+        flex-direction: column;
+        align-items: center;
+        margin-right: 0;
+    }
+    .conteudoCard{
+        align-items: center;
+
+    }
+    .conteudoCard>a{
+        align-self: center;
+    }
+
 }
