@@ -9,8 +9,92 @@ import imgVazia from '../../assets/img/Vector.png'
 import imgBaterias from '../../assets/img/Vector.png'
 import AsideDoador from '../../components/AsideDoador'
 import { Link } from 'react-router-dom'
+import { useState } from 'react'
 
 function QueroDoarParte3() {
+  // const [ categoria, setCategoria ] = useState<string>("");
+  // const [ nome, setNome ] = useState<string>("");
+  // const [ quantidade, setQuantidade ] = useState<string>("");
+
+  const [ titulo, setTitulo ] = useState<string>("");
+  const [ disponibilidade, setDisponibilidade ] = useState<string>("");
+  const [ periodo, setPeriodo ] = useState<number>(0);
+  const [ foto, setFoto ] = useState<any>();
+
+  const [formValues, setFormValues] = useState({
+    categoria: "",
+    nome: "",
+    quantidade: ""
+  });
+
+  
+
+  // function verificarCampoUpload( event: any ) {
+  //   setFoto(event.target.files[0]);
+  // }
+
+  function cadastrarProduto(event: any) {
+        event.preventDefault();
+        // setCategoria(formValues.categoria);
+        // setNome(formValues.nome);
+        // setQuantidade(formValues.quantidade);     
+        let produtoLista = [];
+        //Caso tenha alugm produto essa array revebe os valores da lista
+        if(localStorage.getItem("listaProdutosCadastrados") != null){
+          produtoLista = JSON.parse(localStorage.getItem("listaProdutosCadastrados") || "");
+        }
+        
+        //Array que recebes os novos valores dos campos
+        let novoItemLista = [{
+          "categoria": formValues.categoria,
+          "nome": formValues.nome, 
+          "quantidade": parseInt(formValues.quantidade)
+        }];
+
+        //Atualiza a Lista com o novo produto
+        produtoLista.push(novoItemLista);
+
+        //Salva a nova lista de produto no LocalStorage
+        localStorage.setItem('listaProdutosCadastrados', JSON.stringify(produtoLista));
+
+        //Limpa os Campos apos atualizar
+        setFormValues({
+          categoria: "",
+          nome: "",
+          quantidade: ''
+        });
+        
+        // const formData = new FormData();
+
+        // formData.append("nomeProduto", nome);
+        // formData.append("selectCategoria", categoria);
+        // formData.append("quantidadeProduto", quantidade);
+
+
+        // useEffect(() => {
+        //   localStorage.setItem('dataKey', JSON.stringify(data));
+        // }, [data]);
+
+
+
+        // let listaProdutos = [];
+        // if(localStorage.getItem("listaProdutosCadastrados") != null){
+        //   listaProdutos = JSON.parse(localStorage.getItem("listaProdutosCadastrados"));
+        // }
+        
+        // console.log(formData);
+        // api.post("users", formData).then( (response) => {
+        //     console.log(response)
+        //     alert("Usuário criado com sucesso! 😊🤗")
+        //     // Navegação para login
+        // }).catch( (error) => {
+        //     console.log(error)
+        // })
+
+    }
+
+
+
 
   //Mensagens dos botões
   function msgSalvarDoacao() {
@@ -36,41 +120,51 @@ function QueroDoarParte3() {
               <div>
                 <div className="Conteudo">
                   <div className="conteudo_wrapper">
-                  <form>
-                    <div className="campo-form">
-                      <label htmlFor="titleDoacao">Título da doação:</label>
-                      <input type="text" name='titleDoacao' placeholder='Digite aqui o título do lote de doações que irá disponibilizar' />
-                    </div>
+                  <h3>Adicionar Itens a sua lista de doação:</h3>
+                  <form onSubmit={ cadastrarProduto } className="cad_formulario" method="post">
                     <div className="camposDuplo">
                       <div className="campo-form">
-                        <label htmlFor="selectProduto">Selecione um item na lista abaixo:</label>
-                            <select className="selectProduto"  name="selectProduto" id="selectProduto" placeholder="Selecione">
-                                <option value="Celular">Celular Samsung</option>
-                                <option value="Celular">Celular LG</option>
-                                <option value="Iphone">Iphone 2</option>
-                                <option value="Iphone">Iphone 3</option>
-                                <option value="Iphone">Iphone 5s</option>
-                                <option value="Ipad">Ipad Mini gen 3</option>
-                                <option value="Notebook">Notebook Asus</option>
-                                <option value="Notebook">Notebook LG</option>
-                                <option value="Notebook">Notebook Dell</option>
-                                <option value="Notebook">Notebook HP</option>
-                                <option value="Notebook">Notebook Sony Vaio</option>
-                                <option value="Macbook">Macbook Pro</option>
-                                <option value="Macbook">Macbook</option>
-                                <option value="HD">HD</option>
-                                <option value="SSD">SSD</option>
-                                <option value="Monitor">Monitor Samsung LCD</option>
-                                <option value="Monitor">Monitor Samsung DDD</option>
+                        <label htmlFor="selectCategoria">Selecione uma categoria:</label>
+                            <select 
+                              className="selectCategoria"  
+                              name="selectCategoria" 
+                              id="selectCategoria" 
+                              placeholder="Selecione"
+                              required
+                              value={formValues.categoria}
+                              onChange={ (event) =>  setFormValues({...formValues, categoria: event.target.value}) }  
+                            >   <option selected disabled value="">Selecione</option>
+                                <option value="Informatica">Informatica</option>
+                                <option value="Telefonia">Telefonia</option>
+                                <option value="Peças e Acessorios">Peças e Acessorios</option>
                             </select>
-                        {/* <input type="text" name='selectProduto' placeholder='Selecione um item' /> */}
+                      </div>
+                      <div className="campo-form">
+                        <label htmlFor="nomeProduto">Descrição do produto:</label>
+                        <input 
+                          value={formValues.nome}
+                          type="text" 
+                          name='nomeProduto'
+                          id='nomeProduto'
+                          placeholder='Digite o nome & marca do produto'
+                          required
+                          onChange={ (e) =>  setFormValues({...formValues, nome: e.target.value}) }  
+                        />
                       </div>
                       <div className="campo-form">
                         <label htmlFor="quantidadeProduto">Informe a quantidade:</label>
-                        <input type="text" name='quantidadeProduto' placeholder='Digite a quantidade' />
+                        <input 
+                          value={formValues.quantidade}
+                          type="text" 
+                          name='quantidadeProduto'
+                          id='quantidadeProduto'
+                          placeholder='Digite a quantidade'
+                          required
+                          onChange={ (event) =>  setFormValues({...formValues, quantidade: event.target.value}) }  
+                        />
                       </div>
                     </div>
-                    <div className="btn_form">
+                    <div className="btn_form cad_botao">
                       <button type="submit">
                         <div className="btnInserir">
                           <span>Incluir</span>
@@ -85,8 +179,7 @@ function QueroDoarParte3() {
                       <thead>
                           <tr>
                               <th>Item</th>
-                              <th>Quantidade</th>
-                              <th>Excluir</th>                       
+                              <th colSpan={2}>Quantidade</th>                   
                           </tr>
                       </thead>
                       <tbody id="corpo-tabela">
@@ -119,45 +212,63 @@ function QueroDoarParte3() {
                       </div>
                     </div>
                   </section>
-                  <form>
-                    <div className="campo-form">
-                      <label htmlFor="horarioDisponivel">Disponibilidade de horário para retirada:</label>
-                      <input type="text" name='horarioDisponivel' placeholder='Ex: Seg-Sex / 09:00 ás 14:00' />
-                    </div>
-                    <div className="arquivos">
-                      <div className="adicionarFotos">
-                        <div>
-                          <img
-                            src={ imgBaterias }
-                            alt="Upload de Imagem"
-                          />
+                  <section className="gerarAnuncio">
+                    <h3>Informações gerais para doação:</h3>
+                    <form>
+                      <div className="campo-form">
+                        <label htmlFor="titleDoacao">Título da doação:</label>
+                        <input type="text" name='titleDoacao' placeholder='Digite aqui o título do lote de doações que irá disponibilizar' />
+                      </div>
+                      <div className="camposDuplo">
+                        <div className="campo-form">
+                          <label htmlFor="horarioDisponivel">Disponibilidade de data para retirada:</label>
+                          <input type="text" name='horarioDisponivel' placeholder='Ex: Seg-Sex // Ter e Qua' />
                         </div>
-                        <label htmlFor="add-single-img">+ Adicionar Fotos</label>              
-                        <input type="file" name="add-single-img" id="add-single-img" accept="image" />
-                        
+                        <div className="campo-form">
+                          <label htmlFor="selectPeriodo">Selecione o periodo:</label>
+                          <select className="selectPeriodo"  name="selectPeriodo" id="selectPeriodo" placeholder="Selecione">
+                              <option value="Celular">Manhã</option>
+                              <option value="Celular">Tarde</option>
+                              <option value="Iphone">Noite</option>
+                              <option value="Iphone">Integral</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div className="arquivos">
+                        <div className="adicionarFotos">
+                          <div>
+                            <img
+                              src={ imgBaterias }
+                              alt="Upload de Imagem"
+                            />
+                          </div>
+                          <label htmlFor="add-single-img">+ Adicionar Fotos</label>              
+                          <input type="file" name="add-single-img" id="add-single-img" accept="image" />
+                          
+                        </div>
+
+                          
+                        <div className="alinhamentoImg">
+                          <img src={imgCelular} alt="Um Celular" />
+                          <img src={imgCelular2} alt="Pilha de Celulares" /> 
+                          <img src={pilhaCelular} alt="Pilha de Celulares" />
+                          <img src={imgVazia} alt="Imagem Vazia 1" />
+                          <img src={imgVazia} alt="Imagem Vazia 2" />
+                          <img src={imgVazia} alt="Imagem Vazia 3" />
+                        </div>
+                      </div>
+                      <div className="btnPublicar">
+                        <a
+                          href="../Tela_Minhas_Doacoes/index.html"
+                          onClick={msgSalvarDoacao}
+                        >
+                          Publicar
+                        </a>
+                        <Link to="/querodoarpt1">Cancelar</Link>
                       </div>
 
-                        
-                      <div className="alinhamentoImg">
-                        <img src={imgCelular} alt="Um Celular" />
-                        <img src={imgCelular2} alt="Pilha de Celulares" /> 
-                        <img src={pilhaCelular} alt="Pilha de Celulares" />
-                        <img src={imgVazia} alt="Imagem Vazia 1" />
-                        <img src={imgVazia} alt="Imagem Vazia 2" />
-                        <img src={imgVazia} alt="Imagem Vazia 3" />
-                      </div>
-                    </div>
-                    <div className="btnPublicar">
-                      <a
-                        href="../Tela_Minhas_Doacoes/index.html"
-                        onClick={msgSalvarDoacao}
-                      >
-                        Publicar
-                      </a>
-                      <Link to="/querodoarpt1">Cancelar</Link>
-                    </div>
-
-                  </form>
+                    </form>
+                  </section>
                   </div>
                 </div>
               </div>
