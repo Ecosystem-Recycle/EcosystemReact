@@ -9,7 +9,7 @@ import imgVazia from '../../assets/img/Vector.png'
 import imgBaterias from '../../assets/img/Vector.png'
 import AsideDoador from '../../components/AsideDoador'
 import { Link } from 'react-router-dom'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 function QueroDoarParte3() {
   // const [ categoria, setCategoria ] = useState<string>("");
@@ -27,6 +27,11 @@ function QueroDoarParte3() {
     quantidade: ""
   });
 
+  useEffect( () => {
+    document.title = "Quero Doar - Ecosystem e Recycle"
+
+    carregarProduto();
+}, [] )
   
 
   // function verificarCampoUpload( event: any ) {
@@ -63,7 +68,8 @@ function QueroDoarParte3() {
           nome: "",
           quantidade: ''
         });
-        
+
+        carregarProduto();
         // const formData = new FormData();
 
         // formData.append("nomeProduto", nome);
@@ -92,6 +98,34 @@ function QueroDoarParte3() {
         // })
 
     }
+    function carregarProduto(){
+      let listaCarregada = [];
+      if(localStorage.getItem("listaProdutosCadastrados") != null){
+          //Guarda as informações na Array e converte string para Objeto
+          listaCarregada = JSON.parse(localStorage.getItem("listaProdutosCadastrados") || "");
+      }
+  
+      if(listaCarregada.length == 0){
+          //se a lista estiver vazia mostre uma msg
+          let tabela = document.getElementById("corpo-tabela")  as HTMLTableElement;
+  
+          tabela.innerHTML = `<tr class="linha-mensagem">
+              <td colspan="3">Nenhum Produto Cadastrado 😢</td>
+          </tr>`
+      } else{
+        let tabela = document.getElementById("corpo-tabela")  as HTMLTableElement;
+        let template = "";
+          //Mostrar conteúdo da tabela
+        listaCarregada.forEach((item:any) => {
+          template += `<tr>
+            <td data-cell="nome">${item.nome}</td>
+            <td data-cell="quantidade">${item.quantidade}</td>
+            <td data-cell="del_Ico"><img src={ icoDeletar } alt="Ícone de deletar uma linha de doação" /></td>
+          </tr>`
+        });
+        tabela.innerHTML = template;
+      }
+  }
 
 
 
@@ -183,7 +217,7 @@ function QueroDoarParte3() {
                           </tr>
                       </thead>
                       <tbody id="corpo-tabela">
-                        <tr>
+                        {/* <tr>
                             <td data-cell="item">Celular Samsung A5</td>
                             <td data-cell="quantidade">7</td>
                             <td data-cell="del_Ico"><img src={ icoDeletar } alt="Ícone de deletar uma linha de doação" /></td>
@@ -202,7 +236,7 @@ function QueroDoarParte3() {
                             <td data-cell="item">Macbook Pro</td>
                             <td data-cell="quantidade">2</td>
                             <td data-cell="del_Ico"><img src={ icoDeletar } alt="Ícone de deletar uma linha de doação" /></td>
-                        </tr> 
+                        </tr>  */}
                       </tbody>
                     </table>
                     <div className="totalItens">
