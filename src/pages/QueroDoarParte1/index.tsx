@@ -8,6 +8,7 @@ import AsideDoador from '../../components/AsideDoador'
 import LinhaProduto from '../../components/LinhaProduto'
 
 import icoAdd from '../../assets/img/add.svg'
+import icoDel from '../../assets/img/del.svg'
 import imgCelular from '../../assets/img/img_celular (1).png'
 import imgCelular2 from '../../assets/img/img_celular (2).png'
 import pilhaCelular from '../../assets/img/img_celular.png'
@@ -135,6 +136,11 @@ function carregarProduto(){
     setTotalItens(total);
 }
 
+function limparLista(){
+  localStorage.removeItem("listaProdutosCadastrados");
+  carregarProduto();
+}
+
   return (
     <>
       <main id='mainQueroDoarParte1'>
@@ -229,10 +235,21 @@ function carregarProduto(){
                       </tbody>
                     </table>
                     <div className="totalItens">
-                      <span>total de itens:</span>
+                    <div className="btn_form cad_botao">
+                      <button type="button" onClick={limparLista}>
+                        <div className="btnLimparLista">
+                          <img src={ icoDel } alt="" />
+                          <span>Limpar Lista</span>
+                        </div>
+                      </button>
+                    </div>
                       <div>
-                        <span>{totalItens}</span>
+                        <span>Total de Itens:</span>
+                        <div>
+                          <span>{totalItens}</span>
+                        </div>
                       </div>
+                     
                     </div>
                   </section>
                   <section className="gerarAnuncio">

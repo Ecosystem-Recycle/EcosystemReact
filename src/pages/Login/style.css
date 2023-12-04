@@ -1,15 +1,15 @@
-.sessao_formulario_login {
+#login .sessao_formulario_login {
     display: flex;
     margin: 50px 100px;
     justify-content: space-around;
     flex-wrap: wrap;
 }
 
-.sessao_formulario_login input {
+#login .sessao_formulario_login input {
     padding-left: 10px;
 }
 
-.formulario_login {
+#login .formulario_login {
     max-width: 500px;
     width: 90%;
     height: 600px;
@@ -24,8 +24,8 @@
 }
 
 
-.formulario_login label,
-.formulario_cadastro label {
+#login .formulario_login label,
+#login .formulario_cadastro label {
     max-width: 350px;
     width: 68%;
     height: 10px;
@@ -33,7 +33,7 @@
 
 
 
-.formulario_cadastro {
+#login .formulario_cadastro {
     max-width: 500px;
     width: 90%;
     background-color: var(--cinza2);
@@ -63,11 +63,11 @@
     margin-bottom: 40px;
 }
 
-.btn_goole {
+#login .btn_goole {
     color: #9319CC;
 }
 
-.formulario_login a {
+#login .formulario_login a {
     display: flex;
     align-items: center;
     font-weight: 800;
@@ -80,19 +80,19 @@
 
 }
 
-.formulario_login a img {
+#login .formulario_login a img {
     width: 30px;
     height: 30px;
     margin-left: 10px;
 }
 
 
-.formulario_login h2 {
+#login .formulario_login h2 {
     margin-bottom: 30px;
 }
 
 
-main input {
+#login main input {
     max-width: 350px;
     width: 75%;
     height: 40px;
@@ -100,31 +100,31 @@ main input {
     border: 1px solid #6c6b6b;
 }
 
-.opcao {
+#login .opcao {
     width: 90%;
     max-width: 350px;
     display: flex;
     justify-content: space-evenly;
 }
 
-.opcao_doador,
-.opcao_coletor {
+#login .opcao_doador,
+#login .opcao_coletor {
     display: flex;
     justify-content: flex-start;
     flex-direction: row;
 }
 
-.opcao label {
+#login .opcao label {
     width: 100%;
     margin-left: 5px;
 }
 
-main input[type="radio"] {
+#login main input[type="radio"] {
     width: 20px;
     height: 18px;
 }
 
-main label {
+#login main label {
     display: flex;
     font-size: 16px;
     font-family: var(--font2);
@@ -138,7 +138,7 @@ main label {
 
 
 @media screen and (max-width: 812px) {
-    .sessao_formulario_login {
+    #login .sessao_formulario_login {
         margin: 50px 20px;
     }
 
@@ -146,15 +146,15 @@ main label {
 
 
 @media screen and (max-width: 580px) {
-    .sessao_formulario_login {
+    #login .sessao_formulario_login {
         margin: 20px 10px;
     }
 
-    .opcao {
+    #login .opcao {
         width: 70%;
     }
 
-    .formulario_login a {
+    #login .formulario_login a {
         width: 70%;
         font-size: 14px;
         margin: 20px 0 40px 0;
@@ -164,17 +164,17 @@ main label {
 }
 
 @media screen and (max-width: 532px) {
-    .formulario_botao {
+    #login .formulario_botao {
         min-width: 125px;
     }
 
-    .formulario_cadastro h2,
-    .formulario_login h2 {
+    #login .formulario_cadastro h2,
+    #login .formulario_login h2 {
         padding: 0 7px;
         text-align: center;
     }
 
-    .opcao label {
+    #login .opcao label {
         width: 100%;
         height: fit-content;
         margin-left: 5px;
@@ -184,66 +184,66 @@ main label {
 
 @media screen and (max-width: 435px) {
 
-    .formulario_login>h2,
-    .formulario_cadastro>h2 {
+    #login .formulario_login>h2,
+    #login .formulario_cadastro>h2 {
         font-size: 22px;
     }
 
-    .formulario_login a {
+    #login .formulario_login a {
         text-align: center;
     }
 
-    main label {
+    #login main label {
         font-size: 14px;
     }
 
-    input::placeholder {
+    #login input::placeholder {
         font-size: 12px;
     }
 
-    .formulario_login label,
-    .formulario_cadastro label {
+    #login .formulario_login label,
+    #login .formulario_cadastro label {
         height: 5px;
     }
 
-    .formulario_login a {
+    #login .formulario_login a {
         width: 65%;
     }
 
 }
 
 @media screen and (max-width: 375px) {
-    .formulario_login>h2 {
+    #login .formulario_login>h2 {
         width: 190px;
     }
 
-    .formulario_cadastro>h2 {
+    #login .formulario_cadastro>h2 {
         width: 192px;
     }
 
-    .formulario_login>a>img {
+    #login .formulario_login>a>img {
         width: 25px;
         height: 25px;
 
     }
 
-    .formulario_login>a {
+    #login .formulario_login>a {
         padding: 5px 10px;
     }
 
-    .formulario_botao {
+    #login .formulario_botao {
         min-width: 125px;
     }
 
-    .formulario_botao {
+    #login .formulario_botao {
         font-size: 14px;
     }
 
-    .opcao {
+    #login .opcao {
         flex-direction: column;
     }
 
-    .opcao>div:nth-child(1) {
+    #login .opcao>div:nth-child(1) {
         margin-bottom: 5px;
     }
 }

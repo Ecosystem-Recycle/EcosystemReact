@@ -102,17 +102,6 @@
 }
 
 
-
-#mainQueroDoarParte1 tbody > tr:nth-child(odd) {
-    background-color: #F2F2F7;
-}
-
-
-
-#mainQueroDoarParte1 tr {
-    height: 40px;
-}
-
 #mainQueroDoarParte1 th, #mainQueroDoarParte1 tr, #mainQueroDoarParte1 td {
     border: none;
 }
@@ -250,29 +239,49 @@
 
 #mainQueroDoarParte1 .totalItens{
     display: flex;
-    justify-content: end;
+    justify-content: space-between;
     align-items: center;
     gap: .2rem;
+    margin-bottom: 2rem;
+}
+
+#mainQueroDoarParte1 .totalItens .btnLimparLista{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    border-radius: 7px;
+    border: none;
+}
+
+#mainQueroDoarParte1 .totalItens .btnLimparLista img{
+    height: 24px;
+
 }
 
 #mainQueroDoarParte1 .totalItens span{
     font-family: var(--font2);
-    text-transform: uppercase;
-    font-size: 16px;
-    font-weight: 700;
+    font-size: 18px;
+    font-weight: bold;
 }
 
-#mainQueroDoarParte1 .totalItens span:nth-child(1){
-    padding: 0 2rem;
+#mainQueroDoarParte1 .totalItens span:nth-child(2){
+    padding: 1px 5px;
 }
 
-#mainQueroDoarParte1 .totalItens>div{
+#mainQueroDoarParte1 .totalItens > div:nth-child(2){
     display: flex;
     align-items: center;
+    gap: 1rem;
+}
+
+#mainQueroDoarParte1 .totalItens > div:nth-child(2) > div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border: 1px solid var(--cinza);
     border-radius: 7px;
-    padding: 17px 7px;
-    background-color: #F2F2F7;
+    padding: 17px 30px;
 }
 
 /* Secao de arquivos */
