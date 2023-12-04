@@ -26,7 +26,6 @@ import Login from './pages/Login'
 import NossaHistoria from './pages/NossaHistoria'
 import PaginaInicial from './pages/PaginaInicial'
 import QueroDoarParte1 from './pages/QueroDoarParte1'
-import QueroDoarParte2 from './pages/QueroDoarParte2'
 import Servicos from './pages/Servicos'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
@@ -51,7 +50,6 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
         <Route path='/nossahistoria' element={ <NossaHistoria /> } />
         <Route path='/' element={ <PaginaInicial /> } /> 
         <Route path='/querodoarpt1' element={ <QueroDoarParte1 /> } /> 
-        <Route path='/querodoarpt2' element={ <QueroDoarParte2 /> } />
         <Route path='/servicos' element={ <Servicos /> } /> 
       </Routes>
       <Footer />
