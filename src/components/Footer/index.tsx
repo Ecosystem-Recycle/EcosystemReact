@@ -52,7 +52,7 @@ function Footer() {
             </a>
           </div>
           <div className="ico_sociais">
-            <a href="https://www.instagram.com/">
+            <a href="https://www.instagram.com/eco_sytem/">
               <img
                 src={icoInstagran}
                 alt="Icone do Instagran"
@@ -60,12 +60,6 @@ function Footer() {
             </a>
             <a href="https://www.facebook.com/">
               <img src={icoFacebook} alt="Icone do Facebook" />
-            </a>
-            <a href="#">
-              <img
-                src={icoTwitter}
-                alt="Icone do Twitter"
-              />
             </a>
           </div>
         </div>
