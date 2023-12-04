@@ -9,12 +9,12 @@ import imgLogo from "../../assets/img/logo_vertical.png";
 
 
 function Header() {
-    let menu= document.getElementById("menu_links") as HTMLCanvasElement;
+    let menu= document.getElementById(("menu_links") || "") as HTMLCanvasElement;
     // let tamanhoTela: boolean = false;
     const [tamanhoTela, setTamanhoTela] = useState<any>();
     //Função para mostrar/esconder menu hamburguer
     function mostrarMenu(){
-        let menu_barras= document.getElementById("menu_barras") as HTMLCanvasElement;
+        let menu_barras= document.getElementById(("menu_barras")|| "") as HTMLCanvasElement;
 
         if (window.getComputedStyle(menu).display == 'none'){
             //Mostre o menu
@@ -25,7 +25,7 @@ function Header() {
         }else{
             //Esconde o menu
             menu.style.display = "none";
-
+            
             menu_barras.setAttribute("aria-expanded", "false");
             menu_barras.setAttribute("aria-label", "Abrir o Menu");
             

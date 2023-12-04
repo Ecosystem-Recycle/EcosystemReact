@@ -60,9 +60,74 @@
     font-size: 18px;
     font-weight:800;
     text-transform: uppercase;
+    color: var(--roxo);
+    transition: .35s;
+}
+
+/* Seção da TAabela */
+
+#mainQueroDoarParte3 table{
+    width: 100%;
+    margin: 10px 0 30px 0;
+    border: 1px solid var(--cinza);
+    border-radius: 15px 15px 0 0;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    border-collapse: collapse;
+
+}
+
+#mainQueroDoarParte3 thead tr{
+    background-color: var(--verde1);
+    color: white;
+    font-size: 18px;
+    font-family: var(--font1);
+    font-weight: 700;
+}
+
+#mainQueroDoarParte3 caption {
+    font-size: 20px;
+    font-family: var(--font1);
+    font-weight: 700;
+}
+
+#mainQueroDoarParte3 caption, th {
+    text-align: left;
+}
+
+#mainQueroDoarParte3 td:nth-child(2){
+    text-align: initial;
+    padding-left: 3.5rem;
+}
+
+#mainQueroDoarParte3 td:nth-child(3){
+    text-align: end;
+    padding-right: 1rem;
 }
 
 
+
+#mainQueroDoarParte3 tbody > tr:nth-child(odd) {
+    background-color: #F2F2F7;
+}
+
+
+
+#mainQueroDoarParte3 tr {
+    height: 40px;
+}
+
+#mainQueroDoarParte3 th, #mainQueroDoarParte3 tr, #mainQueroDoarParte3 td {
+    border: none;
+}
+
+#mainQueroDoarParte3 .linha-mensagem td {
+    text-align: center;
+}
+
+#mainQueroDoarParte3 caption, #mainQueroDoarParte3 th, #mainQueroDoarParte3 td {
+    padding: 15px;
+}
 
 
 #mainQueroDoarParte3 .Conteudo{
@@ -134,12 +199,38 @@
 #mainQueroDoarParte3 .btn_form button{
     border: none;
     background-color:white;
+    cursor: pointer;
+    position: relative;
+    transition: .25s;
 }
 
-#mainQueroDoarParte3 .btn_form button{
-    border: none;
-    background-color:white;
+#mainQueroDoarParte3 .btn_form button:hover{
+    transform: scale(1.07);
 }
+
+#mainQueroDoarParte3 .btnPublicar button{
+    border: 4px solid var(--roxo);
+    color: var(--roxo);
+    background-color:white;
+    border-radius: 15px;
+    padding: 2px 35px;
+    font-family: var(--font1);
+    font-size: 18px;
+    font-weight: 800;
+    text-transform: uppercase;
+    cursor: pointer;
+    position: relative;
+    transition: .35s;
+}
+
+#mainQueroDoarParte3 .btnPublicar button:hover,
+#mainQueroDoarParte3 .btnPublicar > a:hover
+{
+    transform: scale(1.07);
+    background-color: var(--roxo);
+    color: white;
+}
+
 
 #mainQueroDoarParte3 .btnInserir img{
     padding: 7px;
@@ -156,70 +247,7 @@
 }
 
 
-/* Seção da TAabela */
 
-#mainQueroDoarParte3 table{
-    width: 100%;
-    margin: 10px 0 30px 0;
-    border: 1px solid var(--cinza);
-    border-radius: 15px 15px 0 0;
-    overflow: hidden;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-    border-collapse: collapse;
-
-}
-
-#mainQueroDoarParte3 thead tr{
-    background-color: var(--verde1);
-    color: white;
-    font-size: 18px;
-    font-family: var(--font1);
-    font-weight: 700;
-}
-
-#mainQueroDoarParte3 caption {
-    font-size: 20px;
-    font-family: var(--font1);
-    font-weight: 700;
-}
-
-#mainQueroDoarParte3 caption, th {
-    text-align: left;
-}
-
-#mainQueroDoarParte3 td:nth-child(2){
-    text-align: initial;
-    padding-left: 3.5rem;
-}
-
-#mainQueroDoarParte3 td:nth-child(3){
-    text-align: end;
-    padding-right: 1rem;
-}
-
-
-
-#mainQueroDoarParte3 tbody > tr:nth-child(odd) {
-    background-color: #F2F2F7;
-}
-
-
-
-#mainQueroDoarParte3 tr {
-    height: 40px;
-}
-
-#mainQueroDoarParte3 th, #mainQueroDoarParte3 tr, #mainQueroDoarParte3 td {
-    border: none;
-}
-
-#mainQueroDoarParte3 .linha-mensagem td {
-    text-align: center;
-}
-
-#mainQueroDoarParte3 caption, #mainQueroDoarParte3 th, #mainQueroDoarParte3 td {
-    padding: 15px;
-}
 
 
 /* Total de itens da tabela */
@@ -243,11 +271,12 @@
 }
 
 #mainQueroDoarParte3 .totalItens>div{
+    display: flex;
+    align-items: center;
     border: 1px solid var(--cinza);
     border-radius: 7px;
-    padding: 3px 7px;
+    padding: 17px 7px;
     background-color: #F2F2F7;
-    margin-bottom: 1.5rem;
 }
 
 /* Secao de arquivos */
