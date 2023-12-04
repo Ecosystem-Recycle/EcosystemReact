@@ -18,7 +18,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
     border-radius: 15px;
     margin: 50px 10px;
 }
@@ -29,6 +28,7 @@
     max-width: 350px;
     width: 68%;
     height: 10px;
+    /* background-color: #9319CC; */
 }
 
 
@@ -46,11 +46,11 @@
     padding-top: 50px;
 }
 
-.formulario_cadastro h2 {
+#login .formulario_cadastro h2 {
     margin-bottom: 25px;
 }
 
-.formulario_botao {
+#login .formulario_botao {
     max-width: 150px;
     width: 30%;
     font-size: 16px;
@@ -77,10 +77,11 @@
     border-radius: 35px;
     margin: 20px 0 40px 0;
     padding: 10px 30px;
+    /* background-color: #9319CC; */
 
 }
 
-#login .formulario_login a img {
+#login .formulario_login a>img {
     width: 30px;
     height: 30px;
     margin-left: 10px;
