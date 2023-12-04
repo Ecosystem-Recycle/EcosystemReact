@@ -71,8 +71,8 @@ function Login() {
         const formData = new FormData()
 
         formData.append("nome", nome)
-        formData.append("email", email)
-        formData.append("password", senha)
+        formData.append("email", emailCad)
+        formData.append("password", senhaCad)
         formData.append("tipo_usuario", opcao)
 
         api.post("users", formData).then( (response) => {
