@@ -1,17 +1,23 @@
 import './style.css'
-import imgGoogle from "../../assets/img/login_Btn_Google.png"
+import api from '../../utils/api';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
-import api from '../../utils/api';
-
+import secureLocalStorage from 'react-secure-storage';
 function Login() {
 
     const navigate = useNavigate()
 
-    const [email, setEmail] = useState<string>("")
+    const [email, setEmail] = useState<string>("") 
     const [senha, setSenha] = useState<string>("")
+   
+    const [nome, setNome] = useState<string>("")
+    const[emailCad, setEmailCad] = useState<string>("")
+    const[senhaCad, setSenhaCad] = useState<string>("")
+    const [validacao, setValidacao] = useState<string>("")
+    const [opcao, setOpcao] = useState<string>("")
+    
 
-    function fazerLogin(event: any) {
+    function fazerLogin(event:any) {
         event.preventDefault()
 
         const usuario: object = {
@@ -19,43 +25,96 @@ function Login() {
             password: senha
         }
 
-        // api.post("login", usuario).then((response) => {
-        //     console.log(response);
+        api.post("login", usuario).then( (response) => {
+            console.log(response)
 
-        //     secureLocalStorage.setItem("user", response.data)
-        //     navigate("/perfil/" + response.data.user.id)
-        //     navigate(0)
-        // })
+            secureLocalStorage.setItem("user", response.data)
+
+            // if(response.data.user.tipo_usuario == "coletor"){
+            //     console.log("ok")
+            // }
+
+            // return 
+
+            if(response.data.user.tipo_usuario == "doador") {
+                navigate("/querodoarpt1/")
+            } else {
+                navigate("/buscarpublicacoes/")
+            } 
+            // else {
+            //     alert("dados invalidos")
+            // }
+
+            // navigate("/querodoarpt1/" + response.data.user.id)
+            // navigate("/querodoarpt1/")
+
+            navigate(0)
+
+        } )
+
     }
+
+    function cadastrarUsuario(event:any) {
+        event.preventDefault()
+
+        if (senha != validacao){
+            alert("A senha não confere")
+            return
+        }
+
+        if(!opcao){
+            alert("Selecione uma opção")
+            return
+        }
+
+        
+        const formData = new FormData()
+
+        formData.append("nome", nome)
+        formData.append("email", email)
+        formData.append("password", senha)
+        formData.append("tipo_usuario", opcao)
+
+        api.post("users", formData).then( (response) => {
+            // console.log(response)
+            alert("Cadastro realizado com sucesso")
+        } ).catch( (error) => {
+            console.log(error)
+        } )
+
+    }
+
 
     return (
         <>
             <main id="login">
                 <h1>página Login ecosystem &amp; recycle</h1>
                 <section className="sessao_formulario_login">
-                    <form className="formulario_login">
+                    <form onSubmit={fazerLogin} className="formulario_login" method='POST'>
                         
                         <div className="campo-form">
                             <h2>Conecte-se com sua conta</h2>
                         </div>
 
                         <div className="campo-form">
-                            <label htmlFor="login_email">E-mail:</label>
+                            <label htmlFor="email">E-mail:</label>
                             <input 
                             type="email" 
                             name='login_email'
-                            id='login_email'
+                            id='email'
                             placeholder='Digite o nome & marca do produto'
                             required
+                            onChange={(event) => setEmail(event.target.value)}
                             />
                         </div>
                         <div className="campo-form">
-                            <label htmlFor="login_senha">Senha:</label>
+                            <label htmlFor="senha">Senha:</label>
                             <input 
                             type="password" 
                             name='login_senha'
-                            id='login_senha'
+                            id='senha'
                             placeholder="Digite sua senha"
+                            onChange={(event) => setSenha(event.target.value)}
                             required
                             />
                         </div>
@@ -65,44 +124,37 @@ function Login() {
                                 type="submit"
                             // onClick={logar} return false
                             >
-                                Enviar
+                                Entrar
                             </button>
                       
-                        <div className="linkA">
-                            <a
-                                className="btn_goole"
-                                href="https://accounts.google.com/v3/signin/identifier?dsh=S1963277586%3A1688274570474968&continue=https%3A%2F%2Fwww.google.com.br%2F&ec=GAZAmgQ&hl=pt-BR&ifkv=AeDOFXgCJz1IrXfYbieSY_TrrLvErNRPYDzYGxbHFZ3dchrH_CIWuuEUxtzryf5u7TnsXGlIUhTq4g&passive=true&flowName=GlifWebSignIn&flowEntry=ServiceLogin"
-                            >
-                                Login Google
-                                <img src={imgGoogle} alt="logo do google" />
-                            </a>
-                        </div>
                         
                         
                         
                     </form>
-                    <form className="formulario_cadastro">
+                    <form onSubmit={cadastrarUsuario} className="formulario_cadastro" method='POST'>
                         <div className="campo-form">
                             <h2>Crie a sua conta. É grátis!</h2>
                         </div>
                         <div className="campo-form">
                             <label htmlFor="cadastro_name">Nome Completo:</label>
-                            <input 
-                            type="text"
-                            name="cadastro_name"
-                            id="cadastro_name"
-                            placeholder="Digite seu nome completo"
+                            <input
+                                type="text"
+                                name="cadastro_name"
+                                id="cadastro_name"
+                                placeholder="Digite seu nome completo"
                             required
+                            onChange={(event) => setNome(event.target.value)}
                             />
                         </div>
                         <div className="campo-form">
                             <label htmlFor="cadastro_email">E-mail:</label>
                             <input 
-                            type="email"
-                            name="cadastro_email"
-                            id="cadastro_email"
-                            placeholder="Digite seu e-mail"
-                            required
+                                type="email"
+                                name="cadastro_email"
+                                id="cadastro_email"
+                                placeholder="Digite seu e-mail"
+                                onChange={(event) => setEmailCad(event.target.value)}             
+                                required
                             />
                         </div>
                         <div className="campo-form">
@@ -112,6 +164,7 @@ function Login() {
                                 name="login_senha"
                                 id="login_senha"
                                 placeholder="Digite sua senha"
+                                onChange={(event) => setSenhaCad(event.target.value)}
                                 required
                             />
                         </div>
@@ -122,20 +175,35 @@ function Login() {
                                 name="confirmacao_senha"
                                 id="confirmacao_senha"
                                 placeholder="Confirme sua senha"
+                                onChange={(event) => setValidacao(event.target.value)}
                                 required
                             />
                         </div>
                         <div className="opcao">
                             <div className="opcao_doador">
-                                <input type="radio" name="tipo_usuario" id="doador" />
+                                <input 
+                                    type="radio" 
+                                    name="tipo_usuario" 
+                                    id="doador"
+                                    value="doador"
+                                    checked={opcao === 'doador'}
+                                    onChange={(event) => setOpcao(event.target.value)}
+                                />
                                 <label htmlFor="doador">Sou Doador</label>
                             </div>
                             <div className="opcao_coletor">
-                                <input type="radio" name="tipo_usuario" id="coletor" />
+                                <input 
+                                    type="radio" 
+                                    name="tipo_usuario" 
+                                    id="coletor" 
+                                    value="coletor"
+                                    checked={opcao === 'coletor'}
+                                    onChange={(event) => setOpcao(event.target.value)}
+                                />
                                 <label htmlFor="coletor">Sou Coletor</label>
                             </div>
                         </div>
-                        <button type="submit" className="formulario_botao">
+                        <button  type="submit" className="formulario_botao">
                             Cadastrar
                         </button>
                     </form>

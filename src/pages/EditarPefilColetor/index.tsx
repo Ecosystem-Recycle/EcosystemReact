@@ -111,15 +111,10 @@ function EditarPefilColetor() {
                                             </form>
                                         </div>
                                         <div className="btnVoltar">
-                                            {/* <a href="#" onClick={msgSalvarPerfil}>
-                                                Salvar
-                                            </a> */}
+
                                             <Link to="/#" onClick={msgSalvarPerfil}>Salvar</Link>
 
-                                            {/* <a href="#" onClick={history.back}>
-                                                Cancelar
-                                            </a> */}
-                                            <Link to="/#" onClick={history.back}>Cancelar</Link>
+                                            {/* <Link to="/#" onClick={history.back}>Cancelar</Link> */}
 
 
                                         </div>

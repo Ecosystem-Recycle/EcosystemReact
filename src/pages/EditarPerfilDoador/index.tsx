@@ -110,7 +110,7 @@ function EditarPerfilDoador() {
 
 
                                                 {/* <a href="#" onClick={historyBack}>Cancelar</a> */}
-                                                <Link to="/#" onClick={historyBack}>Cancelar</Link>
+                                                {/* <Link to="/#" onClick={historyBack}>Cancelar</Link> */}
                                             </div>
                                         </div>
                                     </div>

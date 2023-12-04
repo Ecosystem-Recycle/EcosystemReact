@@ -1,17 +1,14 @@
-
 #cardColetaSeletor .links_pags {
     padding-bottom: 0.4rem;
 }
 
 #cardColetaSeletor .links_pags a {
     border-radius: 9px;
-    /* border: 2px solid rgba(156, 156, 156, 0.80); */
     padding: 1px 7px;
     font-family: var(--font1);
     font-size: 20px;
     font-weight: 900;
     text-transform: capitalize;
-    /* color: var(--cinza); */
 }
 
 #cardColetaSeletor .links_pags span {
@@ -20,27 +17,20 @@
     color: var(--cinza);
 }
 
-
-/* #cardColetaSeletor .links_pags a:nth-child(1) {
-    border: 2px solid var(--verde2);
-    color: var(--verde2);
-} */
-
-#cardColetaSeletor .contornoBase{
+#cardColetaSeletor .contornoBase {
     border: 2px solid rgba(156, 156, 156, 0.80);
     color: var(--cinza);
 }
 
-#cardColetaSeletor .contornoUm{
+#cardColetaSeletor .contornoUm {
     border: 3px solid var(--verde2);
     color: var(--verde2);
-    /* background-color: blue; */
 }
-#cardColetaSeletor .contornoDois{
+
+#cardColetaSeletor .contornoDois {
     border: 3px solid var(--roxo);
     color: #9319CC;
     text-transform: uppercase;
-    /* background-color: blue; */
 }
 
 @media screen and (max-width: 1072px) {

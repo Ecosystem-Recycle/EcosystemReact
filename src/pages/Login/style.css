@@ -13,17 +13,10 @@
     
 }
 
-#login .linkA{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 90%;
-}
-
-
 #login .formulario_cadastro,
 #login .formulario_login {
     max-width: 500px;
+    height: 600px;
     background-color: var(--cinza2);
     display: flex;
     flex-direction: column;

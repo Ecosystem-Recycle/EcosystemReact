@@ -69,11 +69,11 @@ function MinhasDoacoes() {
                                         />
                                     </div>
                                 </div>
-                                <div className="btnVoltar">
+                                {/* <div className="btnVoltar">
                                     <a href="#" onClick={ history.back }>
                                         voltar
                                     </a>
-                                </div>
+                                </div> */}
                             </div>
                         </div>
                     </div>
