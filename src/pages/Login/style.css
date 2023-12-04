@@ -5,37 +5,18 @@
     flex-wrap: wrap;
 }
 
-#login .sessao_formulario_login input {
-    padding-left: 10px;
+#login .campo-form{
+        display: flex;
+        flex-direction: column;
+        width: 90%;
+        margin-bottom: 1rem;
+    
 }
 
+#login .formulario_cadastro,
 #login .formulario_login {
     max-width: 500px;
-    width: 90%;
     height: 600px;
-    display: flex;
-    background-color: var(--cinza2);
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border-radius: 15px;
-    margin: 50px 10px;
-}
-
-
-#login .formulario_login label,
-#login .formulario_cadastro label {
-    max-width: 350px;
-    width: 68%;
-    height: 10px;
-    /* background-color: #9319CC; */
-}
-
-
-
-#login .formulario_cadastro {
-    max-width: 500px;
-    width: 90%;
     background-color: var(--cinza2);
     display: flex;
     flex-direction: column;
@@ -46,13 +27,14 @@
     padding-top: 50px;
 }
 
-#login .formulario_cadastro h2 {
+#login h2 {
     margin-bottom: 25px;
+    font-size: 1.6rem;
+    text-align: center;
+    font-family: var(--font1);
 }
 
-#login .formulario_botao {
-    max-width: 150px;
-    width: 30%;
+.formulario_botao {
     font-size: 16px;
     font-weight: bold;
     font-family: var(--font1);
@@ -61,6 +43,18 @@
     margin-top: 20px;
     border-radius: 10px;
     margin-bottom: 40px;
+    cursor: pointer;
+    padding: 5px 15px;
+    transition: 0.35s;
+    background: #e4e2e2
+}
+
+.formulario_botao:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    color: white;
+    background-color: var(--roxo);
+
 }
 
 #login .btn_goole {
@@ -70,6 +64,9 @@
 #login .formulario_login a {
     display: flex;
     align-items: center;
+    justify-content: space-around;
+    width: 95%;
+
     font-weight: 800;
     font-family: var(--font1);
     color: var(--roxo);
@@ -77,8 +74,12 @@
     border-radius: 35px;
     margin: 20px 0 40px 0;
     padding: 10px 30px;
-    /* background-color: #9319CC; */
-
+    transition: 0.25s;
+}
+#login .formulario_login a:hover {
+    transform: scale(1.03);
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    background-color: #e4e2e2;
 }
 
 #login .formulario_login a>img {
@@ -87,18 +88,14 @@
     margin-left: 10px;
 }
 
-
-#login .formulario_login h2 {
-    margin-bottom: 30px;
-}
-
-
-#login main input {
-    max-width: 350px;
-    width: 75%;
-    height: 40px;
-    border-radius: 15px;
-    border: 1px solid #6c6b6b;
+#login input {
+    width: 100%;
+    height: 30px;
+    border: 1px solid var(--cinza);
+    border-radius: 7px;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    padding-left: 9px;
+    font-family: var(--font2);
 }
 
 #login .opcao {
@@ -115,44 +112,24 @@
     flex-direction: row;
 }
 
-#login .opcao label {
-    width: 100%;
-    margin-left: 5px;
+#login #coletor,
+#login #doador {
+   width: 15px;
+   height: 15px;
+   border: none;
+   box-shadow: none;
+   margin-right: 5px;
 }
-
-#login main input[type="radio"] {
-    width: 20px;
-    height: 18px;
-}
-
-#login main label {
-    display: flex;
-    font-size: 16px;
-    font-family: var(--font2);
-    text-align: left;
-}
-
-
 
 
 /* ### RESPONSIVIDADE ### */
 
 
-@media screen and (max-width: 812px) {
-    #login .sessao_formulario_login {
-        margin: 50px 20px;
-    }
-
-}
 
 
 @media screen and (max-width: 580px) {
     #login .sessao_formulario_login {
         margin: 20px 10px;
-    }
-
-    #login .opcao {
-        width: 70%;
     }
 
     #login .formulario_login a {
@@ -174,13 +151,6 @@
         padding: 0 7px;
         text-align: center;
     }
-
-    #login .opcao label {
-        width: 100%;
-        height: fit-content;
-        margin-left: 5px;
-        font-size: small;
-    }
 }
 
 @media screen and (max-width: 435px) {
@@ -200,11 +170,6 @@
 
     #login input::placeholder {
         font-size: 12px;
-    }
-
-    #login .formulario_login label,
-    #login .formulario_cadastro label {
-        height: 5px;
     }
 
     #login .formulario_login a {
@@ -242,6 +207,8 @@
 
     #login .opcao {
         flex-direction: column;
+        width: auto;
+
     }
 
     #login .opcao>div:nth-child(1) {

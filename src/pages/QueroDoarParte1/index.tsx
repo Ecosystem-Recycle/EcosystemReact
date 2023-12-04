@@ -9,10 +9,6 @@ import LinhaProduto from '../../components/LinhaProduto'
 
 import icoAdd from '../../assets/img/add.svg'
 import icoDel from '../../assets/img/del.svg'
-import imgCelular from '../../assets/img/img_celular (1).png'
-import imgCelular2 from '../../assets/img/img_celular (2).png'
-import pilhaCelular from '../../assets/img/img_celular.png'
-import imgVazia from '../../assets/img/Vector.png'
 import imgBaterias from '../../assets/img/Vector.png'
 
 
@@ -97,18 +93,6 @@ function QueroDoarParte1() {
       }).catch( (error:any) => {
           console.log(error)
       })
-      //Varialvel que recebe os valores do novo Anuncio(Objeto)
-      // let novoAnuncio = {
-      //   "titulo": valoresInput2.titulo,
-      //   "disponibilidade": valoresInput2.disponibilidade, 
-      //   "periodo": valoresInput2.periodo,
-      //   "data_cadastro": formatDate(hoje,"aaaa-mm-dd"),
-      //   "tipo_status": "Aguardando Coleta",
-      //   "imagem": foto
-      // };
-
-      //                OU
-
       //Limpa os Campos do Anuncio
       setValoresInput2({
         titulo: "",
@@ -268,7 +252,7 @@ function limparLista(){
                       </div>
                       <div className="camposDuplo">
                         <div className="campo-form">
-                          <label htmlFor="horarioDisponivel">Disponibilidade de data para retirada:</label>
+                          <label htmlFor="horarioDisponivel">Disponibilidade para retirada:</label>
                           <input 
                             type="text" 
                             id='horarioDisponivel' 
@@ -290,7 +274,7 @@ function limparLista(){
                             value={valoresInput2.periodo}
                             onChange={ (event) =>  setValoresInput2({...valoresInput2, periodo: event.target.value}) }
                             >
-                              <option selected disabled value="">Selecione</option>
+                              <option disabled value="">Selecione</option>
                               <option value="Manha">Manhã</option>
                               <option value="Tarde">Tarde</option>
                               <option value="Noite">Noite</option>
@@ -306,7 +290,7 @@ function limparLista(){
                               alt="Upload de Imagem"
                             />
                           </div>
-                          <label htmlFor="add-single-img">+ Adicionar Fotos</label>              
+                          <label htmlFor="add-single-img">+ Adicionar Foto</label>              
                           <input 
                             type="file" 
                             name="add-single-img" 
@@ -318,14 +302,7 @@ function limparLista(){
                         </div>
 
                           
-                        <div className="alinhamentoImg">
-                          <img src={imgCelular} alt="Um Celular" />
-                          <img src={imgCelular2} alt="Pilha de Celulares" /> 
-                          <img src={pilhaCelular} alt="Pilha de Celulares" />
-                          <img src={imgVazia} alt="Imagem Vazia 1" />
-                          <img src={imgVazia} alt="Imagem Vazia 2" />
-                          <img src={imgVazia} alt="Imagem Vazia 3" />
-                        </div>
+                        
                       </div>
                       <div className="btnPublicar">
                         <button type="submit">
