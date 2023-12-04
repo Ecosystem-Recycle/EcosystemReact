@@ -20,7 +20,7 @@ function AgendarColeta() {
                 <section>
                     <div className="conteudo_doacoes wrapper">
                         {/* Abaixo está sendo chamado o  componente aside */}
-                        <Aside idSeletor={1} />
+                        <Aside idSeletor={2} />
 
                         <div className="menu_Direito">
                             <div className="title">

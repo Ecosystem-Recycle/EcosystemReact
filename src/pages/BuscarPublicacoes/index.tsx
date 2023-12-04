@@ -17,7 +17,7 @@ function BuscarPublicacoes() {
                 <h1>página buscar por publicações ecosystem &amp; recycle</h1>
                 <section>
                     <div className="conteudo_doacoes wrapper">
-                        <Aside idSeletor={2} />
+                        <Aside idSeletor={1} />
                         <div className="menu_Direito">
                             <div className="title">
                                 <h2>Buscar por Publicações</h2>
