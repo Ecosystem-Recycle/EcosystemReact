@@ -6,10 +6,23 @@ import image15 from "../../assets/img/image 15.png"
 import Aside from '../../components/Aside'
 import { Link } from "react-router-dom";
 import CardBuscarPublicacoes from '../../components/CardBuscarPublicacoes'
+import secureLocalStorage from 'react-secure-storage'
+import { useEffect } from 'react'
+import { useState } from 'react'
 
 
 function BuscarPublicacoes() {
 
+    // useEffect
+    let teste = (secureLocalStorage.getItem("user"))
+    const [teste2, setTeste2 ] = useState<any[]>([])
+     //const [teste2, setTeste2] = useState<string>("")
+    
+    useEffect( () => {
+        // document.title = "Quero Doar - Ecosystem e Recycle"
+        setTeste2(JSON.parse(secureLocalStorage.getItem("user")))
+
+    }, [] )
 
     return (
         <>

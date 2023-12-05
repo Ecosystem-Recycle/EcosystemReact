@@ -26,29 +26,20 @@ function Login() {
         }
 
         api.post("login", usuario).then( (response) => {
-            console.log(response)
+            // console.log(response)
 
-            secureLocalStorage.setItem("user", response.data)
-
-            // if(response.data.user.tipo_usuario == "coletor"){
-            //     console.log("ok")
-            // }
-
+            secureLocalStorage.setItem("user", response.data)        
             // return 
-
+            
             if(response.data.user.tipo_usuario == "doador") {
-                navigate("/querodoarpt1/")
+                navigate("/querodoarpt1")
+                // navigate("/querodoarpt1/" + response.data.user.id)
             } else {
                 navigate("/buscarpublicacoes/")
+                // navigate("/buscarpublicacoes/" + response.data.user.id)
             } 
-            // else {
-            //     alert("dados invalidos")
-            // }
-
-            // navigate("/querodoarpt1/" + response.data.user.id)
-            // navigate("/querodoarpt1/")
-
-            navigate(0)
+           
+            // navigate(0)
 
         } )
 
@@ -57,7 +48,7 @@ function Login() {
     function cadastrarUsuario(event:any) {
         event.preventDefault()
 
-        if (senha != validacao){
+        if (senhaCad != validacao){
             alert("A senha não confere")
             return
         }
@@ -131,6 +122,7 @@ function Login() {
                         
                         
                     </form>
+
                     <form onSubmit={cadastrarUsuario} className="formulario_cadastro" method='POST'>
                         <div className="campo-form">
                             <h2>Crie a sua conta. É grátis!</h2>
