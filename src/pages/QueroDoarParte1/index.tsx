@@ -3,6 +3,7 @@ import './style.css'
 import api from "../../utils/api"
 import { Link } from 'react-router-dom'
 import { useEffect, useState } from 'react'
+import secureLocalStorage from 'react-secure-storage'
 
 import AsideDoador from '../../components/AsideDoador'
 import LinhaProduto from '../../components/LinhaProduto'
@@ -35,7 +36,8 @@ function QueroDoarParte1() {
 
   useEffect( () => {
     document.title = "Quero Doar - Ecosystem e Recycle"
-
+    let teste = secureLocalStorage.getItem("user");
+    console.log(teste)
     carregarProduto();
 }, [] )
   

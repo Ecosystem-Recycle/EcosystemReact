@@ -22,14 +22,14 @@ function Login() {
 
         const usuario: object = {
             email: email,
-            password: senha
+            senha: senha
         }
 
         api.post("login", usuario).then( (response) => {
-            // console.log(response)
+             console.log(response)
 
-            secureLocalStorage.setItem("user", response.data)        
-            // return 
+            secureLocalStorage.setItem("user", response.data)
+             return 
             
             if(response.data.user.tipo_usuario == "doador") {
                 navigate("/querodoarpt1")
