@@ -16,6 +16,7 @@
 #login .formulario_cadastro,
 #login .formulario_login {
     max-width: 500px;
+    width: 100%;
     height: 600px;
     background-color: var(--cinza2);
     display: flex;
@@ -34,60 +35,33 @@
     font-family: var(--font1);
 }
 
-.formulario_botao {
+#login .formulario_botao {
     font-size: 16px;
     font-weight: bold;
     font-family: var(--font1);
     color: var(--roxo);
     border: 3px solid var(--roxo);
-    margin-top: 20px;
+    margin: 20px 0 40px 0;
     border-radius: 10px;
-    margin-bottom: 40px;
     cursor: pointer;
-    padding: 5px 15px;
+    padding: 5px 55px;
     transition: 0.35s;
     background: #e4e2e2
 }
 
-.formulario_botao:hover {
+#login .formulario_login .formulario_botao{
+    margin-top: 30px;
+    padding: 5px 72px;
+}
+
+
+#login .formulario_botao:hover {
     transform: scale(1.05);
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
     color: white;
     background-color: var(--roxo);
 
 }
-
-#login .btn_goole {
-    color: #9319CC;
-}
-
-#login .formulario_login a {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    width: 95%;
-
-    font-weight: 800;
-    font-family: var(--font1);
-    color: var(--roxo);
-    border: 3px solid var(--roxo);
-    border-radius: 35px;
-    margin: 20px 0 40px 0;
-    padding: 10px 30px;
-    transition: 0.25s;
-}
-#login .formulario_login a:hover {
-    transform: scale(1.03);
-    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-    background-color: #e4e2e2;
-}
-
-#login .formulario_login a>img {
-    width: 30px;
-    height: 30px;
-    margin-left: 10px;
-}
-
 #login input {
     width: 100%;
     height: 30px;
@@ -103,6 +77,7 @@
     max-width: 350px;
     display: flex;
     justify-content: space-evenly;
+    margin-top: 10px;
 }
 
 #login .opcao_doador,

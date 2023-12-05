@@ -3,6 +3,7 @@ import './style.css'
 import api from "../../utils/api"
 import { Link } from 'react-router-dom'
 import { useEffect, useState } from 'react'
+import secureLocalStorage from 'react-secure-storage'
 
 import AsideDoador from '../../components/AsideDoador'
 import LinhaProduto from '../../components/LinhaProduto'
@@ -16,8 +17,12 @@ import imgBaterias from '../../assets/img/Vector.png'
 
 function QueroDoarParte1() {
   const [listarProdutos, setListarProdutos] = useState<any[]>([]);
-  const [ totalItens, setTotalItens ] = useState<number>(0);
-  
+  // const [userData, setUserData] = useState<any>([{}]);
+  // const [userData, setUserData] = useState<any>({id: ""});
+  const [userEmail, setUserEmail] = useState<any>(secureLocalStorage.getItem("emailUser"));
+  // const [getId, setGetId] = useState<string>("");
+
+  const [ totalItens, setTotalItens ] = useState<number>(0);  
   const [ foto, setFoto ] = useState<any>();
 
   const [formValues, setFormValues] = useState<any>({
@@ -35,7 +40,34 @@ function QueroDoarParte1() {
 
   useEffect( () => {
     document.title = "Quero Doar - Ecosystem e Recycle"
+    // const value: any = secureLocalStorage.getItem("emailUser");
+    setUserEmail(secureLocalStorage.getItem("emailUser"));
 
+    // let idUser:any = secureLocalStorage.getItem("userID");
+    // setUserData(JSON.stringify(value));
+    
+  
+
+    // if (value != undefined){
+    //   setUserData(value)
+    // }
+    // let userObjeto:any = secureLocalStorage.getItem("userID");
+    // let user:string = userObjeto.id
+    // setUserData(user);
+
+    //Caso tenha alugm produto essa array revebe os valores dos respectivos Objetos
+    // if(userData === undefined){
+      // alert('TA VAZIOOOOO')
+    // }else{
+      // setUserData(user);
+    // }
+    
+
+    // console.log('Userdata_ID: ' + userData.id)
+    console.log('Userdata: ' + userEmail)
+    // console.log('VAlue{}: ' +value)
+    // console.log('Value_ID: ' +value) 
+    // console.log('User: ' +user)
     carregarProduto();
 }, [] )
   
@@ -65,44 +97,85 @@ function QueroDoarParte1() {
 
         localStorage.setItem('listaProdutosCadastrados', JSON.stringify(produtoLista));
 
-        //Limpa os Campos apos atualizar
-        setFormValues({
-          categoria: "",
-          nome: "",
-          quantidade: ''
-        });
+       limparCampos('produto');
 
         carregarProduto();
     }
 
+   
+       
+    
+
     function cadastrarAnuncio(event: any) {
       event.preventDefault();
-      const formData = new FormData();
+      if(listarProdutos.length <= 0){
+        alert('Adicione ao menos 1 Produto na Lista')
+        return
+      }
+      
+      api.get("usuarios/email/" + userEmail).then((responseEmail: any)=>{
 
-      formData.append("titulo", valoresInput2.titulo)
-      formData.append("disponibilidade", valoresInput2.disponibilidade)
-      formData.append("periodo", valoresInput2.periodo)
-      formData.append("usuario_id", "05e3d70c-3233-421d-a8bd-3017bbff0abf");
-      formData.append("tipo_status", "Aguardando Coleta");
-      formData.append("imagem", foto);
-      //formData.append("hardSkills", JSON.stringify(skillsSelecionadas)) Caso tenha um array
-      api.post("anuncio", formData).then( (response:any) => {
-        console.log(response)
-        alert("Anuncio criado com sucesso! >.< ")
-        // Navegação para login
-      }).catch( (error:any) => {
-          console.log(error)
-      })
-      //Limpa os Campos do Anuncio
-      setValoresInput2({
-        titulo: "",
-        disponibilidade: "",
-        periodo: ''
-      });
-    }
+        
+        // alert('FBuscarID => email: ' + userData)
+        if(responseEmail.data.id != null) {
+          const formData = new FormData();
+
+          formData.append("titulo", valoresInput2.titulo)
+          formData.append("disponibilidade", valoresInput2.disponibilidade)
+          formData.append("periodo", valoresInput2.periodo)
+          formData.append("usuario_id", responseEmail.data.id);
+          formData.append("tipo_status", "Aguardando Coleta");
+          formData.append("imagem", foto);
+          // formData.append("usuario_id", "33163c47-882e-44a7-85f9-6b74704ac0c0");
+          // formData.append("hardSkills", JSON.stringify(skillsSelecionadas)) Caso tenha um array
+          // formData.append("usuario_id", "05e3d70c-3233-421d-a8bd-3017bbff0abf");
+          // alert("Esse é o ID: " +getId)
+          api.post("anuncio", formData).then( (responseAnuncio:any) => {
+            console.log(responseAnuncio)
+            alert("Anuncio criado com sucesso! >.< ")
+            limparCampos('anuncio');
+
+            //Apos receber o ID cadastrar os Produtos
+            
+            if(listarProdutos != null){
+
+                listarProdutos.forEach((produto:any) => {
+                  //Atualiza a Lista com o novo produto
+                  const formDataProd = new FormData();
+                  formDataProd.append("nome", produto.nome)
+                  formDataProd.append("quantidade", (produto.quantidade).parseInt)
+                  formDataProd.append("anuncio_id", responseAnuncio.data.id)
+                  formDataProd.append("categoria_id", produto.categoria);
+                  console.log(produto)
+                  console.log(responseAnuncio.data.id)
+                  api.post("produto", formDataProd).then( (responseProduto:any) => {
+                    console.log(responseProduto)
+                    alert('Produto Cadastrado')
+                  }).catch( (error:any) => {
+                    console.log(error)
+                  })
+
+
+                });
+
+            }else{
+              alert('Cadastre ao menos 1 produto')
+            }
+
+          }).catch( (error:any) => {
+              console.log(error)
+          })
+            } else {
+                alert('ID não encontrado')
+            } 
+          })     
+      
+      
+    } 
   
 
 function carregarProduto(){
+  
   let listaCarregada:any = [];
   setListarProdutos(listaCarregada);
   if(localStorage.getItem("listaProdutosCadastrados") != null){
@@ -124,6 +197,27 @@ function limparLista(){
   localStorage.removeItem("listaProdutosCadastrados");
   carregarProduto();
 }
+
+function limparCampos(qualTipo:string){
+
+  if(qualTipo == "anuncio"){
+    //Limpa os Campos do Anuncio
+    setValoresInput2({
+      titulo: "",
+      disponibilidade: "",
+      periodo: ''
+    });
+  }else {
+     //Limpa os Campos produtoLista
+     setFormValues({
+      categoria: "",
+      nome: "",
+      quantidade: ''
+    });
+  }
+  
+}
+  
 
   return (
     <>
