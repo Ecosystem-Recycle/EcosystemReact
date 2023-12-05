@@ -4,25 +4,53 @@ import image8 from "../../assets/img/image 8.png"
 import image9 from "../../assets/img/image 9.png"
 import image15 from "../../assets/img/image 15.png"
 import Aside from '../../components/Aside'
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import CardBuscarPublicacoes from '../../components/CardBuscarPublicacoes'
 import secureLocalStorage from 'react-secure-storage'
-import { useEffect } from 'react'
-import { useState } from 'react'
-
+import { useState, useEffect } from 'react'
+import api from '../../utils/api'
 
 function BuscarPublicacoes() {
 
     // useEffect
-    let teste = (secureLocalStorage.getItem("user"))
-    const [teste2, setTeste2 ] = useState<any[]>([])
+    // let teste = (secureLocalStorage.getItem("user"))
+    // const [teste2, setTeste2 ] = useState<any[]>([])
      //const [teste2, setTeste2] = useState<string>("")
     
-    useEffect( () => {
+    // useEffect( () => {
         // document.title = "Quero Doar - Ecosystem e Recycle"
-        setTeste2(JSON.parse(secureLocalStorage.getItem("user")))
+        // setTeste2(JSON.parse(secureLocalStorage.getItem("user")))
 
-    }, [] )
+    // }, [] )`
+    const {idUsuario} = useParams()
+
+    const [nome, setNome] = useState<string>("" )
+
+    // let teste = secureLocalStorage.getItem("user")
+    // console.log(teste)
+
+    // let testeNovo
+    // testeNovo=(JSON.parse(teste))
+
+    
+    useEffect(() => {
+        document.title = "perfil de " + nome 
+
+        buscarUsuarioPorID()   
+
+        
+    }, [])
+
+    function buscarUsuarioPorID(){
+        api.get("users/" + idUsuario).then((response:any) => {
+            // setNome(response.data.nome)
+            // console.log(nome)
+            return
+
+        } ).catch((error) => {
+            console.log(error)
+        }) 
+    }
 
     return (
         <>

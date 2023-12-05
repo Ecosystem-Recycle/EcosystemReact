@@ -35,7 +35,8 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
       <Routes>
         <Route path='/minhasdoacoes' element={ <MinhasDoacoes /> } />
         <Route path='/agendarcoleta' element={ <AgendarColeta/> }/>
-        <Route path='/buscarpublicacoes' element={ <BuscarPublicacoes /> } />
+        <Route path='/buscarpublicacoes/:idUsuario' element={ <BuscarPublicacoes /> } />
+        <Route path='/editarperfilcoletor/' element={ <EditarPefilColetor /> } />
         <Route path='/coletasagendadas' element={ <ColetasAgendadas/> }/>
         <Route path='/coletasfinalizadas' element={ <ColetasFinalizadas /> } />
         <Route path='/coletasconfirmada' element={ <ColetasConfirmada /> } />
@@ -43,7 +44,6 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
         <Route path='/contato' element={ <Contato /> } /> 
         <Route path='/doacoesfinalizadas' element={ <DoacoesFinalizadas /> } />
         <Route path='/duvidas' element={ <Duvidas /> } />
-        <Route path='/editarperfilcoletor' element={ <EditarPefilColetor /> } />
         <Route path='/editarperfildoador' element={ <EditarPerfilDoador /> } /> 
         <Route path='/informativo' element={ <Informativo /> } />
         <Route path='/login' element={ <Login /> } />

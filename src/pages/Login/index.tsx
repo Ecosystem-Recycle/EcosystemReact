@@ -32,11 +32,11 @@ function Login() {
             // return 
             
             if(response.data.user.tipo_usuario == "doador") {
-                navigate("/querodoarpt1")
+                navigate("/querodoarpt1" + response.data.user.id)
                 // navigate("/querodoarpt1/" + response.data.user.id)
             } else {
-                navigate("/buscarpublicacoes/")
-                // navigate("/buscarpublicacoes/" + response.data.user.id)
+                // navigate("/buscarpublicacoes/")
+                navigate("/buscarpublicacoes/" + response.data.user.id)
             } 
            
             // navigate(0)
@@ -66,10 +66,12 @@ function Login() {
         formData.append("password", senhaCad)
         formData.append("tipo_usuario", opcao)
 
-        api.post("users", formData).then( (response) => {
-            // console.log(response)
+        api.post("users", formData)
+        .then( (response) => {
+            console.log(response)
             alert("Cadastro realizado com sucesso")
-        } ).catch( (error) => {
+        } )
+        .catch( (error) => {
             console.log(error)
         } )
 
@@ -189,7 +191,6 @@ function Login() {
                                     name="tipo_usuario" 
                                     id="coletor" 
                                     value="coletor"
-                                    checked={opcao === 'coletor'}
                                     onChange={(event) => setOpcao(event.target.value)}
                                 />
                                 <label htmlFor="coletor">Sou Coletor</label>

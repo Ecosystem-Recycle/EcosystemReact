@@ -1,23 +1,53 @@
 import './style.css'
 
 import Aside from '../../components/Aside'
-import { Link } from "react-router-dom";
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import api from '../../utils/api';
 import secureLocalStorage from 'react-secure-storage'
+import { redirectDocument, useParams } from 'react-router-dom';
+
+
 
 function EditarPefilColetor() {
 
+    
 
+
+    const [senha, setSenha] = useState<string>("")
     const [nomeEmpresa, setNomeEmpresa] = useState<string>("")
-    const [razaoSocial, setRazaoSocial] = useState<string>("")
+    // const [razaoSocial, setRazaoSocial] = useState<string>("")
     const [email, setEmail] = useState<string>("")
-    const [telefone, setTelefone] = useState<string>("")
-    const [cnpj, setCnpj] = useState<string>("")
-    const [endereco, setEndereco] = useState<string>("")
-    const [cidade, setCidade] = useState<string>("")
-    const [uf, setUf] = useState<string>("")
-    const [cep, setCep] = useState<string>("")
+    // const [telefone, setTelefone] = useState<string>("")
+    // const [cnpj, setCnpj] = useState<string>("")
+    // const [endereco, setEndereco] = useState<string>("")
+    // const [cidade, setCidade] = useState<string>("")
+    // const [uf, setUf] = useState<string>("")
+    // const [cep, setCep] = useState<string>("")
+
+
+    // const { idUsuario } = useParams()
+    // const [nome, setNome] = useState<string>("")
+
+    // useEffect(() => {
+    //     document.title = "perfil de " + nome
+
+    //     buscarUsuarioPorID()
+
+
+    // }, [])
+
+
+    // function buscarUsuarioPorID() {
+    //     api.get("users/" + idUsuario).then((response: any) => {
+    //         setNome(response.data.nome)
+
+    //     }).catch((error) => {
+    //         console.log(error)
+    //     })
+    // }
+
+
+
 
     function msgSalvarPerfil() {
         alert('Dados Cadastrado com Sucesso');
@@ -26,38 +56,41 @@ function EditarPefilColetor() {
     function cadastroDadosColetor(event: any) {
         event.preventDefault()
 
+        
+
         const formData = new FormData()
 
-        api.get("users").then((response) => {
-            // console.log(response)
+        // api.get("users").then((response) => {
+        //     console.log(response)
 
-            secureLocalStorage.setItem("user", response.data)
-            
-            // console.log(response.data.map(user => user.id))
+        //     secureLocalStorage.setItem("user", response.data)
 
-        }
-        )
-        return
+        //     console.log(response.data.map(user => user.id))
 
-        formData.append("nome_empresa", nomeEmpresa)
-        formData.append("razao_social", razaoSocial)
-        formData.append("email", email)
-        formData.append("telefone", telefone)
-        formData.append("cnpj", cnpj)
-        formData.append("endereco", endereco)
-        formData.append("cidade", cidade)
-        formData.append("uf", uf)
-        formData.append("cep", cep)
-
-        // console.log(nomeEmpresa)
-
-        api.post("users", formData).then( (response) => {
-        console.log(response)
-
-        } ).catch((error) => {
-            console.log(error)
-        } )
+        // }
+        // )
         // return
+
+
+        formData.append("password", senha)
+        formData.append("nome_empresa", nomeEmpresa)
+        // formData.append("razao_social", razaoSocial)
+        formData.append("email", email)
+        // formData.append("telefone", telefone)
+        // formData.append("cnpj", cnpj)
+        // formData.append("endereco", endereco)
+        // formData.append("cidade", cidade)
+        // formData.append("uf", uf)
+        // formData.append("cep", cep)
+
+        api.post("users", formData)
+        .then((response) => {
+            console.log(response)
+            alert("cadastro ok")
+        })
+        .catch((error) => {
+            console.log(error)
+        })
     }
 
     return (
@@ -77,7 +110,7 @@ function EditarPefilColetor() {
                                     <div className="nada_consta">
 
                                         <div className="nomeMarca">
-                                            <form onSubmit={cadastroDadosColetor}>
+                                            <form onSubmit={cadastroDadosColetor} method='POST'>
                                                 <label htmlFor="name">Nome da Empresa:</label>
                                                 <input
                                                     className="input"
@@ -94,18 +127,19 @@ function EditarPefilColetor() {
                                                     type="text"
                                                     id="nameRazao"
                                                     name="nameRazao"
-                                                    onChange={(event) => setRazaoSocial(event.target.value)}
-                                                />{" "}
+                                                    // onChange={(event) => setRazaoSocial(event.target.value)}
+                                                    onChange={(event) => setSenha(event.target.value)}
+                                                />
                                                 <br />
                                                 <br />
                                                 <label htmlFor="email">E-mail:</label>
-                                                <input 
-                                                className="input" 
-                                                type="email" 
-                                                id="email" 
-                                                name="email" 
-                                                onChange={(event) => setEmail(event.target.value)}
-                                                /> 
+                                                <input
+                                                    className="input"
+                                                    type="email"
+                                                    id="email"
+                                                    name="email"
+                                                    onChange={(event) => setEmail(event.target.value)}
+                                                />
                                                 <br />
                                                 <br />
                                                 <label htmlFor="telefone">Telefone:</label>{" "}
@@ -117,46 +151,52 @@ function EditarPefilColetor() {
                                                     name="telefone"
                                                     placeholder="(11) 1234-5678"
                                                     // pattern="([0-9]){2} [0-9]{4}-[0-9]{4}"
-                                                    onChange={(event) => setTelefone(event.target.value)}
-                                                />{" "}
+                                                    // onChange={(event) => setTelefone(event.target.value)}
+                                                />
                                                 <br />
                                                 <br />
-                                                <label htmlFor="cnpj">CNPJ:</label> 
+                                                <label htmlFor="cnpj">CNPJ:</label>
                                                 <br />
-                                                <input 
-                                                className="input" 
-                                                type="text" 
-                                                id="cnpj" 
-                                                name="cnpj" 
-                                                onChange={(event) => setCnpj(event.target.value)}
-                                                /> 
+                                                <input
+                                                    className="input"
+                                                    type="text"
+                                                    id="cnpj"
+                                                    name="cnpj"
+                                                    // onChange={(event) => setCnpj(event.target.value)}
+                                                />
                                                 <br />
                                                 <br />
                                                 <label htmlFor="endereco">Endereço:</label>
-                                                <input 
-                                                className="input" 
-                                                type="text" 
-                                                id="endereco" 
-                                                name="endereco" 
-                                                onChange={(event) => setEndereco(event.target.value)}
+                                                <input
+                                                    className="input"
+                                                    type="text"
+                                                    id="endereco"
+                                                    name="endereco"
+                                                    // onChange={(event) => setEndereco(event.target.value)}
                                                 />
                                                 <br />
                                                 <br />
                                                 <div className="regiao">
                                                     <div>
                                                         <label htmlFor="endereco">Cidade:</label>
-                                                        <input 
-                                                        className="cidade" 
-                                                        type="text" 
-                                                        id="cidade" 
-                                                        name="cidade" 
-                                                        onChange={(event) => setCidade(event.target.value)}
+                                                        <input
+                                                            className="cidade"
+                                                            type="text"
+                                                            id="cidade"
+                                                            name="cidade"
+                                                            // onChange={(event) => setCidade(event.target.value)}
                                                         />
                                                     </div>
-                                                    <div>
+                                                    {/* <div>
                                                         <label htmlFor="selecao uf">UF:</label>
-                                                        <select className="selecao" name="uf" id="uf">
-                                                            <option value="selecionar">Selecione</option>
+                                                        <select 
+                                                        className="selecao" 
+                                                        name="uf" 
+                                                        id="uf"
+                                                        value={ uf }
+                                                        onChange={(event) => setUf(event.target.value)}
+                                                        >
+                                                            <option value="">Selecione</option>
                                                             <option value="acre">AC</option>
                                                             <option value="alagoas">AL</option>
                                                             <option value="amapa">AP</option>
@@ -184,18 +224,18 @@ function EditarPefilColetor() {
                                                             <option value="sergipe">SE</option>
                                                             <option value="tocantins">TO</option>
                                                         </select>
-                                                    </div>
+                                                    </div> */}
                                                     <br />
                                                     <br />
                                                 </div>
                                                 <label>CEP:</label>
                                                 {/* <label>Ex: 12345-678</label> */}
-                                                <input 
-                                                className="input" 
-                                                type="text" 
-                                                id="cep" 
-                                                placeholder='12345-000'
-                                                onChange={(event) => setCep(event.target.value)}
+                                                <input
+                                                    className="input"
+                                                    type="text"
+                                                    id="cep"
+                                                    placeholder='12345-000'
+                                                    // onChange={(event) => setCep(event.target.value)}
                                                 // required pattern="" 
                                                 />
                                                 <div className="btnVoltar">
