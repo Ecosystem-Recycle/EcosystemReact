@@ -15,6 +15,23 @@ function Login() {
     const[senhaCad, setSenhaCad] = useState<string>("")
     const [validacao, setValidacao] = useState<string>("")
     const [opcao, setOpcao] = useState<string>("")
+
+    function buscarUser(){
+        api.get("usuarios/email/" + email).then((responseEmail: any)=>{
+            // //Salva usuario[objetoU]
+            // secureLocalStorage.setItem("userID", responseEmail.data);
+            //Salva Email
+            secureLocalStorage.setItem("emailUser", responseEmail.data.email);
+            if(responseEmail.data.tipousuario.nome == "doador") {
+                navigate("/querodoarpt1")
+                // navigate("/querodoarpt1/" + response.data.user.id)
+            } else {
+                navigate("/buscarpublicacoes/")
+                // navigate("/buscarpublicacoes/" + response.data.user.id)
+            } 
+            navigate(0)
+        })      
+    }
     
 
     function fazerLogin(event:any) {
@@ -27,19 +44,8 @@ function Login() {
 
         api.post("login", usuario).then( (response) => {
              console.log(response)
-
-            secureLocalStorage.setItem("user", response.data)
-             return 
-            
-            if(response.data.user.tipo_usuario == "doador") {
-                navigate("/querodoarpt1")
-                // navigate("/querodoarpt1/" + response.data.user.id)
-            } else {
-                navigate("/buscarpublicacoes/")
-                // navigate("/buscarpublicacoes/" + response.data.user.id)
-            } 
-           
-            // navigate(0)
+            secureLocalStorage.setItem("user", response.data);
+            buscarUser();
 
         } )
 
