@@ -17,9 +17,19 @@ import imgBaterias from '../../assets/img/Vector.png'
 
 function QueroDoarParte1() {
   const [listarProdutos, setListarProdutos] = useState<any[]>([]);
-  // const [userData, setUserData] = useState<any>([{}]);
+
+  const [anuncioId, setAnuncioId] = useState<string>("");
+  const [userId, setUserId] = useState<any>({});
+  
+  // const userObj:string | number | boolean | object | null = secureLocalStorage.getItem("userId");
+  // const [userId, setUserId] = useState<any>({userObj});
+
+
+
+
+
   // const [userData, setUserData] = useState<any>({id: ""});
-  const [userEmail, setUserEmail] = useState<any>(secureLocalStorage.getItem("emailUser"));
+
   // const [getId, setGetId] = useState<string>("");
 
   const [ totalItens, setTotalItens ] = useState<number>(0);  
@@ -40,36 +50,16 @@ function QueroDoarParte1() {
 
   useEffect( () => {
     document.title = "Quero Doar - Ecosystem e Recycle"
-    // const value: any = secureLocalStorage.getItem("emailUser");
-    setUserEmail(secureLocalStorage.getItem("emailUser"));
 
-    // let idUser:any = secureLocalStorage.getItem("userID");
-    // setUserData(JSON.stringify(value));
+    // setUserEmail(secureLocalStorage.getItem("userEmail"));
+    const userObj:string | number | boolean | object | null = secureLocalStorage.getItem("userId");
+    setUserId(userObj)
+
+    // console.log('UserEmail "useState": ' + userEmail)
+    // console.log('UserID: [useState] ->' + userId.id)
     
-  
-
-    // if (value != undefined){
-    //   setUserData(value)
-    // }
-    // let userObjeto:any = secureLocalStorage.getItem("userID");
-    // let user:string = userObjeto.id
-    // setUserData(user);
-
-    //Caso tenha alugm produto essa array revebe os valores dos respectivos Objetos
-    // if(userData === undefined){
-      // alert('TA VAZIOOOOO')
-    // }else{
-      // setUserData(user);
-    // }
-    
-
-    // console.log('Userdata_ID: ' + userData.id)
-    console.log('Userdata: ' + userEmail)
-    // console.log('VAlue{}: ' +value)
-    // console.log('Value_ID: ' +value) 
-    // console.log('User: ' +user)
     carregarProduto();
-}, [] )
+}, [userId] )
   
   //Verificar o tipo de arquivo da Imagem
   function verificarCampoUpload( event: any ) {
@@ -106,72 +96,79 @@ function QueroDoarParte1() {
        
     
 
-    function cadastrarAnuncio(event: any) {
+    function cadastrarAnuncio(event: any):any {
       event.preventDefault();
+       
       if(listarProdutos.length <= 0){
         alert('Adicione ao menos 1 Produto na Lista')
         return
       }
-      
-      api.get("usuarios/email/" + userEmail).then((responseEmail: any)=>{
 
-        
-        // alert('FBuscarID => email: ' + userData)
-        if(responseEmail.data.id != null) {
+
+      
+      // api.get("usuarios/email/" + userEmail).then((responseEmail: any)=>{
+
+        console.log(userId.id)
+
+        // if(responseEmail.data.id != null) {
+        if(userId.id != null || userId.id != undefined ) {
+
           const formData = new FormData();
 
           formData.append("titulo", valoresInput2.titulo)
           formData.append("disponibilidade", valoresInput2.disponibilidade)
           formData.append("periodo", valoresInput2.periodo)
-          formData.append("usuario_id", responseEmail.data.id);
+          formData.append("usuario_id", userId.id);
           formData.append("tipo_status", "Aguardando Coleta");
           formData.append("imagem", foto);
           // formData.append("usuario_id", "33163c47-882e-44a7-85f9-6b74704ac0c0");
           // formData.append("hardSkills", JSON.stringify(skillsSelecionadas)) Caso tenha um array
           // formData.append("usuario_id", "05e3d70c-3233-421d-a8bd-3017bbff0abf");
           // alert("Esse é o ID: " +getId)
+          
           api.post("anuncio", formData).then( (responseAnuncio:any) => {
-            console.log(responseAnuncio)
-            alert("Anuncio criado com sucesso! >.< ")
-            limparCampos('anuncio');
 
-            //Apos receber o ID cadastrar os Produtos
-            
-            if(listarProdutos != null){
+           setAnuncioId(responseAnuncio.data.id)
 
-                listarProdutos.forEach((produto:any) => {
-                  //Atualiza a Lista com o novo produto
-                  const formDataProd = new FormData();
-                  formDataProd.append("nome", produto.nome)
-                  formDataProd.append("quantidade", (produto.quantidade).parseInt)
-                  formDataProd.append("anuncio_id", responseAnuncio.data.id)
-                  formDataProd.append("categoria_id", produto.categoria);
-                  console.log(produto)
-                  console.log(responseAnuncio.data.id)
-                  api.post("produto", formDataProd).then( (responseProduto:any) => {
-                    console.log(responseProduto)
-                    alert('Produto Cadastrado')
-                  }).catch( (error:any) => {
-                    console.log(error)
-                  })
-
-
-                });
-
-            }else{
-              alert('Cadastre ao menos 1 produto')
-            }
-
+           salvarProduto(responseAnuncio.data.id)
+           
           }).catch( (error:any) => {
               console.log(error)
           })
-            } else {
-                alert('ID não encontrado')
-            } 
-          })     
-      
+
+        } else {
+            alert('ID não encontrado')
+            return
+        } 
       
     } 
+
+    function salvarProduto(anuncioId:any){
+      //Apos receber o ID cadastrar os Produtos
+      alert("Chegamos poduto")
+      listarProdutos.forEach((produto:any) => {
+       //Atualiza a Lista com o novo produto
+       const formDataProd = new FormData();
+       
+       formDataProd.append("nome", produto.nome)
+       formDataProd.append("quantidade", produto.quantidade)
+       formDataProd.append("anuncio_id", anuncioId.id)
+       formDataProd.append("categoria_id", produto.categoria);
+       
+
+       console.log(produto)
+       console.log(anuncioId)
+
+
+       api.post("produto", formDataProd).then( (responseProduto:any) => {
+         console.log(responseProduto)
+         alert('Produto Cadastrado')
+       }).catch( (error:any) => {
+         console.log(error)
+       })
+       });
+       // limparCampos('anuncio');
+    }
   
 
 function carregarProduto(){
