@@ -24,12 +24,22 @@ function BuscarPublicacoes() {
     // }, [] )`
 
     const [anuncios, setAnuncios] = useState<any[]>([])
+    const [listarAnunciosDisponiveis, setListarAnunciosDisponiveis] = useState<any[]>(anuncios)
+    const [listarAnunciosFiltraodos, setListarAnunciosFiltrados] = useState<any[]>()
 
     useEffect(() => {
         document.title = "Buscar por Publicações"
 
         listarAnuncios()
     })
+
+    function retornoLista(event:any){
+        if (event.target.value === ""){
+            listarAnuncios()
+        } else {
+
+        }
+    }
 
     function listarAnuncios(){
         api.get("users")
