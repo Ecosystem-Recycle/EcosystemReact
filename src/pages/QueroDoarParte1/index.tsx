@@ -18,20 +18,8 @@ import imgBaterias from '../../assets/img/Vector.png'
 function QueroDoarParte1() {
   const [listarProdutos, setListarProdutos] = useState<any[]>([]);
 
-  const [anuncioId, setAnuncioId] = useState<string>("");
   const [userId, setUserId] = useState<any>({});
   
-  // const userObj:string | number | boolean | object | null = secureLocalStorage.getItem("userId");
-  // const [userId, setUserId] = useState<any>({userObj});
-
-
-
-
-
-  // const [userData, setUserData] = useState<any>({id: ""});
-
-  // const [getId, setGetId] = useState<string>("");
-
   const [ totalItens, setTotalItens ] = useState<number>(0);  
   const [ foto, setFoto ] = useState<any>();
 
@@ -68,6 +56,7 @@ function QueroDoarParte1() {
 
   function cadastrarProduto(event: any) {
         event.preventDefault();
+       
         let produtoLista = [];
         
         //Caso tenha alugm produto essa array revebe os valores dos respectivos Objetos
@@ -92,10 +81,6 @@ function QueroDoarParte1() {
         carregarProduto();
     }
 
-   
-       
-    
-
     function cadastrarAnuncio(event: any):any {
       event.preventDefault();
        
@@ -104,13 +89,6 @@ function QueroDoarParte1() {
         return
       }
 
-
-      
-      // api.get("usuarios/email/" + userEmail).then((responseEmail: any)=>{
-
-        console.log(userId.id)
-
-        // if(responseEmail.data.id != null) {
         if(userId.id != null || userId.id != undefined ) {
 
           const formData = new FormData();
@@ -120,22 +98,15 @@ function QueroDoarParte1() {
           formData.append("periodo", valoresInput2.periodo)
           formData.append("usuario_id", userId.id);
           formData.append("tipo_status", "Aguardando Coleta");
-          formData.append("imagem", foto);
-          // formData.append("usuario_id", "33163c47-882e-44a7-85f9-6b74704ac0c0");
-          // formData.append("hardSkills", JSON.stringify(skillsSelecionadas)) Caso tenha um array
-          // formData.append("usuario_id", "05e3d70c-3233-421d-a8bd-3017bbff0abf");
-          // alert("Esse é o ID: " +getId)
+          formData.append("imagem", foto);   
           
           api.post("anuncio", formData).then( (responseAnuncio:any) => {
-
-           setAnuncioId(responseAnuncio.data.id)
 
            salvarProduto(responseAnuncio.data.id)
            
           }).catch( (error:any) => {
               console.log(error)
           })
-
         } else {
             alert('ID não encontrado')
             return
@@ -145,29 +116,28 @@ function QueroDoarParte1() {
 
     function salvarProduto(anuncioId:any){
       //Apos receber o ID cadastrar os Produtos
-      alert("Chegamos poduto")
+
       listarProdutos.forEach((produto:any) => {
-       //Atualiza a Lista com o novo produto
-       const formDataProd = new FormData();
+      //Atualiza a Lista com o novo produto
+      const formDataProd = new FormData();
        
-       formDataProd.append("nome", produto.nome)
-       formDataProd.append("quantidade", produto.quantidade)
-       formDataProd.append("anuncio_id", anuncioId.id)
-       formDataProd.append("categoria_id", produto.categoria);
+      formDataProd.append("nome", produto.nome)
+      formDataProd.append("quantidade", produto.quantidade)
+      formDataProd.append("anuncio_id", anuncioId)
+      formDataProd.append("categoria", produto.categoria);
        
-
-       console.log(produto)
-       console.log(anuncioId)
-
-
-       api.post("produto", formDataProd).then( (responseProduto:any) => {
-         console.log(responseProduto)
-         alert('Produto Cadastrado')
-       }).catch( (error:any) => {
+        console.log(produto)
+        console.log(anuncioId)
+      api.post("produto/model", formDataProd).then( (responseProduto:any) => {
+        console.log(responseProduto)
+        alert('Produto Cadastrado')
+      }).catch( (error:any) => {
          console.log(error)
-       })
-       });
-       // limparCampos('anuncio');
+      })
+      });
+
+      limparCampos('anuncio');
+      limparLista();
     }
   
 
@@ -204,6 +174,7 @@ function limparCampos(qualTipo:string){
       disponibilidade: "",
       periodo: ''
     });
+    setFoto("");
   }else {
      //Limpa os Campos produtoLista
      setFormValues({
