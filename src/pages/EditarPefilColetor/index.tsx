@@ -13,20 +13,22 @@ function EditarPefilColetor() {
     
 
 
-    const [senha, setSenha] = useState<string>("")
     const [nomeEmpresa, setNomeEmpresa] = useState<string>("")
-    // const [razaoSocial, setRazaoSocial] = useState<string>("")
+    const [razaoSocial, setRazaoSocial] = useState<string>("")
     const [email, setEmail] = useState<string>("")
-    // const [telefone, setTelefone] = useState<string>("")
-    // const [cnpj, setCnpj] = useState<string>("")
-    // const [endereco, setEndereco] = useState<string>("")
-    // const [cidade, setCidade] = useState<string>("")
-    // const [uf, setUf] = useState<string>("")
-    // const [cep, setCep] = useState<string>("")
+    const [senha, setSenha] = useState<string>("")
+    const [telefone, setTelefone] = useState<string>("")
+    const [cnpj, setCnpj] = useState<string>("")
+    const [endereco, setEndereco] = useState<string>("")
+    const [cidade, setCidade] = useState<string>("")
+    const [uf, setUf] = useState<string>("")
+    const [cep, setCep] = useState<string>("")
 
 
-    // const { idUsuario } = useParams()
-    // const [nome, setNome] = useState<string>("")
+    const { idUsuario } = useParams()
+    const [nome, setNome] = useState<string>("")
+
+
 
     // useEffect(() => {
     //     document.title = "perfil de " + nome
@@ -45,8 +47,6 @@ function EditarPefilColetor() {
     //         console.log(error)
     //     })
     // }
-
-
 
 
     function msgSalvarPerfil() {
@@ -72,16 +72,16 @@ function EditarPefilColetor() {
         // return
 
 
-        formData.append("password", senha)
         formData.append("nome_empresa", nomeEmpresa)
-        // formData.append("razao_social", razaoSocial)
+        formData.append("razao_social", razaoSocial)
         formData.append("email", email)
-        // formData.append("telefone", telefone)
-        // formData.append("cnpj", cnpj)
-        // formData.append("endereco", endereco)
-        // formData.append("cidade", cidade)
-        // formData.append("uf", uf)
-        // formData.append("cep", cep)
+        formData.append("password", senha)
+        formData.append("telefone", telefone)
+        formData.append("cnpj", cnpj)
+        formData.append("endereco", endereco)
+        formData.append("cidade", cidade)
+        formData.append("uf", uf)
+        formData.append("cep", cep)
 
         api.post("users", formData)
         .then((response) => {
@@ -127,8 +127,7 @@ function EditarPefilColetor() {
                                                     type="text"
                                                     id="nameRazao"
                                                     name="nameRazao"
-                                                    // onChange={(event) => setRazaoSocial(event.target.value)}
-                                                    onChange={(event) => setSenha(event.target.value)}
+                                                    onChange={(event) => setRazaoSocial(event.target.value)}
                                                 />
                                                 <br />
                                                 <br />
@@ -142,6 +141,16 @@ function EditarPefilColetor() {
                                                 />
                                                 <br />
                                                 <br />
+                                                <label htmlFor="senha">Password</label>
+                                                <input
+                                                    className="input"
+                                                    type="password"
+                                                    id="senha"
+                                                    name="senha"
+                                                    onChange={(event) => setSenha(event.target.value)}
+                                                />
+                                                <br />
+                                                <br />
                                                 <label htmlFor="telefone">Telefone:</label>{" "}
                                                 <br />
                                                 <input
@@ -151,7 +160,7 @@ function EditarPefilColetor() {
                                                     name="telefone"
                                                     placeholder="(11) 1234-5678"
                                                     // pattern="([0-9]){2} [0-9]{4}-[0-9]{4}"
-                                                    // onChange={(event) => setTelefone(event.target.value)}
+                                                    onChange={(event) => setTelefone(event.target.value)}
                                                 />
                                                 <br />
                                                 <br />
@@ -162,7 +171,7 @@ function EditarPefilColetor() {
                                                     type="text"
                                                     id="cnpj"
                                                     name="cnpj"
-                                                    // onChange={(event) => setCnpj(event.target.value)}
+                                                    onChange={(event) => setCnpj(event.target.value)}
                                                 />
                                                 <br />
                                                 <br />
@@ -172,7 +181,7 @@ function EditarPefilColetor() {
                                                     type="text"
                                                     id="endereco"
                                                     name="endereco"
-                                                    // onChange={(event) => setEndereco(event.target.value)}
+                                                    onChange={(event) => setEndereco(event.target.value)}
                                                 />
                                                 <br />
                                                 <br />
@@ -184,10 +193,10 @@ function EditarPefilColetor() {
                                                             type="text"
                                                             id="cidade"
                                                             name="cidade"
-                                                            // onChange={(event) => setCidade(event.target.value)}
+                                                            onChange={(event) => setCidade(event.target.value)}
                                                         />
                                                     </div>
-                                                    {/* <div>
+                                                    <div>
                                                         <label htmlFor="selecao uf">UF:</label>
                                                         <select 
                                                         className="selecao" 
@@ -224,7 +233,7 @@ function EditarPefilColetor() {
                                                             <option value="sergipe">SE</option>
                                                             <option value="tocantins">TO</option>
                                                         </select>
-                                                    </div> */}
+                                                    </div>
                                                     <br />
                                                     <br />
                                                 </div>
@@ -235,7 +244,7 @@ function EditarPefilColetor() {
                                                     type="text"
                                                     id="cep"
                                                     placeholder='12345-000'
-                                                    // onChange={(event) => setCep(event.target.value)}
+                                                    onChange={(event) => setCep(event.target.value)}
                                                 // required pattern="" 
                                                 />
                                                 <div className="btnVoltar">

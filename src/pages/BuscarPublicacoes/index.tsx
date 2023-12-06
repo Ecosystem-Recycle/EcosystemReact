@@ -22,9 +22,28 @@ function BuscarPublicacoes() {
         // setTeste2(JSON.parse(secureLocalStorage.getItem("user")))
 
     // }, [] )`
-    const {idUsuario} = useParams()
 
-    const [nome, setNome] = useState<string>("" )
+    const [anuncios, setAnuncios] = useState<any[]>([])
+
+    useEffect(() => {
+        document.title = "Buscar por Publicações"
+
+        listarAnuncios()
+    })
+
+    function listarAnuncios(){
+        api.get("users")
+        .then((response:any) => {
+            console.log(response.data)
+            setAnuncios(response.data)
+        })
+    }
+
+
+
+    // const {idUsuario} = useParams()
+
+    // const [nome, setNome] = useState<string>("" )
 
     // let teste = secureLocalStorage.getItem("user")
     // console.log(teste)
@@ -33,24 +52,29 @@ function BuscarPublicacoes() {
     // testeNovo=(JSON.parse(teste))
 
     
-    useEffect(() => {
-        document.title = "perfil de " + nome 
 
-        buscarUsuarioPorID()   
+
+
+//Abaixo um teste realizado para validar a busca de dados com base do id do cliente logado. Processo realizado sem sucesso.
+
+    // useEffect(() => {
+    //     document.title = "perfil de " + nome 
+
+    //     buscarUsuarioPorID()   
 
         
-    }, [])
+    // }, [])
 
-    function buscarUsuarioPorID(){
-        api.get("users/" + idUsuario).then((response:any) => {
-            // setNome(response.data.nome)
-            // console.log(nome)
-            return
+    // function buscarUsuarioPorID(){
+    //     api.get("users/" + idUsuario).then((response:any) => {
+    //         // setNome(response.data.nome)
+    //         // console.log(nome)
+    //         return
 
-        } ).catch((error) => {
-            console.log(error)
-        }) 
-    }
+    //     } ).catch((error) => {
+    //         console.log(error)
+    //     }) 
+    // }
 
     return (
         <>
@@ -68,6 +92,7 @@ function BuscarPublicacoes() {
                             <CardBuscarPublicacoes
                                     src={image12}
                                     alt={""}
+                                    titulo={"teste"}
                                     />
                                      <CardBuscarPublicacoes
                                     src={image9}
