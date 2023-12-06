@@ -24,8 +24,11 @@ function BuscarPublicacoes() {
     // }, [] )`
 
     const [anuncios, setAnuncios] = useState<any[]>([])
+
+    const [ teste, setTeste ] = useState<string>("")
+
     const [listarAnunciosDisponiveis, setListarAnunciosDisponiveis] = useState<any[]>(anuncios)
-    const [listarAnunciosFiltraodos, setListarAnunciosFiltrados] = useState<any[]>()
+
 
     useEffect(() => {
         document.title = "Buscar por Publicações"
@@ -37,7 +40,7 @@ function BuscarPublicacoes() {
         if (event.target.value === ""){
             listarAnuncios()
         } else {
-
+            setTeste(event.target.value)
         }
     }
 
