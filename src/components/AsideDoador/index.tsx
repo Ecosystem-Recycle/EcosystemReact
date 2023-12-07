@@ -11,7 +11,7 @@ function AsideDoador(props: any) {
                     <Link to="/querodoarpt1">quero doar</Link>
                 </li>
                 <li className={props.idSeletor == 2 ? "contorno" : ""}>
-                    <Link to="/minhasdoacoes">visualizar minhas doações</Link>
+                    <Link to="/minhasdoacoes">minhas publicações</Link>
                 </li>
                 <li className={props.idSeletor == 3 ? "contorno" : ""}>
                     <Link to="/editarperfildoador">editar perfil</Link>

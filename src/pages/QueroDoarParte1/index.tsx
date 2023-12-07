@@ -1,7 +1,7 @@
 import './style.css'
 
 import api from "../../utils/api"
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import secureLocalStorage from 'react-secure-storage'
 
@@ -16,6 +16,7 @@ import imgBaterias from '../../assets/img/Vector.png'
 
 
 function QueroDoarParte1() {
+  const navigate = useNavigate()
   const [listarProdutos, setListarProdutos] = useState<any[]>([]);
 
   const [userId, setUserId] = useState<any>({});
@@ -130,14 +131,17 @@ function QueroDoarParte1() {
         console.log(anuncioId)
       api.post("produto/model", formDataProd).then( (responseProduto:any) => {
         console.log(responseProduto)
-        alert('Produto Cadastrado')
+        
       }).catch( (error:any) => {
          console.log(error)
       })
       });
-
+      
       limparCampos('anuncio');
       limparLista();
+      alert('Anuncio Registrado com sucesso')
+      navigate(0);
+      
     }
   
 
@@ -209,7 +213,7 @@ function limparCampos(qualTipo:string){
                   <form onSubmit={ cadastrarProduto } className="cad_formulario" method="post">
                     <div className="camposDuplo">
                       <div className="campo-form">
-                        <label htmlFor="selectCategoria">Selecione uma categoria:</label>
+                        <label htmlFor="selectCategoria">Categoria:</label>
                             <select 
                               className="selectCategoria"  
                               name="selectCategoria" 
@@ -219,14 +223,14 @@ function limparCampos(qualTipo:string){
                              
                               value={formValues.categoria}
                               onChange={ (event) =>  setFormValues({...formValues, categoria: event.target.value}) }  
-                            >   <option selected disabled value="">Selecione</option>
+                            >   <option disabled value="">Selecione</option>
                                 <option value="Informatica">Informatica</option>
                                 <option value="Telefonia">Telefonia</option>
                                 <option value="Peças e Acessorios">Peças e Acessorios</option>
                             </select>
                       </div>
                       <div className="campo-form">
-                        <label htmlFor="nomeProduto">Descrição do produto:</label>
+                        <label htmlFor="nomeProduto">Descrição:</label>
                         <input 
                           value={formValues.nome}
                           type="text" 
@@ -238,7 +242,7 @@ function limparCampos(qualTipo:string){
                         />
                       </div>
                       <div className="campo-form">
-                        <label htmlFor="quantidadeProduto">Informe a quantidade:</label>
+                        <label htmlFor="quantidadeProduto">Quantidade:</label>
                         <input 
                           value={formValues.quantidade}
                           type="text" 
@@ -314,7 +318,7 @@ function limparCampos(qualTipo:string){
                       </div>
                       <div className="camposDuplo">
                         <div className="campo-form">
-                          <label htmlFor="horarioDisponivel">Disponibilidade para retirada:</label>
+                          <label htmlFor="horarioDisponivel">Data de retirada:</label>
                           <input 
                             type="text" 
                             id='horarioDisponivel' 
@@ -325,7 +329,7 @@ function limparCampos(qualTipo:string){
                            />
                         </div>
                         <div className="campo-form">
-                          <label htmlFor="selectPeriodo">Selecione o periodo:</label>
+                          <label htmlFor="selectPeriodo">Período:</label>
                           <select 
                             className="selectPeriodo"  
                             name="selectPeriodo" 
@@ -336,7 +340,7 @@ function limparCampos(qualTipo:string){
                             value={valoresInput2.periodo}
                             onChange={ (event) =>  setValoresInput2({...valoresInput2, periodo: event.target.value}) }
                             >
-                              <option disabled value="">Selecione</option>
+                              <option disabled value="">Selecione:</option>
                               <option value="Manha">Manhã</option>
                               <option value="Tarde">Tarde</option>
                               <option value="Noite">Noite</option>

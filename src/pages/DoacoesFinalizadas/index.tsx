@@ -21,22 +21,22 @@ function DoacoesFinalizadas() {
 
                         <div className="menu_Direito">
                             <div className="title">
-                                <h2>minhas doações!</h2>
+                                <h2>minhas publicações!</h2>
                                 <p>Visualize todas as suas publicações aqui.</p>
                             </div>
                             <div>
                                 <div className="links_pags">
                                     {/* <a href="../Tela_Minhas_Doacoes/index.html">doações ativas</a> */}
-                                    <Link to="/minhasdoacoes">doações ativas</Link>
+                                    <Link to="/minhasdoacoes">publicações ativas</Link>
                                     <span>|</span>
                                     {/* <a href="../Tela_Doacoes_Finalizadas/index.html">
                                         doações finalizadas
                                     </a> */}
-                                    <Link to="/doacoesfinalizadas">doações finalizadas</Link>
+                                    <Link to="/doacoesfinalizadas">publicações finalizadas</Link>
                                 </div>
                                 <div className="historic_cards">
                                     <div className="Conteudo_Cards">
-                                        <span>Você não possui doações finalizadas no sistema</span>
+                                        <span>Você não possui publicações finalizadas no sistema</span>
                                     </div>
                                     <div className="imgCadeado">
                                         <img src={imgCadeado} alt="Imagem de cadeado" />
