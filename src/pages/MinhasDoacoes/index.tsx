@@ -15,8 +15,11 @@ import api from '../../utils/api'
 function MinhasDoacoes() {
 
     const [userId] = useState<any>(secureLocalStorage.getItem("userId"));
-    // const [dadosAnuncio, setDadosAnuncio] = useState<any[]>([]);
+    const [produtolista, setProdutoLista] = useState<any[]>([]);
     let dadosAnuncio:any = []
+
+
+    
     
 
     function msgExcluirDoacao():void{
@@ -25,94 +28,76 @@ function MinhasDoacoes() {
 
     useEffect( () => {
         document.title = "Minhas Publicações - Ecosystem e Recycle"
-
-        //UseState pega Objeto Usuario Logado
-        // setUserId(userObj)
-        //declaração Vazia do Dados do anuncio afim de dar tempo para setar
-        //se State usuario obtiver o ID do usuario
+        if(produtolista.length==0){
+            carregarProdutos()
+        }
         buscarPublicacoes()
-
-        // if(dadosAnuncio.length  ){
-        //     alert(dadosAnuncio[0].id)
-        // }   
-
-        console.log('UserID: [useState] -> ' + dadosAnuncio.length)
-    }, [ ] )
-    //Ou UseEffect para atualziar os dados do anuncio
+    }, [] )
+    //Ou UseEffect para atualziar os dados do 
+    useEffect(() => { // esse é responsável em pegar as alterações
+        console.log(produtolista);
+      }, [produtolista]); // pela configuração no `array` com o nome da variável
+    
     // useEffect(() => { console.log(dadosAnuncio) }, [dadosAnuncio])
 
-    const stringToUuid = (str:any) => {
-        str = str.replace('-', '');
-        return 'xxxxxxxx-xxxx-4xxx-xxxx-xxxxxxxxxxxx'.replace(/[x]/g, function(c, p) {
-          return str[p % str.length];
-        });
-      }
-      
-
+    function carregarProdutos(){
+        api.get("/produto").then((resListaProduto: any)=>{
+            let listaProdutos:any = []
+            listaProdutos = resListaProduto.data
+            setProdutoLista(listaProdutos);
+        })
+    }
 
     function buscarPublicacoes(){
-            
-                 //GET todos Anuncios
+       
+
+
+        //GET todos Anuncios
         api.get("/anuncio").then((responseAnuncios: any)=>{
             
 
             if(dadosAnuncio.length==0){
                 //pra cada anuncio total obtido
+
                 let indexArray:number = 0
                 responseAnuncios.data.forEach((anuncio:any) => {
                     //Verifica se ID do Anuncio = Id do usuarioLogado
                     
                     if(anuncio.usuario_doador.id == userId.id){
-                        let anuncioObj:any = anuncio;
+                            // let anuncioObj:any = anuncio;
                             //caso positivo adiciona o Anuncio no State de Filtro
-                            // dadosAnuncio=[...dadosAnuncio, anuncioObj];
-                            dadosAnuncio.push(anuncioObj);
+                            dadosAnuncio.push(anuncio);
                             
                             
-                            api.get("/produto/anuncio/"+dadosAnuncio[indexArray].id).then((resListaProduto: any)=>{
-                                console.log(dadosAnuncio[indexArray].id)
-                                let produto:any = resListaProduto.data
                                 
-                                dadosAnuncio[indexArray].produto = produto;
-                                indexArray++;
-                            })
-
-                            // let produto = [{
-                            //     "categoria": "bolo",
-                            //     "nome": "banana", 
-                            //     "quantidade": 2
-                            //   },
-                            //   {
-                            //     "categoria": "bolo",
-                            //     "nome": "banana", 
-                            //     "quantidade": 2
-                            //   },
-                            //   {
-                            //     "categoria": "bolo",
-                            //     "nome": "banana", 
-                            //     "quantidade": 2
-                            //   }
-                            // ];
-
                             
-                              
+
+                                
+                                // dadosAnuncio[indexArray].produto = produto
+
+                                
+                        
                     }
                 });
-            
+
+                // let teste:any = []
+                // dadosAnuncio.forEach((itemAnuncio:any) => {
+
+                //     api.get("/produto/anuncio/"+itemAnuncio.id).then((resListaProduto: any)=>{
+
+                //                 let produto:Array<any> = resListaProduto.data
+                //                 teste.push(itemAnuncio);
+                //                 teste[indexArray].produto = produto
+                //                 // setAnuncioLista(teste);
+                //                 indexArray++; 
+                //     })
+                        
+                // });
+
                 console.log(dadosAnuncio)
+                console.log(produtolista[0].anuncio.titulo)               
             }
         }) 
-        
-        
-
-        
-        // api.get("/produto/anuncio/" + anuncioObj.id).then((responseProdutos: any)=>{
-        //     if(responseProdutos){
-        //     alert(responseProdutos.id);
-        //     alert(responseProdutos.nome);
-        //     alert(responseProdutos.quantidade);
-        //     }
-        // });
     }
 
     return (
@@ -138,6 +123,18 @@ function MinhasDoacoes() {
                             </div>
                             <div className="historic_cards">
                                 <div className="Conteudo_Cards">
+                                    {/* <div className="cards">
+                                        <CardDoador 
+                                            title={"Celulares antigos"}
+                                            imagem={imgCard001}
+                                            dataPubliq={"30/03/2023"}
+                                            totalItens={39}
+                                            corStatus={"circle_Yellow"}
+                                            status={"Aguardando agendamento com coletor"}
+                                        />
+                                    </div> */}
+
+
                                     <div className="cards">
                                         <CardDoador 
                                             title={"Celulares antigos"}
@@ -148,26 +145,7 @@ function MinhasDoacoes() {
                                             status={"Aguardando agendamento com coletor"}
                                         />
                                     </div>
-                                    <div className="cards">
-                                        <CardDoador 
-                                            title={"Celulares diversos"}
-                                            imagem={imgCard002}
-                                            dataPubliq={"25/03/2023"}
-                                            totalItens={4}
-                                            corStatus={"circle_Orange"}
-                                            status={"Publicação agendada! 15/05/23 - 10:00hrs"}
-                                        />
-                                    </div>
-                                    <div className="cards">
-                                        <CardDoador 
-                                            title={"Celulares diversos"}
-                                            imagem={imgCard002}
-                                            dataPubliq={"25/03/2023"}
-                                            totalItens={4}
-                                            corStatus={"circle_Orange"}
-                                            status={"Publicação agendada! 15/05/23 - 10:00hrs"}
-                                        />
-                                    </div>
+                                   
                                 </div>
                                 {/* <div className="btnVoltar">
                                     <a href="#" onClick={ history.back }>
