@@ -15,17 +15,17 @@ function BuscarPublicacoes() {
     // useEffect
     // let teste = (secureLocalStorage.getItem("user"))
     // const [teste2, setTeste2 ] = useState<any[]>([])
-     //const [teste2, setTeste2] = useState<string>("")
-    
+    //const [teste2, setTeste2] = useState<string>("")
+
     // useEffect( () => {
-        // document.title = "Quero Doar - Ecosystem e Recycle"
-        // setTeste2(JSON.parse(secureLocalStorage.getItem("user")))
+    // document.title = "Quero Doar - Ecosystem e Recycle"
+    // setTeste2(JSON.parse(secureLocalStorage.getItem("user")))
 
     // }, [] )`
 
     const [anuncios, setAnuncios] = useState<any[]>([])
 
-    const [ teste, setTeste ] = useState<string>("")
+    const [teste, setTeste] = useState<string>("")
 
     const [listarAnunciosDisponiveis, setListarAnunciosDisponiveis] = useState<any[]>(anuncios)
 
@@ -34,22 +34,22 @@ function BuscarPublicacoes() {
         document.title = "Buscar por Publicações"
 
         listarAnuncios()
-    })
+    }, [])
 
-    function retornoLista(event:any){
-        if (event.target.value === ""){
-            listarAnuncios()
-        } else {
-            setTeste(event.target.value)
-        }
-    }
+    // function retornoLista(event:any){
+    //     if (event.target.value === ""){
+    //         listarAnuncios()
+    //     } else {
+    //         setTeste(event.target.value)
+    //     }
+    // }
 
-    function listarAnuncios(){
+    function listarAnuncios() {
         api.get("users")
-        .then((response:any) => {
-            console.log(response.data)
-            setAnuncios(response.data)
-        })
+            .then((response: any) => {
+                console.log(response.data)
+                setAnuncios(response.data)
+            })
     }
 
 
@@ -64,18 +64,18 @@ function BuscarPublicacoes() {
     // let testeNovo
     // testeNovo=(JSON.parse(teste))
 
-    
 
 
 
-//Abaixo um teste realizado para validar a busca de dados com base do id do cliente logado. Processo realizado sem sucesso.
+
+    //Abaixo um teste realizado para validar a busca de dados com base do id do cliente logado. Processo realizado sem sucesso.
 
     // useEffect(() => {
     //     document.title = "perfil de " + nome 
 
     //     buscarUsuarioPorID()   
 
-        
+
     // }, [])
 
     // function buscarUsuarioPorID(){
@@ -102,23 +102,34 @@ function BuscarPublicacoes() {
                                 <p>Veja todas as publicações ativas mais próximas de você!</p>
                             </div>
                             {/* <div> */}
+                            {anuncios.map((anuncio: any, index: number) => {
+                                return <div key={index}>
+                                    <CardBuscarPublicacoes
+                                        titulo={anuncio.nome}
+                                        data={anuncio.nome}
+                                        quantidade={anuncio.nome}
+                                        descricao={anuncio.nome}
+                                        cidade={anuncio.nome}
+                                    />
+                                </div>
+                            })}
                             <CardBuscarPublicacoes
-                                    src={image12}
-                                    alt={""}
-                                    titulo={"teste"}
-                                    />
-                                     <CardBuscarPublicacoes
-                                    src={image9}
-                                    alt={""}
-                                    />
-                                       <CardBuscarPublicacoes
-                                    src={image8}
-                                    alt={""}
-                                    />
-                                        <CardBuscarPublicacoes
-                                    src={image15}
-                                    alt={""}
-                                    />
+                                src={image12}
+                                alt={""}
+                                titulo={"teste"}
+                            />
+                            <CardBuscarPublicacoes
+                                src={image9}
+                                alt={""}
+                            />
+                            <CardBuscarPublicacoes
+                                src={image8}
+                                alt={""}
+                            />
+                            <CardBuscarPublicacoes
+                                src={image15}
+                                alt={""}
+                            />
                             {/* </div> */}
                         </div>
                     </div>
