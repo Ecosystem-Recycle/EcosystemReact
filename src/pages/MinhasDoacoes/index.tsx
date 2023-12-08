@@ -9,13 +9,14 @@ import imgCard002 from '../../assets/img/img_card_002.png'
 import { useEffect, useState } from 'react'
 import secureLocalStorage from 'react-secure-storage'
 import api from '../../utils/api'
-
+//Ate sumir
 
 
 function MinhasDoacoes() {
 
-    const [userId, setUserId] = useState<any>({});
-    const [dadosAnuncio, setDadosAnuncio] = useState<any[]>([]);
+    const [userId] = useState<any>(secureLocalStorage.getItem("userId"));
+    // const [dadosAnuncio, setDadosAnuncio] = useState<any[]>([]);
+    let dadosAnuncio:any = []
     
 
     function msgExcluirDoacao():void{
@@ -24,40 +25,94 @@ function MinhasDoacoes() {
 
     useEffect( () => {
         document.title = "Minhas Publicações - Ecosystem e Recycle"
+
         //UseState pega Objeto Usuario Logado
-        const userObj:string | number | boolean | object | null = secureLocalStorage.getItem("userId");
-        setUserId(userObj)
+        // setUserId(userObj)
         //declaração Vazia do Dados do anuncio afim de dar tempo para setar
-        setDadosAnuncio([]);
-        setDadosAnuncio([]);
         //se State usuario obtiver o ID do usuario
-        if(userId.id){
-            buscarPublicacoes()
-        }
+        buscarPublicacoes()
 
-        console.log('UserID: [useState] -> ' + userId.id)
-    }, [ userId] )
+        // if(dadosAnuncio.length  ){
+        //     alert(dadosAnuncio[0].id)
+        // }   
+
+        console.log('UserID: [useState] -> ' + dadosAnuncio.length)
+    }, [ ] )
     //Ou UseEffect para atualziar os dados do anuncio
-    useEffect(() => { console.log(dadosAnuncio) }, [dadosAnuncio])
+    // useEffect(() => { console.log(dadosAnuncio) }, [dadosAnuncio])
 
+    const stringToUuid = (str:any) => {
+        str = str.replace('-', '');
+        return 'xxxxxxxx-xxxx-4xxx-xxxx-xxxxxxxxxxxx'.replace(/[x]/g, function(c, p) {
+          return str[p % str.length];
+        });
+      }
+      
 
 
     function buscarPublicacoes(){
-        //GET todos Anuncios
+            
+                 //GET todos Anuncios
         api.get("/anuncio").then((responseAnuncios: any)=>{
             
-            //pra cada anuncio total obtido
-            responseAnuncios.data.forEach((anuncio:any) => {
-                //Verifica se ID do Anuncio = Id do usuarioLogado
-                if(anuncio.usuario_doador.id == userId.id && dadosAnuncio.length == 0 ){
-                    let anuncioObj:any = anuncio;
-                        //caso positivo adiciona o Anuncio no State de Filtro
-                        setDadosAnuncio((dadosAnuncio) => [...dadosAnuncio, anuncioObj]);
-                }
-            });
+
+            if(dadosAnuncio.length==0){
+                //pra cada anuncio total obtido
+                let indexArray:number = 0
+                responseAnuncios.data.forEach((anuncio:any) => {
+                    //Verifica se ID do Anuncio = Id do usuarioLogado
+                    
+                    if(anuncio.usuario_doador.id == userId.id){
+                        let anuncioObj:any = anuncio;
+                            //caso positivo adiciona o Anuncio no State de Filtro
+                            // dadosAnuncio=[...dadosAnuncio, anuncioObj];
+                            dadosAnuncio.push(anuncioObj);
+                            
+                            
+                            api.get("/produto/anuncio/"+dadosAnuncio[indexArray].id).then((resListaProduto: any)=>{
+                                console.log(dadosAnuncio[indexArray].id)
+                                let produto:any = resListaProduto.data
+                                
+                                dadosAnuncio[indexArray].produto = produto;
+                                indexArray++;
+                            })
+
+                            // let produto = [{
+                            //     "categoria": "bolo",
+                            //     "nome": "banana", 
+                            //     "quantidade": 2
+                            //   },
+                            //   {
+                            //     "categoria": "bolo",
+                            //     "nome": "banana", 
+                            //     "quantidade": 2
+                            //   },
+                            //   {
+                            //     "categoria": "bolo",
+                            //     "nome": "banana", 
+                            //     "quantidade": 2
+                            //   }
+                            // ];
+
+                            
+                              
+                    }
+                });
             
-            console.log(dadosAnuncio)
-        })      
+                console.log(dadosAnuncio)
+            }
+        }) 
+        
+        
+
+        
+        // api.get("/produto/anuncio/" + anuncioObj.id).then((responseProdutos: any)=>{
+        //     if(responseProdutos){
+        //     alert(responseProdutos.id);
+        //     alert(responseProdutos.nome);
+        //     alert(responseProdutos.quantidade);
+        //     }
+        // });
     }
 
     return (

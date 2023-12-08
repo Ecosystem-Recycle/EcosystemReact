@@ -236,7 +236,7 @@ function limparCampos(qualTipo:string){
                           type="text" 
                           name='nomeProduto'
                           id='nomeProduto'
-                          placeholder='Digite o nome & marca do produto'
+                          placeholder='Descrição. Ex: Celular - Marca'
                           required
                           onChange={ (e) =>  setFormValues({...formValues, nome: e.target.value}) }  
                         />
