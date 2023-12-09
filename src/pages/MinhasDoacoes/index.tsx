@@ -31,14 +31,17 @@ function MinhasDoacoes() {
         if(produtolista.length==0){
             carregarProdutos()
         }
-        buscarPublicacoes()
+        if(dadosAnuncio.length>0){
+            buscarPublicacoes()
+        }
     }, [] )
-    //Ou UseEffect para atualziar os dados do 
-    useEffect(() => { // esse é responsável em pegar as alterações
-        console.log(produtolista);
-      }, [produtolista]); // pela configuração no `array` com o nome da variável
     
-    // useEffect(() => { console.log(dadosAnuncio) }, [dadosAnuncio])
+    useEffect(() => {
+        console.log(produtolista);
+        console.log(userId);
+      }, [produtolista]); 
+    
+
 
     function carregarProdutos(){
         api.get("/produto").then((resListaProduto: any)=>{
@@ -49,14 +52,11 @@ function MinhasDoacoes() {
     }
 
     function buscarPublicacoes(){
-       
-
-
         //GET todos Anuncios
         api.get("/anuncio").then((responseAnuncios: any)=>{
             
 
-            if(dadosAnuncio.length==0){
+
                 //pra cada anuncio total obtido
 
                 let indexArray:number = 0
@@ -67,16 +67,8 @@ function MinhasDoacoes() {
                             // let anuncioObj:any = anuncio;
                             //caso positivo adiciona o Anuncio no State de Filtro
                             dadosAnuncio.push(anuncio);
-                            
-                            
-                                
-                            
 
-                                
                                 // dadosAnuncio[indexArray].produto = produto
-
-                                
-                        
                     }
                 });
 
@@ -94,10 +86,10 @@ function MinhasDoacoes() {
                         
                 // });
 
-                console.log(dadosAnuncio)
-                console.log(produtolista[0].anuncio.titulo)               
-            }
-        }) 
+                // console.log(dadosAnuncio)
+                // console.log(produtolista[0].anuncio.titulo)               
+            })
+
     }
 
     return (
