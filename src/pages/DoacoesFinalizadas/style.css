@@ -45,12 +45,14 @@
     font-weight: 900;
     text-transform: capitalize;
     color: var(--cinza);
+    transition: 0.35s;
 }
 
 #mainDoacoesFinalizadas .links_pags span {
     font-size: 22px;
     font-family: var(--font1);
     color: var(--cinza);
+    padding: 0 5px;
 }
 
 
@@ -58,6 +60,14 @@
     border: 3px solid var(--roxo);
     color: var(--roxo);
 }
+
+#mainDoacoesFinalizadas .links_pags a:nth-child(1):hover{
+    border: 1px solid var(--verde2);
+    background-color: var(--verde2);
+    color: white;
+    transform: scale(0.5);
+}
+
 
 
 #mainDoacoesFinalizadas .historic_cards {
@@ -70,21 +80,17 @@
 
 
 #mainDoacoesFinalizadas .Conteudo_Cards {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     justify-items: center;
-    align-items: center;
-    font-family: var(--font2);
-    font-size: 40px;
-    text-align: center;
-    color: var(--cinza);
-    font-weight: 900;
-    padding: 200px 100px 60px 100px;
+    column-gap: 1.2rem;
+    row-gap: 3rem;
+    margin-bottom: 100px;
 }
 
-#mainDoacoesFinalizadas .imgCadeado {
-    display: flex;
-    justify-content: center;
-    padding-bottom: 50px;
+#mainDoacoesFinalizadas .Conteudo_Cards:hover> :not(:hover) {
+    opacity: .4;
+    transform: scale(0.9);
 }
 
 
@@ -126,13 +132,6 @@
         row-gap: 3rem;
     }
 
-    #mainDoacoesFinalizadas .Conteudo_Cards {
-        display: grid;
-        grid-template-columns: 1fr;
-        justify-items: center;
-        row-gap: 5rem;
-        margin-bottom: 100px;
-    }
 
     #mainDoacoesFinalizadas .links_pags a {
         font-size: 14px;
@@ -143,39 +142,15 @@
         width: 95%;
     }
 
-    #mainDoacoesFinalizadas .Conteudo_Cards {
-        font-size: 35px;
-    }
-
     #mainDoacoesFinalizadas .historic_cards {
         display: flex;
         flex-direction: column;
         align-items: center;
     }
 
-    #mainDoacoesFinalizadas .imgCadeado {
-        width: 90%;
-        align-self: center;
-    }
-
-    #mainDoacoesFinalizadas .imgCadeado>img {
-        width: 30%;
-    }
-
-    #mainDoacoesFinalizadas .Conteudo_Cards {
-        padding: 100px 100px 50px 100px;
-        margin: 20px;
-    }
-
+    
 }
 
-@media screen and (max-width: 727px) {
-    #mainDoacoesFinalizadas .Conteudo_Cards {
-        padding: 0;
-        width: 180px;
-        margin: 60px 0;
-    }
-}
 
 @media screen and (max-width: 580px) {
 
@@ -207,10 +182,6 @@
     #mainDoacoesFinalizadas .links_pags {
         display: flex;
         justify-content: center;
-    }
-
-    #mainDoacoesFinalizadas .Conteudo_Cards {
-        width: 80%;
     }
 
     #mainDoacoesFinalizadas .menu_Direito>div {
