@@ -44,8 +44,8 @@ function Footer() {
         <div className="foot_midiasBoletim">
           <span>Boletim Informativo</span>
           <div className="foot_botetim">
-            <form>
-              <input type="email" name="email" placeholder="...Digite seu email" />
+            <form >
+              <input autoComplete="off" type="email" name="email" placeholder="...Digite seu email" />
             </form>
             <a href="#" className="btn_enviar">
               enviar

@@ -110,7 +110,7 @@ function MinhasDoacoes() {
                                     <Link to="/doacoesfinalizadas">publicações finalizadas</Link>
                             </div>
                             <div className="historic_cards">
-                                <div className="Conteudo_Cards">
+                                <div className={ anunciolista.length ? "Conteudo_Cards" : ""}>
                                     {
                                         anunciolista.length
                                         ?  anunciolista.map((anuncio: any, index: number) => {
