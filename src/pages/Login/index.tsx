@@ -20,8 +20,6 @@ function Login() {
         api.get("usuarios/email/" + email).then((responseEmail: any)=>{
             // //Salva usuario[objetoU]
             secureLocalStorage.setItem("userId", responseEmail.data);
-            //Salva Email
-            secureLocalStorage.setItem("userEmail", responseEmail.data.email);
             if(responseEmail.data.tipousuario.nome == "doador") {
                 navigate("/querodoarpt1")
                 // navigate("/querodoarpt1/" + response.data.user.id)

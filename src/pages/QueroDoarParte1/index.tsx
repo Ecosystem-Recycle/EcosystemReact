@@ -98,7 +98,7 @@ function QueroDoarParte1() {
           formData.append("disponibilidade", valoresInput2.disponibilidade)
           formData.append("periodo", valoresInput2.periodo)
           formData.append("usuario_id", userId.id);
-          formData.append("tipo_status", "Aguardando Coleta");
+          formData.append("tipo_status", "Aguardando Agendamento");
           formData.append("imagem", foto);   
           
           api.post("anuncio", formData).then( (responseAnuncio:any) => {

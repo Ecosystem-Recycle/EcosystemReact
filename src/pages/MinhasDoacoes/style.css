@@ -70,7 +70,8 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     justify-items: center;
-    row-gap: 1rem;
+    column-gap: 1.2rem;
+    row-gap: 3rem;
     margin-bottom: 100px;
 
 }
@@ -105,8 +106,7 @@
 
 @media screen and (max-width: 945px) {
     #mainMinhasDoacoes .Conteudo_Cards {
-        display: flex;
-        flex-direction: column;
+        grid-template-columns: repeat(1, 1fr);
     }
 }
 
