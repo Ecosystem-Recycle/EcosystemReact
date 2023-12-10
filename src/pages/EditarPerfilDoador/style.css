@@ -1,342 +1,84 @@
-#mainEditarPerfilDoador .conteudo_doacoes {
-    display: grid;
-    column-gap: 3rem;
-    grid-template-columns: minmax(238px, 0.25fr) 1fr;
-    padding: 60px 0;
-}
-
-#mainEditarPerfilDoador .menu_Direito {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 100%;
-}
-
-
-
-#mainEditarPerfilDoador .title {
-    padding-bottom: 40px;
-}
-
-#mainEditarPerfilDoador .title h2 {
-    font-family: var(--font2);
-    font-size: 2rem;
-    text-transform: capitalize;
-}
-
-#mainEditarPerfilDoador .title p {
-    font-family: var(--font2);
-    font-size: 1rem;
-    color: var(--cinza);
-}
-
-
-
-#mainEditarPerfilDoador .margem_Conteudo {
-    border: 1px solid var(--cinza);
-    border-radius: 20px;
-    padding: 2rem 0;
-    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-    font-family: var(--font2);
-}
-
-#mainEditarPerfilDoador .btnVoltar {
-    width: 100%;
-    display: flex;
-    justify-content: space-around;
-    padding-top: 25px;
-    padding-bottom: 25px;
-
-}
-
-#mainEditarPerfilDoador .btnVoltar>a {
-    border-radius: 15px;
-    border: 4px solid var(--roxo);
-    padding: 2px 35px;
-    font-family: var(--font1);
-    font-size: 18px;
-    font-weight: 800;
-    text-transform: uppercase;
-}
-
-.formDoador {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    margin: 0 auto;
-    align-items: self-start;
-}
-
-
 #mainEditarPerfilDoador .Conteudo {
     display: flex;
     justify-items: center;
     margin-bottom: 100px;
-}
-
-
-
-
-#mainEditarPerfilDoador .nada_consta {
-    border: 3px solid #9c9c9c;
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    /* align-items: center; */
-    /* margin-bottom: 50px; */
-    width: 100%;
-    padding: 30px;
-}
-
-#mainEditarPerfilDoador .nomeMarca {
-    border-radius: 10px;
-    padding-bottom: 30px;
-}
-
-.nomeMarca input {
-    max-width: 1080px;
-    width: 95%;
-}
-
-#mainEditarPerfilDoador .regiao {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    padding-bottom: 25px;
-    /* background-color: #045328; */
-}
-
-#mainEditarPerfilDoador .regiao .uf {
-    padding-right: 20%;
-}
-
-#mainEditarPerfilDoador .selecao {
-    max-width: 250px;
-    width: 100%;
-    border: 1px solid #9C9C9C;
-    border-radius: 10px;
-
-    height: 40px;
-    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-    font-family: var(--font2);
-}
-
-#mainEditarPerfilDoador .cidade {
-    width: 100%;
-    border: 1px solid #9C9C9C;
-    border-radius: 10px;
-    height: 40px;
-    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-    font-family: var(--font2);
-}
-
-#mainEditarPerfilDoador .descricao {
-    padding-bottom: 30px;
-}
-
-#mainEditarPerfilDoador .descricao label {
-    font-family: var(--font1);
-    font-size: 20px;
-}
-
-#mainEditarPerfilDoador textarea {
-    max-width: 884px;
-    width: 100%px;
-    padding-bottom: 30px;
-}
-
-#mainEditarPerfilDoador .data {
-    font-family: var(--font1);
-    font-size: 20px;
-    padding-bottom: 30px;
-}
-
-#mainEditarPerfilDoador .agendamento {
-    padding-bottom: 30px;
-}
-
-#mainEditarPerfilDoador .horario {
-    font-family: var(--font1);
-    font-size: 20px;
-    padding-bottom: 30px;
-}
-
-#mainEditarPerfilDoador .tipo {
-    font-family: var(--font1);
-    font-size: 20px;
-}
-
-#mainEditarPerfilDoador .tipoEletronico {
-    padding-bottom: 30px;
-}
-
-#mainEditarPerfilDoador .celular .computador .monitor .perifericos .baterias .outros {
-    font-family: var(--font2);
-    /* font-size: 51px; */
-}
-
-#mainEditarPerfilDoador .condicoes {
-    font-family: var(--font1);
-    font-size: 20px;
-}
-
-#mainEditarPerfilDoador .condicoesMateriais {
-    padding-bottom: 30px;
-}
-
-#mainEditarPerfilDoador .qtdItens {
-    font-family: var(--font1);
-    font-size: 20px;
-}
-
-#mainEditarPerfilDoador .itens {
-    padding-bottom: 30px;
-}
-
-#mainEditarPerfilDoador .arquivos {
-    display: flex;
-    justify-content: space-between;
-    padding-bottom: 30px;
-}
-
-#mainEditarPerfilDoador .adicionarFotos {
-    width: 40%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    border: 3px solid #9c9c9c;
-    border-radius: 20px;
-}
-
-#mainEditarPerfilDoador .arquivos img {
-    max-width: 100%;
-    max-height: 100%;
-}
-
-#mainEditarPerfilDoador .adicionarFotos button {
-    height: 50px;
-    width: 100%;
-    border-radius: 0px 0px 18px 18px;
-    /* border-bottom-left-radius: 18px;
-    border-bottom-right-radius: 18px; */
-    border-end-end-radius: 0px 0px 18px 18px;
-    background-color: #045328;
-    /* border-radius: 5px; */
-    font-family: var(--font2);
-    font-size: 20px;
-    color: var(--branco);
-}
-
-
-
-
-
-#mainEditarPerfilDoador .alinhamentoImg {
-    /* display: flex; */
-    justify-content: stretch;
-    align-items: center;
-    flex-wrap: wrap;
-    width: 542px;
-    padding-left: 4%;
-    border: 3px solid #9c9c9c;
-    border-radius: 20px;
-    flex-direction: row;
-    display: grid;
-    grid-template-columns: 33% 34% 38%;
-    grid-auto-columns: 141%;
-    box-shadow: 2px 4px 4px 2px rgba(0, 0, 0, 0.25);
-}
-
-#mainEditarPerfilDoador .alinhamentoImg img {
-    justify-content: stretch;
-    align-items: center;
-}
-
-#mainEditarPerfilDoador .botao {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-}
-
-#mainEditarPerfilDoador .btnSalvar {
-    border: 5px solid #9319CC;
+    border: 1px solid var(--cinza);
     border-radius: 15px;
-    padding: 10px 150px;
-    font-size: 20px;
-    font-weight: bold;
-    font-family: var(--font1);
-    color: #9319CC;
-}
-
-#mainEditarPerfilDoador .btnCancelar {
-    border: 5px solid #9319CC;
-    border-radius: 15px;
-    padding: 10px 150px;
-    font-size: 20px;
-    /* font-weight: 800; */
-    font-weight: bold;
-    font-family: var(--font1);
-    color: #9319CC;
-}
-
-#mainEditarPerfilDoador .input {
-    border: 1px solid #9C9C9C;
-    border-radius: 10px;
-    width: 90%px;
-    height: 40px;
+    width: 100%;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-    font-family: var(--font2);
+    padding: 1.5rem 2rem;
 }
 
-#mainEditarPerfilDoador textarea {
-    border: 1px solid #9C9C9C;
-    border-radius: 10px;
-    width: 976px;
-    height: 300px;
-    font-family: var(--font2);
-    font-size: 16px;
+#mainEditarPerfilDoador .formulario {
+    width: 90%;
+    font-family: var(--font1);
+}
+
+#mainEditarPerfilDoador .formulario h2{
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+
+
+
+#mainEditarPerfilDoador .campo-form{
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+#mainEditarPerfilDoador .camposDuplo{
+    display: flex;
+    gap: 2rem;
+}
+
+#mainEditarPerfilDoador .camposDuplo .campo-form:nth-child(1){
+    flex: 3;
+}
+#mainEditarPerfilDoador .camposDuplo .campo-form:nth-child(2){
+    flex: 1;
+}
+
+#mainEditarPerfilDoador input, #mainEditarPerfilDoador select {
+    width: 100%;
+    height: 30px;
+    border: 1px solid var(--cinza);
+    border-radius: 7px;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    padding-left: 9px;
+}
+
+#mainEditarPerfilDoador .camposDuplo-cep {
+    display: flex;
+    align-items: flex-end;
+    gap: .5rem;
+}
+
+#mainEditarPerfilDoador .buscarCep{
+    width: 100%;
+    max-width: 10rem;
+    margin-bottom: .5rem;
+    transition: .35s;
+}
+
+#mainEditarPerfilDoador .but_cep{
+    width: 100%;
+    max-width: 5rem;
+    margin-bottom: .5rem;
+    transition: .35s;
+}
+
+#mainEditarPerfilDoador .but_cep input{
+    font-family: var(--font1);
+    background: #f0f0f0;
+    padding-right: 7px;
+    box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.25);
+}
+
+#mainEditarPerfilDoador .but_cep input:hover{
+    cursor: pointer;
+    border: 2px solid var(--verde2);
+    transform: scale(1.05);
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 
-#mainEditarPerfilDoador input {
-    font-family: var(--font2);
-    font-size: 16px;
-}
-
-@media screen and (max-width: 1072px) {
-    #mainEditarPerfilDoador .conteudo_doacoes {
-        column-gap: 1rem;
-    }
-
-    #mainEditarPerfilDoador .btnVoltar a {
-        font-size: 16px;
-        padding: 2px 20px;
-
-    }
-}
-
-@media screen and (max-width: 661px) {
-    #mainEditarPerfilDoador .conteudo_doacoes {
-        column-gap: 0;
-    }
-}
-
-@media screen and (max-width: 580px) {
-    #mainEditarPerfilDoador .conteudo_doacoes {
-        grid-template-columns: 1fr;
-        row-gap: 2rem;
-        column-gap: 0;
-        justify-self: center;
-        text-align: center;
-    }
-
-    #mainEditarPerfilDoador .btnVoltar a {
-        font-size: 14px;
-        padding: 2px 20px;
-
-    }
-
-    #mainEditarPerfilDoador .selecao {
-        padding-left: 3px;
-    }
-}
