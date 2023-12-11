@@ -1,8 +1,4 @@
 import './style.css'
-import image12 from "../../assets/img/image 12.png"
-import image8 from "../../assets/img/image 8.png"
-import image9 from "../../assets/img/image 9.png"
-import image15 from "../../assets/img/image 15.png"
 import Aside from '../../components/Aside'
 import { Link, useParams } from "react-router-dom";
 import CardBuscarPublicacoes from '../../components/CardBuscarPublicacoes'
@@ -16,7 +12,7 @@ function BuscarPublicacoes() {
     const [produtos, setProdutos] = useState<any[]>([])
     const [userId, setUserId] = useState<any>({})
     const dadosCombinados = [...anuncios, ...produtos]
-    const dadosFiltrados = []
+    const dadosFiltrados: any = []
 
     // const [listarAnunciosDisponiveis, setListarAnunciosDisponiveis] = useState<any[]>(anuncios)
 
@@ -33,20 +29,29 @@ function BuscarPublicacoes() {
 
     function listarAnuncios() {
         api.get("anuncio")
-            .then((response: any) => {
-                console.log(response.data)
-                setAnuncios(response.data)
+            .then((responseAnuncio: any) => {
+                console.log(responseAnuncio.data)
+                setAnuncios(responseAnuncio.data)
             })
     }
     function listarProdutos() {
+        let filtroProdutos: any = []
         api.get("produto")
-        .then((response:any) => {
-            console.log(response.data)
-            setProdutos(response.data)
-        })
-    function organizarDados() {
-        
-    }
+            .then((responseProduto: any) => {
+                responseProduto.data.forEach((produto: any) => {
+                    if (produto.anuncio_id === teste.anuncio.id) {
+                        filtroProdutos.push(produto)
+                        console.log(filtroProdutos)
+                    }
+                })
+                // console.log(filtroProdutos)
+
+                // console.log(responseProduto.data)
+                // setProdutos(responseProduto.data)
+            })
+        // function organizarDados() {
+        //     if(produtos.anuncio_id == )
+        // }
     }
 
 
