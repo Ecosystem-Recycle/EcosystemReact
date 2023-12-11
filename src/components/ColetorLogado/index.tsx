@@ -6,26 +6,46 @@ import icoParceiroColetas from '../../assets/img/Ico_Parceiro_Coletas.svg'
 import icoBuscarPubliq from '../../assets/img/Ico_Parceiro_buscar.svg'
 import icoEditarParceiro from '../../assets/img/Ico_Parceiro_editar.svg'
 import imgLogout from '../../assets/img/Home_Logout_menuDoadorICO.svg'
-import imgNotificacao from '../../assets/img/img_Notification_001.png'
-import imgNotificacao2 from '../../assets/img/img_Notification_002.png'
+// import imgNotificacao from '../../assets/img/img_Notification_001.png'
+// import imgNotificacao2 from '../../assets/img/img_Notification_002.png'
 import icoLogado from '../../assets/img/Home_ico_User.svg'
 import icoSetaBaixo from '../../assets/img/Home_ico_setaBaixo.svg'
-import icoNotificacao from '../../assets/img/Home_ico_notificacao.svg'
-import { Link } from "react-router-dom";
+// import icoNotificacao from '../../assets/img/Home_ico_notificacao.svg'
+import { Link, useNavigate } from "react-router-dom";
+import { useEffect, useState } from 'react'
+import secureLocalStorage from 'react-secure-storage'
 
 
 
 function ColetorLogado(){
-  function abrirFecharNotifiq(){
-    let menuNot2 = document.getElementById("menu_notifique2") as HTMLCanvasElement;
-    if (window.getComputedStyle(menuNot2).display == 'none'){
-        //Mostre o menu
-        menuNot2.style.display = "flex";
-    }else{
-        //Esconde o menu
-        menuNot2.style.display = "none";
-    }
-  };
+  const navigate = useNavigate()
+  const [ usuarioLogado, setUsuarioLogado ] = useState<any>()
+
+  useEffect(() => {
+      verificarUsuarioLogado()
+  }, [])
+
+  function verificarUsuarioLogado() {
+      if ( secureLocalStorage.getItem("userId") ) {
+          setUsuarioLogado(secureLocalStorage.getItem("userId"))
+      }
+  }
+
+  function logout(){
+    secureLocalStorage.clear()
+    navigate("/login")
+    navigate(0)
+  }
+  // function abrirFecharNotifiq(){
+  //   let menuNot2 = document.getElementById("menu_notifique2") as HTMLCanvasElement;
+  //   if (window.getComputedStyle(menuNot2).display == 'none'){
+  //       //Mostre o menu
+  //       menuNot2.style.display = "flex";
+  //   }else{
+  //       //Esconde o menu
+  //       menuNot2.style.display = "none";
+  //   }
+  // };
 
   function abrirFechar2(){
     let menu2 = document.getElementById("menu_login2") as HTMLCanvasElement;
@@ -51,7 +71,7 @@ function ColetorLogado(){
               alt="Imagem do usuário Logado"
             />
             <div id="text_Login">
-              <h5>Olá ReciclaTudo,</h5>
+              <h5>Olá {usuarioLogado ? usuarioLogado.nome.split(" ")[0] : ""},</h5>
               <p>Seja bem vindo!</p>
             </div>
           </div>
@@ -65,35 +85,26 @@ function ColetorLogado(){
           <div id="menu_login_pt2_Itens">
             <div>
               <img src={ icoParceiroColetas } alt="" />
-              {/* <a href="../Tela_Quero_Doar_Pt1/index.html">QUERO DOAR</a> */}
               <Link to="/buscarpublicacoes">QUERO COLETAR</Link>
             </div>
             <div>
               <img src={ icoBuscarPubliq } alt="" />
-              {/* <a href="../Tela_Minhas_Doacoes/index.html">
-                VIZUALIZAR MINHAS DOAÇÕES
-              </a> */}
-              <Link to="/minhasdoacoes">VIZUALIZAR MINHAS DOAÇÕES</Link>
+              <Link to="/coletasagendadas">MINHAS COLETAS</Link>
             </div>
             <div>
               <img src= { icoEditarParceiro } alt="" />
-              {/* <a href="../Tela_Editar_Perfil_Coletor/index.html"> */}
-                {/* EDITAR PERFIL */}
-              {/* </a> */}
               <Link to="/editarperfilcoletor">EDITAR PERFIL</Link>
             </div>
           </div>
-          <div id="menu_login_pt2_Itens2">
+          <div  onClick={logout} id="menu_login_pt2_Itens2">
             <img src= { imgLogout } alt="" />
-            <a href="../Tela_Login_Doador/index.html">SAIR</a> 
-
-            {/* fazer uma validacao caminho logalt indicando caminho */}
-            {/* <Link to="/login">SAIR</Link> */}
+              {/* <Link to="/login" onClick={ logout }>SAIR</Link> */}
+              <p>SAIR</p>
           </div>
         </div>
       </div>
     </div>
-    <div id="menu_notifique2">
+    {/* <div id="menu_notifique2">
       <div id="menu_not_pt1">
         <div>
           <h5>NOTIFICAÇÕES</h5>
@@ -113,7 +124,6 @@ function ColetorLogado(){
                   <strong>Luís</strong> confirmou o horário de agendamento da retirada do material. Compareça no dia <strong>15/05/23 às 10:00hrs.</strong> Clique em vizualizar para mais informações.
                 </p>
                 <div className="btn_notifique2">
-                  {/* <a href="../Tela_Confirmar_Coleta/index.html">visualisar</a> */}
                   <Link to="/coletasagendadas">visualisar</Link>
                 </div>
               </div>
@@ -130,7 +140,6 @@ function ColetorLogado(){
                 <strong>Antônio</strong> postou um material de coleta próximo de você. Aproxidamente 0,7Km. Clique em vizualizar para mais informações.
               </p>
                 <div className="btn_notifique2">
-                  {/* <a href="../Tela_Minhas_Doacoes/index.html">visualisar</a> */}
                   <Link to="/buscarpublicacoes">visualisar</Link>
                 </div>
               </div>
@@ -138,10 +147,10 @@ function ColetorLogado(){
           </div>
         </section>
       </div>
-    </div>
+    </div> */}
     <a href="#"  onClick={ abrirFechar2 } >
       <img className="imgLogado" src={ icoLogado } alt="Icone de Logado" />
-      <p>ReciclaTudo</p>
+      <p>{usuarioLogado ? usuarioLogado.nome.split(" ")[0] : ""}</p>
       <img
         id="seta_Baixo"
         src={ icoSetaBaixo }
@@ -149,9 +158,9 @@ function ColetorLogado(){
       />
     </a>
   </div>
-  <a href="#"  onClick={ abrirFecharNotifiq } >
+  {/* <a href="#"  onClick={ abrirFecharNotifiq } >
     <img className="imgNotificacao" src={ icoNotificacao } alt="Icone de Notificação" />
-  </a>
+  </a> */}
 </div>
 
     )
