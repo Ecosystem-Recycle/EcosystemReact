@@ -13,6 +13,7 @@ function BuscarPublicacoes() {
     const [userId, setUserId] = useState<any>({})
     const dadosCombinados = [...anuncios, ...produtos]
     const dadosFiltrados: any = []
+    // let teste 
 
     // const [listarAnunciosDisponiveis, setListarAnunciosDisponiveis] = useState<any[]>(anuncios)
 
@@ -34,16 +35,23 @@ function BuscarPublicacoes() {
                 setAnuncios(responseAnuncio.data)
             })
     }
+
     function listarProdutos() {
         let filtroProdutos: any = []
         api.get("produto")
             .then((responseProduto: any) => {
-                responseProduto.data.forEach((produto: any) => {
-                    if (produto.anuncio_id === teste.anuncio.id) {
-                        filtroProdutos.push(produto)
-                        console.log(filtroProdutos)
-                    }
-                })
+                console.log(responseProduto.data)
+
+
+
+
+                // responseProduto.data.forEach((produto: any) => {
+                //     if (produto.anuncio_id === anuncio.id) {
+                //         filtroProdutos.push(produto)
+                //         console.log(filtroProdutos)
+                //     }
+                // })
+
                 // console.log(filtroProdutos)
 
                 // console.log(responseProduto.data)
