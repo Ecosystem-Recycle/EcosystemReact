@@ -6,26 +6,49 @@ import icoMenuDoador from '../../assets/img/Home_menuDoadorICO.svg'
 import icoVisualizarDoador from '../../assets/img/Home_Vizualizar_menuDoadorICO.svg'
 import icoEditarDoador from '../../assets/img/Home_Edit_menuDoadorICO.svg'
 import imgLogout from '../../assets/img/Home_Logout_menuDoadorICO.svg'
-import imgNotificacao from '../../assets/img/img_Notification_001.png'
-import imgNotificacao2 from '../../assets/img/img_Notification_002.png'
+// import imgNotificacao from '../../assets/img/img_Notification_001.png'
+// import imgNotificacao2 from '../../assets/img/img_Notification_002.png'
 import icoLogado from '../../assets/img/Home_ico_User.svg'
 import icoSetaBaixo from '../../assets/img/Home_ico_setaBaixo.svg'
-import icoNotificacao from '../../assets/img/Home_ico_notificacao.svg'
-import { Link } from "react-router-dom";
+// import icoNotificacao from '../../assets/img/Home_ico_notificacao.svg'
+import { Link, useNavigate } from "react-router-dom";
+import secureLocalStorage from 'react-secure-storage'
+import { useEffect, useState } from 'react'
 
 
 function DoadorLogado() {
 
-  function abrirFecharNotifiq() {
-    let menuNot2 = document.getElementById("menu_notifique2") as HTMLCanvasElement;
-    if (window.getComputedStyle(menuNot2).display == 'none') {
-      //Mostre o menu
-      menuNot2.style.display = "flex";
-    } else {
-      //Esconde o menu
-      menuNot2.style.display = "none";
-    }
-  };
+  const navigate = useNavigate()
+
+  const [ usuarioLogado, setUsuarioLogado ] = useState<any>()
+
+  useEffect(() => {
+      verificarUsuarioLogado()
+  }, [])
+
+  function verificarUsuarioLogado() {
+      if ( secureLocalStorage.getItem("userId") ) {
+          setUsuarioLogado(secureLocalStorage.getItem("userId"))
+      }
+  }
+
+  function logout(){
+    secureLocalStorage.clear()
+    navigate("/login")
+    navigate(0)
+  }
+
+
+  // function abrirFecharNotifiq() {
+  //   let menuNot2 = document.getElementById("menu_notifique2") as HTMLCanvasElement;
+  //   if (window.getComputedStyle(menuNot2).display == 'none') {
+  //     //Mostre o menu
+  //     menuNot2.style.display = "flex";
+  //   } else {
+  //     //Esconde o menu
+  //     menuNot2.style.display = "none";
+  //   }
+  // };
 
   function abrirFechar2() {
     let menu2 = document.getElementById("menu_login2") as HTMLCanvasElement;
@@ -51,7 +74,7 @@ function DoadorLogado() {
                   alt=""
                 />
                 <div id="text_Login">
-                  <h5>Olá Luís,</h5>
+                  <h5>Olá {usuarioLogado ? usuarioLogado.nome.split(" ")[0] : ""},</h5>
                   <p>Seja bem vindo!</p>
                 </div>
               </div>
@@ -65,38 +88,28 @@ function DoadorLogado() {
               <div id="menu_login_pt2_Itens">
                 <div>
                   <img src={icoMenuDoador} alt="" />
-                  {/* <a href="../Tela_Quero_Doar_Pt1/index.html">QUERO DOAR</a> */}
                   <Link to="/querodoarpt1">QUERO DOAR</Link>
                 </div>
                 <div>
                   <img src={icoVisualizarDoador} alt="" />
-                  {/* <a href="../Tela_Minhas_Doacoes/index.html">
-                VIZUALIAR MINHAS DOAÇÕES
-              </a> */}
-                  <Link to="/minhasdoacoes"> VISUALIZAR MINHAS DOAÇÕES</Link>
+                  <Link to="/minhasdoacoes">MINHAS PUBLICAÇÕES</Link>
 
                 </div>
                 <div>
                   <img src={icoEditarDoador} alt="" />
-                  {/* <a href="../Tela_Editar_Perfil_Doador/index.html">
-                    EDITAR PERFIL
-                  </a> */}
                   <Link to="/editarperfildoador"> EDITAR PERFIL</Link>
-
-
                 </div>
               </div>
               <div id="menu_login_pt2_Itens2">
-                <img src={imgLogout} alt="" />
-                {/* <a href="../Tela_Login_Doador/index.html">SAIR</a> */}
-                <Link to="/login">SAIR</Link>
-
-
+                <img src={imgLogout} alt="Sair do Sistema" />
+                {/* <Link to="/login" onClick={ logout }>SAIR</Link> */}
+                <p onClick={logout}>SAIR</p>
               </div>
             </div>
           </div>
         </div>
-        <div id="menu_notifique2">
+        {/* ########### MENU DE NOTIFICAÇÃO pt 1   ################### */}
+        {/* <div id="menu_notifique2">
           <div id="menu_not_pt1">
             <div>
               <h5>NOTIFICAÇÕES</h5>
@@ -144,10 +157,10 @@ function DoadorLogado() {
               </div>
             </section>
           </div>
-        </div>
+        </div> */}
         <a href="#" onClick={abrirFechar2} >
           <img className="imgLogado" src={icoLogado} alt="Icone de Logado" />
-          <p>Lúis</p>
+          <p>{usuarioLogado ? usuarioLogado.nome.split(" ")[0] : ""}</p>
           <img
             id="seta_Baixo"
             src={icoSetaBaixo}
@@ -155,9 +168,10 @@ function DoadorLogado() {
           />
         </a>
       </div>
-      <a href="#" onClick={abrirFecharNotifiq} >
+              {/* ########### MENU DE NOTIFICAÇÃO pt 2  ################### */}
+      {/* <a href="#" onClick={abrirFecharNotifiq} >
         <img className="imgNotificacao" src={icoNotificacao} alt="Icone de Notificação" />
-      </a>
+      </a> */}
     </div>
 
   )

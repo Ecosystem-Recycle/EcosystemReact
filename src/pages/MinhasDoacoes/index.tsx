@@ -28,6 +28,7 @@ function MinhasDoacoes() {
     }, [] )
     
     useEffect(() => {
+        console.log(userId)
       }, []); 
 
     function carregarProdutos(){
