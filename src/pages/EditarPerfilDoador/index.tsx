@@ -1,11 +1,15 @@
 import "./style.css";
 
 import AsideDoador from "../../components/AsideDoador";
-import { Link } from "react-router-dom";
-import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 import api from "../../utils/api";
+import secureLocalStorage from "react-secure-storage";
 
 function EditarPerfilDoador() {
+
+    const navigate = useNavigate()
+    const [userId] = useState<any>(secureLocalStorage.getItem("userId"));
 
     const [ nome, setNome ] = useState<string>("")
     const [ cpf_cnpj, setCpf_cnpj ] = useState<string>("")
@@ -20,41 +24,88 @@ function EditarPerfilDoador() {
     const [ bairro, setBairro ] = useState<string>("")
     const [ numero, setNumero ] = useState<string>("")
 
+    useEffect( () => {
+        document.title = "Editar Perfil Doador - Ecosystem e Recycle"
+        preencherCampos();
+    }, [] )
+    
+
+    function preencherCampos(){
+        setNome(userId.nome);
+        setEmail(userId.email);
+        setCpf_cnpj(userId.cpf_Cnpj);
+        setTelefone(userId.telefone);
+        setGenero(userId.Genero);
+        setCep(userId.endereco.cep);
+        setLogradouro(userId.endereco.logradouro);
+        setNumero(userId.endereco.numero);
+        setBairro(userId.endereco.bairro);
+        setCidade(userId.endereco.cidade);
+        setUf(userId.endereco.estado);
+    }
+
+    function editarUsuario(event: any ){
+        event.preventDefault();
+        const formData = new FormData();
+
+          formData.append("id", userId.id)
+          formData.append("nome", nome)
+          formData.append("email", email)
+          formData.append("senha", senha);
+          formData.append("telefone", telefone);
+          formData.append("genero", genero);   
+          formData.append("cpf_Cnpj", cpf_cnpj);
+          formData.append("tipo_User", userId.tipousuario.nome);
+          formData.append("endereco_id", userId.endereco.id);
 
 
-  const [formValues, setFormValues] = useState<any>({
-    cep: "",
-    bairro: "",
-    numero: ""
-  });
+        api.put("http://localhost:8090/usuarios/media/" + userId.id, formData)
+        .then((responseUser: any) => {
+            const formDataEndereco = new FormData();
+
+            formDataEndereco.append("id", userId.endereco.id)
+            formDataEndereco.append("logradouro", logradouro)
+            formDataEndereco.append("numero", numero)
+            formDataEndereco.append("bairro", bairro);
+            formDataEndereco.append("cidade", cidade);
+            formDataEndereco.append("estado", uf);   
+            formDataEndereco.append("cep", cep);
+
+            api.put("http://localhost:8090/endereco/media/" + userId.endereco.id, formDataEndereco)
+            .then((responseEndereco: any) => {
+                localStorage.removeItem("userId");
+                api.get("usuarios/email/" + email).then((responseEmail: any)=>{
+                    secureLocalStorage.setItem("userId", responseEmail.data);
+                    navigate(0)
+                })      
+
+            });
+
+        });
+    }
+    
 
   function buscarCep() {
-
     if(cep == ""){
-        alert("Campo de CEP não pode ser Vazio")
+        alert("Campo de CEP não pode ser Vazio?")
         return
     }
-    api.get("https://viacep.com.br/ws/" + cep + "/json/")
+    const options = {
+        method: "GET",
+        mode: "cors",
+        headers: {
+            'content-type': 'application/json;charset=utf-8',
+        }
+    } 
+    api.get("https://viacep.com.br/ws/" + cep + "/json/", options)
       .then((response: any) => {
         setLogradouro(response.data.logradouro)
         setCidade(response.data.localidade)
         setUf(response.data.uf)
         setBairro(response.data.bairro)
-
-
-
-        // setFormValues({
-        //     ...formValues, logradouro: response.data.logradouro,
-        //     ...formValues, cidade: response.data.localidade,
-        //     ...formValues, uf: response.data.uf,
-        //     ...formValues, bairro: response.data.bairro
-        // })
       });
   }
 
-  function msgSalvarPerfil() {
-    alert("Dados Cadastrado com Sucesso");
-  }
 
   return (
     <>
@@ -71,7 +122,7 @@ function EditarPerfilDoador() {
               <div>
                 <div className="Conteudo">
                   <section className="formulario">
-                    <form className="formDoador">
+                    <form className="formDoador" onSubmit={ editarUsuario } method="put">
                       <h2>Dados Gerais:</h2>
                       <div className="campo-form">
                         <label htmlFor="nomeUsuario">Nome Completo:</label>
@@ -83,19 +134,6 @@ function EditarPerfilDoador() {
                           placeholder="Digite o nome completo para cadastro..."
                           required
                           onChange={(event) => setNome(event.target.value)}
-                        />
-                      </div>
-                      <div className="campo-form">
-                        <label htmlFor="cpf_cnpj">CPF ou CNPJ:</label>
-                        <small>Ex: 123.456.789-10</small>
-                        <input
-                          value={cpf_cnpj}
-                          type="text"
-                          name="cpf_cnpj"
-                          id="cpf_cnpj"
-                          placeholder="Digite o seu CPF ou CNPJ..."
-                          required
-                          onChange={(event) => setCpf_cnpj(event.target.value)}
                         />
                       </div>
                       <div className="campo-form">
@@ -114,12 +152,24 @@ function EditarPerfilDoador() {
                         <label htmlFor="senha">Senha:</label>
                         <input
                           value={senha}
-                          type="passworf"
+                          type="password"
                           name="senha"
                           id="senha"
                           placeholder="Digite sua senha..."
                           required
                           onChange={(event) => setSenha(event.target.value)}
+                        />
+                      </div>
+                      <div className="campo-form">
+                        <label htmlFor="cpf_cnpj">CPF ou CNPJ:</label>
+                        <input
+                          value={cpf_cnpj}
+                          type="text"
+                          name="cpf_cnpj"
+                          id="cpf_cnpj"
+                          placeholder="Digite o seu CPF ou CNPJ..."
+                          required
+                          onChange={(event) => setCpf_cnpj(event.target.value)}
                         />
                       </div>
                       <div className="campo-form">
@@ -130,7 +180,7 @@ function EditarPerfilDoador() {
                           name="telefone"
                           id="telefone"
                           placeholder="Digite o seu telefone Ex. (DDD) 91234-5678..."
-                          pattern="([0-9]){2} [0-9]{4}-[0-9]{4}"
+                        //   pattern="([0-9]){2} [0-9]{4}-[0-9]{4}"
                           required
                           onChange={(event) => setTelefone(event.target.value)}
                         />
@@ -271,18 +321,13 @@ function EditarPerfilDoador() {
                             <option value="TO">TO</option>
                           </select>
                         </div>
-                      </div>
+                      </div>              
+                        <div className="btnEditar">
+                            <button type="submit">
+                                Salvar
+                            </button>
+                        </div>
                     </form>
-
-                    <div className="btnVoltar">
-                      {/* <a href="#" onClick={msgSalvarPerfil}>Salvar</a> */}
-                      <Link to="/#" onClick={msgSalvarPerfil}>
-                        Salvar
-                      </Link>
-
-                      {/* <a href="#" onClick={historyBack}>Cancelar</a> */}
-                      {/* <Link to="/#" onClick={historyBack}>Cancelar</Link> */}
-                    </div>
                   </section>
                 </div>
               </div>

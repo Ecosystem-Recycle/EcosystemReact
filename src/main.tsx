@@ -36,8 +36,8 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
         <Route path='/minhasdoacoes' element={ <MinhasDoacoes /> } />
         <Route path='/agendarcoleta' element={ <AgendarColeta/> }/>
         {/* <Route path='/buscarpublicacoes/:idUsuario' element={ <BuscarPublicacoes /> } /> */}
-        <Route path='/buscarpublicacoes/' element={ <BuscarPublicacoes /> } />
-        <Route path='/editarperfilcoletor/' element={ <EditarPefilColetor /> } />
+        <Route path='/buscarpublicacoes' element={ <BuscarPublicacoes /> } />
+        <Route path='/editarperfilcoletor' element={ <EditarPefilColetor /> } />
         <Route path='/coletasagendadas' element={ <ColetasAgendadas/> }/>
         <Route path='/coletasfinalizadas' element={ <ColetasFinalizadas /> } />
         <Route path='/coletasconfirmada' element={ <ColetasConfirmada /> } />

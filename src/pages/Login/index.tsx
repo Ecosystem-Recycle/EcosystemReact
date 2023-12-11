@@ -42,7 +42,7 @@ function Login() {
 
         api.post("login", usuario).then( (response) => {
              console.log(response)
-            secureLocalStorage.setItem("user", response.data);
+            secureLocalStorage.setItem("tokenUser", response.data);
             buscarUser();
 
         } )
@@ -79,11 +79,11 @@ function Login() {
                 alert("Cadastro realizado com sucesso")
                 secureLocalStorage.setItem("userId", response.data);
                 if(response.data.tipousuario.nome == "doador") {
-                    navigate("/querodoarpt1")
-                    // navigate("/querodoarpt1/" + response.data.user.id)
+                    navigate("/editarperfildoador")
+                    
                 } else {
-                    navigate("/buscarpublicacoes/")
-                    // navigate("/buscarpublicacoes/" + response.data.user.id)
+                    navigate("/editarperfilcoletor")
+
                 } 
                 navigate(0)
 

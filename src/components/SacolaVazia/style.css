@@ -1,14 +1,11 @@
 #mainMinhasDoacoes .Conteudo_Sacola,
 #mainDoacoesFinalizadas .Conteudo_Sacola {
-    display: flex;
-    justify-items: center;
-    align-items: center;
     font-family: var(--font2);
     font-size: 40px;
     text-align: center;
     color: var(--cinza);
     font-weight: 900;
-    padding: 200px 100px 60px 100px;
+    padding: 111px 100px 115px 100px;
 }
 
 #mainMinhasDoacoes .imgCadeado,
