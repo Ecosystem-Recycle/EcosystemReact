@@ -5,13 +5,35 @@ import './style.css';
 import DoadorLogado from '../../components/DoadorLogado';
 import ColetorLogado from '../ColetorLogado';
 import imgLogo from "../../assets/img/logo_vertical.png";
+import secureLocalStorage from 'react-secure-storage';
 
 
 
 function Header() {
     let menu= document.getElementById("menu_links") as HTMLCanvasElement;
-    // let tamanhoTela: boolean = false;
     const [tamanhoTela, setTamanhoTela] = useState<any>();
+    const [ usuarioLogado, setUsuarioLogado ] = useState<any>(secureLocalStorage.getItem("userId"))
+
+    function verificarUsuarioLogado() {
+        if ( secureLocalStorage.getItem("userId") ) {
+            setUsuarioLogado(secureLocalStorage.getItem("userId"))
+            console.log(usuarioLogado);
+        }
+    }
+
+    useEffect(() => {
+        verificarUsuarioLogado()
+        
+        if (window.innerWidth > 1072){
+            setTamanhoTela(false);
+            
+        } else{
+            setTamanhoTela(true);
+        }
+    }, [])
+
+    
+
     //Função para mostrar/esconder menu hamburguer
     function mostrarMenu(){
         let menu_barras= document.getElementById("menu_barras") as HTMLCanvasElement;
@@ -43,15 +65,20 @@ function Header() {
             menu.style.display = "none";
         }
     });
-    //UseEffect para Setar a variavel tamanho da tela como falso se for maior que 1072px
-    useEffect(() => {
-        if (window.innerWidth > 1072){
-            setTamanhoTela(false);
-            
-        } else{
-            setTamanhoTela(true);
+    
+    function tipoLogin(tipoUsuario:any):any{
+        if ( secureLocalStorage.getItem("userId") ) {
+            if(usuarioLogado.tipousuario.nome=="doador"){
+                return <DoadorLogado />
+             }else if(usuarioLogado.tipousuario.nome =="coletor"){
+                return <ColetorLogado />
+             }
         }
-    }, [])
+        return <Link to="/login" className="btn_entrar">entrar</Link>
+         
+    }
+
+   
 
     return (
         <header>
@@ -62,9 +89,11 @@ function Header() {
                     // se o tamanho da tela dor pequeno renderiza o menu de usuario logado dentro de uma div
                     tamanhoTela  ?
                         <div className='div_Logado_E_Menu'>
-                            <DoadorLogado />
-                            {/* <ColetorLogado /> */}
-                            {/* <Link to="/login" className="btn_entrar">entrar</Link> */}
+                            { 
+                            
+                                tipoLogin(usuarioLogado) 
+                            
+                            }
                             <a
                                 onClick={ mostrarMenu }
                                 className="menu_barras"
@@ -110,26 +139,16 @@ function Header() {
                 }
                 
                 <nav id="menu_links">
-                    {/* <a href="../Tela_Home/index.html" className="underline">página inicial</a> */}
                     <Link to="/" className="underline">página inicial</Link>
-                    {/* <a href="../Tela_Nossa_Historia/index.html" className="underline">nossa história</a> */}
                     <Link to="/nossahistoria" className="underline">nossa história</Link>
-                    {/* <a href="../TelaInformativo/index.html" className="underline">informativo</a> */}
                     <Link to="/informativo" className="underline">informativo</Link>
-                    {/* <a href="../TelaServicos/index.html" className="underline">serviços</a> */}
                     <Link to="/servicos" className="underline">serviços</Link>
-                    {/* <a href="../Tela_Duvidas/index.html" className="underline">dúvidas</a> */}
                     <Link to="/duvidas" className="underline">dúvidas</Link>
-                    {/* <a href="../Tela_Contato/index.html" className="underline">contato</a> */}
                     <Link to="/contato" className="underline">contatos</Link>
-
                     {/* Se o tamanho da tela for grande => renderiza o Doador logado no navMenu */}
                     { 
                     !tamanhoTela  ? 
-                        // <DoadorLogado />
-                        // <ColetorLogado />
-                        // <a href="../Tela_Login_Doador/index.html" className="btn_entrar">entrar</a>
-                        <Link to="/login" className="btn_entrar">entrar</Link>
+                        tipoLogin(usuarioLogado) 
                     : 
                         "" 
                     }
