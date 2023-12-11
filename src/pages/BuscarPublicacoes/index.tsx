@@ -12,44 +12,41 @@ import api from '../../utils/api'
 
 function BuscarPublicacoes() {
 
-    // useEffect
-    // let teste = (secureLocalStorage.getItem("user"))
-    // const [teste2, setTeste2 ] = useState<any[]>([])
-    //const [teste2, setTeste2] = useState<string>("")
-
-    // useEffect( () => {
-    // document.title = "Quero Doar - Ecosystem e Recycle"
-    // setTeste2(JSON.parse(secureLocalStorage.getItem("user")))
-
-    // }, [] )`
-
     const [anuncios, setAnuncios] = useState<any[]>([])
+    const [produtos, setProdutos] = useState<any[]>([])
+    const [userId, setUserId] = useState<any>({})
+    const dadosCombinados = [...anuncios, ...produtos]
+    const dadosFiltrados = []
 
-    const [teste, setTeste] = useState<string>("")
-
-    const [listarAnunciosDisponiveis, setListarAnunciosDisponiveis] = useState<any[]>(anuncios)
+    // const [listarAnunciosDisponiveis, setListarAnunciosDisponiveis] = useState<any[]>(anuncios)
 
 
     useEffect(() => {
-        document.title = "Buscar por Publicações"
+        document.title = "Buscar por Publicações - Ecosystem e Recycle"
+
+        const userObj: string | number | boolean | object | null = secureLocalStorage.getItem("userId");
+        setUserId(userObj)
 
         listarAnuncios()
-    }, [])
-
-    // function retornoLista(event:any){
-    //     if (event.target.value === ""){
-    //         listarAnuncios()
-    //     } else {
-    //         setTeste(event.target.value)
-    //     }
-    // }
+        listarProdutos()
+    }, [setUserId])
 
     function listarAnuncios() {
-        api.get("users")
+        api.get("anuncio")
             .then((response: any) => {
                 console.log(response.data)
                 setAnuncios(response.data)
             })
+    }
+    function listarProdutos() {
+        api.get("produto")
+        .then((response:any) => {
+            console.log(response.data)
+            setProdutos(response.data)
+        })
+    function organizarDados() {
+        
+    }
     }
 
 
@@ -101,19 +98,19 @@ function BuscarPublicacoes() {
                                 <h2>Buscar por Publicações</h2>
                                 <p>Veja todas as publicações ativas mais próximas de você!</p>
                             </div>
-                            {/* <div> */}
-                            {anuncios.map((anuncio: any, index: number) => {
+                            {dadosCombinados.map((dadosCombinados: any, index: number) => {
                                 return <div key={index}>
                                     <CardBuscarPublicacoes
-                                        titulo={anuncio.nome}
-                                        data={anuncio.nome}
-                                        quantidade={anuncio.nome}
-                                        descricao={anuncio.nome}
-                                        cidade={anuncio.nome}
+                                        titulo={dadosCombinados.titulo}
+                                        data={dadosCombinados.data_cadastro}
+                                        quantidade={dadosCombinados.nome}
+                                        descricao={dadosCombinados.nome}
+                                        cidade={dadosCombinados.nome}
+                                        src={dadosCombinados.url_imagem}
                                     />
                                 </div>
                             })}
-                            <CardBuscarPublicacoes
+                            {/* <CardBuscarPublicacoes
                                 src={image12}
                                 alt={""}
                                 titulo={"teste"}
@@ -129,8 +126,7 @@ function BuscarPublicacoes() {
                             <CardBuscarPublicacoes
                                 src={image15}
                                 alt={""}
-                            />
-                            {/* </div> */}
+                            /> */}
                         </div>
                     </div>
                 </section>
