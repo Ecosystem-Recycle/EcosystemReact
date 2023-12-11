@@ -20,8 +20,6 @@ function Login() {
         api.get("usuarios/email/" + email).then((responseEmail: any)=>{
             // //Salva usuario[objetoU]
             secureLocalStorage.setItem("userId", responseEmail.data);
-            //Salva Email
-            secureLocalStorage.setItem("userEmail", responseEmail.data.email);
             if(responseEmail.data.tipousuario.nome == "doador") {
                 navigate("/querodoarpt1")
                 // navigate("/querodoarpt1/" + response.data.user.id)
@@ -44,7 +42,7 @@ function Login() {
 
         api.post("login", usuario).then( (response) => {
              console.log(response)
-            secureLocalStorage.setItem("user", response.data);
+            secureLocalStorage.setItem("tokenUser", response.data);
             buscarUser();
 
         } )
@@ -64,22 +62,41 @@ function Login() {
             return
         }
 
-        
-        const formData = new FormData()
+        api.post("endereco")
+        .then( (responseEndereco) => {   
+            alert("endereco Cadastrado")    
+            const formData = new FormData() 
+            
+            formData.append("nome", nome)
+            formData.append("email", emailCad)
+            formData.append("senha", senhaCad)
+            formData.append("tipo_User", opcao)
+            formData.append("endereco_id",responseEndereco.data.id)
 
-        formData.append("nome", nome)
-        formData.append("email", emailCad)
-        formData.append("password", senhaCad)
-        formData.append("tipo_usuario", opcao)
+            api.post("usuarios/login", formData)
+            .then( (response) => {
+                console.log(response)
+                alert("Cadastro realizado com sucesso")
+                secureLocalStorage.setItem("userId", response.data);
+                if(response.data.tipousuario.nome == "doador") {
+                    navigate("/editarperfildoador")
+                    
+                } else {
+                    navigate("/editarperfilcoletor")
 
-        api.post("users", formData)
-        .then( (response) => {
-            console.log(response)
-            alert("Cadastro realizado com sucesso")
+                } 
+                navigate(0)
+
+            } )
+            .catch( (error) => {
+                console.log(error)
+            } )
         } )
         .catch( (error) => {
             console.log(error)
         } )
+        
+        
 
     }
 
@@ -100,6 +117,7 @@ function Login() {
                             <input 
                             type="email" 
                             name='login_email'
+                            autoComplete='off'
                             id='email'
                             placeholder='Digite o nome & marca do produto'
                             required
