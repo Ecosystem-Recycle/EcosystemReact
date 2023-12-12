@@ -37,30 +37,36 @@ function BuscarPublicacoes() {
     }
 
     function listarProdutos() {
-        let filtroProdutos: any = []
         api.get("produto")
             .then((responseProduto: any) => {
                 console.log(responseProduto.data)
-
-
-
-
-                // responseProduto.data.forEach((produto: any) => {
-                //     if (produto.anuncio_id === anuncio.id) {
-                //         filtroProdutos.push(produto)
-                //         console.log(filtroProdutos)
-                //     }
-                // })
-
-                // console.log(filtroProdutos)
-
-                // console.log(responseProduto.data)
-                // setProdutos(responseProduto.data)
+                let organizaProduto: any = []
+                organizaProduto = responseProduto.data
+                setProdutos(organizaProduto)
+                
             })
         // function organizarDados() {
         //     if(produtos.anuncio_id == )
         // }
     }
+
+    function filtrarProdutos(anuncio:any){
+        let produto:any = []
+        produtos.forEach((item:any):any => {   
+            if(item.anuncio.id === anuncio.id){
+                if (typeof item ==="object" && item.length != 0){
+                    if(item != undefined && item !=null){
+                        if(typeof item != 'undefined'){
+                            // console.log(typeof item)
+                            produto.push(item)      
+                        }
+                    }
+                }
+            }
+
+        });
+        return produto
+}
 
 
 
@@ -111,35 +117,20 @@ function BuscarPublicacoes() {
                                 <h2>Buscar por Publicações</h2>
                                 <p>Veja todas as publicações ativas mais próximas de você!</p>
                             </div>
-                            {dadosCombinados.map((dadosCombinados: any, index: number) => {
+                            {
+                            dadosCombinados.map((dadosCombinados: any, index: number) => {
                                 return <div key={index}>
                                     <CardBuscarPublicacoes
                                         titulo={dadosCombinados.titulo}
                                         data={dadosCombinados.data_cadastro}
                                         quantidade={dadosCombinados.nome}
-                                        descricao={dadosCombinados.nome}
+                                        descricao={.nome}
                                         cidade={dadosCombinados.nome}
                                         src={dadosCombinados.url_imagem}
                                     />
                                 </div>
                             })}
-                            {/* <CardBuscarPublicacoes
-                                src={image12}
-                                alt={""}
-                                titulo={"teste"}
-                            />
-                            <CardBuscarPublicacoes
-                                src={image9}
-                                alt={""}
-                            />
-                            <CardBuscarPublicacoes
-                                src={image8}
-                                alt={""}
-                            />
-                            <CardBuscarPublicacoes
-                                src={image15}
-                                alt={""}
-                            /> */}
+
                         </div>
                     </div>
                 </section>
