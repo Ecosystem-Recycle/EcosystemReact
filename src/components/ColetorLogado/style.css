@@ -34,7 +34,7 @@
 
 
 .log_doador > div a  p{
-    padding-left: 4px;
+    padding: 0 4px 0 7px;
 }
 
 .log_doador  a:nth-child(even){
