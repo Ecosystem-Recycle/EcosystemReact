@@ -1,5 +1,7 @@
 import './style.css'
 import { Link } from "react-router-dom"
+import imagem from '../../assets/img/no-imagem.png'
+import no_imagem from '../../assets/img/img_Baterias.png'
 
 // Necessário validar condicional para o elemento P baseado na quantidade de produtos
 // const teste = 
@@ -11,7 +13,7 @@ export default function CardBuscarPublicacoes(props: any) {
         <div id="cardBuscarPublicacoes" className="cardAgendar">
             <div>
                 <img
-                    src={props.src}
+                    src={props.src ? props.src : {imagem}}
                     alt={props.alt} />
             </div>
             <div className="conteudoCard">

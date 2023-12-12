@@ -5,6 +5,7 @@ import CardBuscarPublicacoes from '../../components/CardBuscarPublicacoes'
 import secureLocalStorage from 'react-secure-storage'
 import { useState, useEffect } from 'react'
 import api from '../../utils/api'
+import no_imagem from '../../assets/img/img_Baterias.png'
 
 function BuscarPublicacoes() {
 
@@ -13,10 +14,6 @@ function BuscarPublicacoes() {
     const [userId, setUserId] = useState<any>({})
     const dadosCombinados = [...anuncios, ...produtos]
     const dadosFiltrados: any = []
-    // let teste 
-
-    // const [listarAnunciosDisponiveis, setListarAnunciosDisponiveis] = useState<any[]>(anuncios)
-
 
     useEffect(() => {
         document.title = "Buscar por Publicações - Ecosystem e Recycle"
@@ -50,23 +47,23 @@ function BuscarPublicacoes() {
         // }
     }
 
-    function filtrarProdutos(anuncio:any){
-        let produto:any = []
-        produtos.forEach((item:any):any => {   
-            if(item.anuncio.id === anuncio.id){
-                if (typeof item ==="object" && item.length != 0){
-                    if(item != undefined && item !=null){
-                        if(typeof item != 'undefined'){
-                            // console.log(typeof item)
-                            produto.push(item)      
-                        }
-                    }
-                }
-            }
+//     function filtrarProdutos(anuncio:any){
+//         let produto:any = []
+//         produtos.forEach((item:any):any => {   
+//             if(item.anuncio.id === anuncio.id){
+//                 if (typeof item ==="object" && item.length != 0){
+//                     if(item != undefined && item !=null){
+//                         if(typeof item != 'undefined'){
+//                             // console.log(typeof item)
+//                             produto.push(item)      
+//                         }
+//                     }
+//                 }
+//             }
 
-        });
-        return produto
-}
+//         });
+//         return produto
+// }
 
 
 
@@ -118,7 +115,7 @@ function BuscarPublicacoes() {
                                 <p>Veja todas as publicações ativas mais próximas de você!</p>
                             </div>
                             {
-                            dadosCombinados.map((dadosCombinados: any, index: number) => {
+                            anuncios.map((dadosCombinados: any, index: number) => {
                                 return <div key={index}>
                                     <CardBuscarPublicacoes
                                         titulo={dadosCombinados.titulo}
@@ -126,7 +123,8 @@ function BuscarPublicacoes() {
                                         quantidade={dadosCombinados.nome}
                                         // descricao={.nome}
                                         cidade={dadosCombinados.nome}
-                                        src={dadosCombinados.url_imagem}
+                                        // src={dadosCombinados.url_imagem}
+                                        src={no_imagem}
                                     />
                                 </div>
                             })}
