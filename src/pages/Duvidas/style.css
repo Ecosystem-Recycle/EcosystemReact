@@ -20,12 +20,12 @@
 }
 
 
-.faqs-container {
+#mainDuvidas .faqs-container {
     margin: 0 auto;
     max-width: 800px;
 }
 
-.faq {
+#mainDuvidas .faq {
     background-color: transparent;
     border: 4px solid var(--verde1);
     border-radius: 10px;
@@ -38,13 +38,13 @@
 }
 
 
-.faq.active {
+#mainDuvidas .faq.active {
     background-color: #fff;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1), 0 3px 6px rgba(0, 0, 0, 0.1);
 }
 
-.faq.active::after,
-.faq.active::before {
+#mainDuvidas .faq.active::after,
+#mainDuvidas .faq.active::before {
     color: #2ecc71;
     content: '\f075';
     font-family: 'Font Awesome 5 Free';
@@ -56,14 +56,14 @@
     z-index: 0;
 }
 
-.faq.active::before {
+#mainDuvidas .faq.active::before {
     color: #3498db;
     top: -10px;
     left: -30px;
     transform: rotateY(180deg);
 }
 
-.faqs-container p {
+#mainDuvidas .faqs-container p {
     font-size: 16px;
 }
 
@@ -73,17 +73,17 @@
 
 @media screen and (max-width: 1072px) {
 
-    .title h2 {
+    #mainDuvidas  .title h2 {
         font-size: 1.6rem;
     }
 
-    .title p {
+    #mainDuvidas .title p {
         font-size: 0.8rem;
     }
 }
 
 @media screen and (max-width: 1020px) {
-    .faq {
+    #mainDuvidas .faq {
         width: 95%;
         margin: 20px auto;
     }
@@ -98,7 +98,7 @@
     }
 
 
-    .wrapper {
+    #mainDuvidas .wrapper {
         width: 95%;
     }
 
@@ -113,7 +113,7 @@
 }
 
 @media screen and (max-width: 532px) {
-    .faqs-container p {
+    #mainDuvidas  .faqs-container p {
         font-size: 14px;
     }
 
