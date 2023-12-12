@@ -17,7 +17,6 @@ function Header() {
     function verificarUsuarioLogado() {
         if ( secureLocalStorage.getItem("userId") ) {
             setUsuarioLogado(secureLocalStorage.getItem("userId"))
-            console.log(usuarioLogado);
         }
     }
 

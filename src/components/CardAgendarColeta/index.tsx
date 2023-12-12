@@ -3,38 +3,51 @@ import './style.css'
 import image from "../../assets/img/image 12.png"
 
 export default function CardAgendarColeta(props:any) {
-
+    function FormataStringData(data:string):string {
+        //formata a data do MYSQL -> (1900-12-25) para (25/12/1900)
+        let ano  = data.split("-")[0];
+        let mes  = data.split("-")[1];
+        let dia  = data.split("-")[2];
+      
+        return dia + '/' + ("0"+mes).slice(-2) + '/' + ("0"+ano).slice(-2);
+        // Utilizo o .slice(-2) para garantir o formato com 2 digitos.
+    }
     return (
         <div className="card" id='cardAgendarColeta'>
             <div className="cardEsquerda">
                 {/* <h2>Celulares antigos de diversas marcas e modelos</h2> */}
                 <h2>{props.titulo ? props.titulo : "Título"}</h2>
-                <img src={ image } alt="" />
-                <p>Agendar Retirada</p>
+                {/* <img src={ "http://localhost:8090/img/" + props.imagem  } alt="Imagem da publicação" /> */}
+                <img src={ image } alt="Imagem da publicação" />
             </div>
             <div className="cardDireita">
                 <div className="cardDireitaConteudo">
                     <h2>Dados da Retirada</h2>
-                    <p>Data de publicação: {props.dataPublicacao ? props.dataPublicacao : "dd/mm/aaaa"}</p>
-                    <p>quantidade de iten(s): { props.quantidadeItem ? props.quantidadeItem : "N" }</p>
+                    <p><b>Data de publicação:</b> {props.dataPublicacao ? FormataStringData(props.dataPublicacao) : "dd/mm/aaaa"}</p>
+                    <p><b>Total de iten(s):</b> { props.quantidadeItem ? props.quantidadeItem : "N" }</p>
                     <div>
-                        <p>Descrição: </p>
+                        <p><b>Descrição:</b></p>
                         <div>
-                            <p>5x Celular Samsung A5</p>
-                            <p>2x Iphone 2</p>
-                            <p>7x Celular LG 320</p>
-                            <p>3x Tablet Samsung Galaxy Tab 2</p>
-                            <p>...</p>
+                            { 
+                                props.descricoes.map((descricao: any, index: number) => {
+                                    return <p key={ index }>{ descricao.quantidade+"x "+ descricao.nome }</p>
+                                })
+                            }
                         </div>
                     </div>
-                    <p>Condição: Para desmontagem/Retirada de peças</p>
+
                     <p>
-                        Localização: Av. do Brasil, N° 1000 - apt25/Bloco D - SBC - SP
-                        CEP: 12345-678
+                        <b>Localização:</b> { props.logradouro }, { props.numero } - { props.cidade } - { props.estado }
                     </p>
+                        <p>
+                            <b>CEP:</b> { props.cep }
+                        </p>
                     <p>
-                        Disponibilidade de horário para agendamento: Seg - Sex / 09:00
-                        às 14:00
+                        <b>Disponibilidade para agendamento: </b>{ props.disponibilidade }
+                    </p>
+
+                    <p>
+                        <b>Período:</b> { props.periodo }
                     </p>
                 </div>
             </div>

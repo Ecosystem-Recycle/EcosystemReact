@@ -124,7 +124,7 @@ function BuscarPublicacoes() {
                                         titulo={dadosCombinados.titulo}
                                         data={dadosCombinados.data_cadastro}
                                         quantidade={dadosCombinados.nome}
-                                        descricao={.nome}
+                                        // descricao={.nome}
                                         cidade={dadosCombinados.nome}
                                         src={dadosCombinados.url_imagem}
                                     />

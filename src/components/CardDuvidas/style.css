@@ -1,14 +1,14 @@
-.faq-title {
+#mainDuvidas .faq-title {
     margin: 0 35px 0 0;
 }
 
-h3 {
+#mainDuvidas h3 {
     font-family: var(--font1);
     font-size: 20px;
 }
 
 
-.faq-text {
+#mainDuvidas.faq-text {
     /* display: bloc; */
     margin: 25px 0 0;
     text-align: justify;
@@ -16,11 +16,11 @@ h3 {
     font-size: 10px;
 }
 
-.ativo {
+#mainDuvidas.ativo {
     display: none
 }
 
-.faq-toggle {
+#mainDuvidas.faq-toggle {
     background-color: var(--verde1);
     border: none;
     border-radius: 50%;
@@ -76,7 +76,7 @@ h3 {
         margin: 0 51px 0 0;
     }
 
-    h3 {
+    #mainDuvidas h3 {
         font-size: 15px;
     }
 }

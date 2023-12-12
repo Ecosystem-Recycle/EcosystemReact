@@ -350,11 +350,11 @@
 }
 
 
-@media screen and (max-width: 520px) {
+@media screen and (max-width: 580px) {
     #mainEditarPerfilColetor .conteudo_doacoes {
         padding: 25px 0;
         column-gap: 0.5rem;
-        grid-template-columns: minmax(188px, 0.15fr) 1fr;
+        grid-template-columns:  1fr;
         grid-template-rows: 100px 1fr;
     }
 
