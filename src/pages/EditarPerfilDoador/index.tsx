@@ -1,7 +1,7 @@
 import "./style.css";
 
 import AsideDoador from "../../components/AsideDoador";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import api from "../../utils/api";
 import secureLocalStorage from "react-secure-storage";
@@ -76,6 +76,7 @@ function EditarPerfilDoador() {
                 localStorage.removeItem("userId");
                 api.get("usuarios/email/" + email).then((responseEmail: any)=>{
                     secureLocalStorage.setItem("userId", responseEmail.data);
+                    alert("Dados Alterados Com Sucesso");
                     navigate(0)
                 })      
 

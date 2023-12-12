@@ -64,7 +64,6 @@ function Login() {
 
         api.post("endereco")
         .then( (responseEndereco) => {   
-            alert("endereco Cadastrado")    
             const formData = new FormData() 
             
             formData.append("nome", nome)
@@ -119,7 +118,7 @@ function Login() {
                             name='login_email'
                             autoComplete='off'
                             id='email'
-                            placeholder='Digite o nome & marca do produto'
+                            placeholder='Digite o email'
                             required
                             onChange={(event) => setEmail(event.target.value)}
                             />
@@ -139,7 +138,6 @@ function Login() {
                             <button
                                 className="formulario_botao"
                                 type="submit"
-                            // onClick={logar} return false
                             >
                                 Entrar
                             </button>

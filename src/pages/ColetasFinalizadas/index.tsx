@@ -13,7 +13,7 @@ function ColetasFinalizadas() {
                 <h1>página coletas finalizadas ecosystem &amp; recycle</h1>
                 <section>
                     <div className="conteudo_doacoes wrapper">
-                        <Aside idSeletor={1}/>
+                        <Aside idSeletor={2}/>
                         <div className="menu_Direito">
                             <div className="title">
                                 <h2>Coletas Agendadas</h2>
