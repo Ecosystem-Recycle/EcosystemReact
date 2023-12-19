@@ -40,12 +40,8 @@ function QueroDoarParte1() {
   useEffect( () => {
     document.title = "Quero Doar - Ecosystem e Recycle"
 
-    // setUserEmail(secureLocalStorage.getItem("userEmail"));
     const userObj:string | number | boolean | object | null = secureLocalStorage.getItem("userId");
     setUserId(userObj)
-
-    // console.log('UserEmail "useState": ' + userEmail)
-    // console.log('UserID: [useState] ->' + userId.id)
     
     carregarProduto();
 }, [userId] )
@@ -120,16 +116,20 @@ function QueroDoarParte1() {
 
       listarProdutos.forEach((produto:any) => {
       //Atualiza a Lista com o novo produto
-      const formDataProd = new FormData();
-       
-      formDataProd.append("nome", produto.nome)
-      formDataProd.append("quantidade", produto.quantidade)
-      formDataProd.append("anuncio_id", anuncioId)
-      formDataProd.append("categoria", produto.categoria);
-       
-        console.log(produto)
-        console.log(anuncioId)
-      api.post("produto/model", formDataProd).then( (responseProduto:any) => {
+      const produtoCadastro: { 
+        nome: string, 
+        quantidade: number,
+        anuncio_id: string, 
+        categoria: string } = 
+      {
+        nome: produto.nome,
+        quantidade: produto.quantidade,
+        anuncio_id: anuncioId,
+        categoria: produto.categoria
+      }
+      
+      
+      api.post("produto", produtoCadastro).then( (responseProduto:any) => {
         console.log(responseProduto)
         
       }).catch( (error:any) => {
@@ -349,6 +349,8 @@ function limparCampos(qualTipo:string){
                         </div>
                       </div>
                       <div className="arquivos">
+
+                        
                         <div className="adicionarFotos">
                           <div>
                             <img
