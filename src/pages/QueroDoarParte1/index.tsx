@@ -1,7 +1,7 @@
 import './style.css'
 
 import api from "../../utils/api"
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import secureLocalStorage from 'react-secure-storage'
 
@@ -10,7 +10,7 @@ import LinhaProduto from '../../components/LinhaProduto'
 
 import icoAdd from '../../assets/img/add.svg'
 import icoDel from '../../assets/img/del.svg'
-import imgBaterias from '../../assets/img/Vector.png'
+import imgPadrao from '../../assets/img/default.jpg'
 
 
 
@@ -18,11 +18,12 @@ import imgBaterias from '../../assets/img/Vector.png'
 function QueroDoarParte1() {
   const navigate = useNavigate()
   const [listarProdutos, setListarProdutos] = useState<any[]>([]);
+  const [ foto, setFoto ] = useState<any>();
 
   const [userId, setUserId] = useState<any>({});
   
   const [ totalItens, setTotalItens ] = useState<number>(0);  
-  const [ foto, setFoto ] = useState<any>();
+
 
   const [formValues, setFormValues] = useState<any>({
     categoria: "",
@@ -95,7 +96,9 @@ function QueroDoarParte1() {
           formData.append("periodo", valoresInput2.periodo)
           formData.append("usuario_id", userId.id);
           formData.append("tipo_status", "Aguardando Agendamento");
-          formData.append("imagem", foto);   
+          if(foto){
+            formData.append("imagem", foto);  
+          }
           
           api.post("anuncio", formData).then( (responseAnuncio:any) => {
 
@@ -144,6 +147,10 @@ function QueroDoarParte1() {
       
     }
   
+    function cancelarAnuncio(){
+      limparLista();
+      navigate(0);
+    }
 
 function carregarProduto(){
   
@@ -353,19 +360,29 @@ function limparCampos(qualTipo:string){
                         
                         <div className="adicionarFotos">
                           <div>
-                            <img
-                              src={ imgBaterias }
-                              alt="Upload de Imagem"
-                            />
+                          { 
+                            foto 
+                            ? <img
+                                src={ URL.createObjectURL(foto) }
+                                alt="Upload de Imagem Padrão"
+                              />
+                            : <img
+                                src={ imgPadrao }
+                                alt="Upload de Imagem Padrão"
+                              />
+                          }
+                            
                           </div>
-                          <label htmlFor="add-single-img">+ Adicionar Foto</label>              
+                          <label htmlFor="imagem1">+ Adicionar Foto</label>              
                           <input 
+                            tabIndex={ 0 }
                             type="file" 
-                            name="add-single-img" 
-                            id="add-single-img" 
+                            name="imagem1" 
+                            id="imagem1" 
                             accept="image" 
                             onChange={ verificarCampoUpload }
                           />
+                          
                           
                         </div>
 
@@ -376,7 +393,7 @@ function limparCampos(qualTipo:string){
                         <button type="submit">
                           Publicar
                         </button>
-                        <Link to="/querodoarpt1">Cancelar</Link>
+                        <button type="button" onClick={ cancelarAnuncio }>Cancelar</button>
                       </div>
 
                     </form>
