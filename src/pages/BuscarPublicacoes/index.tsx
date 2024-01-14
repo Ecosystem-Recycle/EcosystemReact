@@ -1,29 +1,24 @@
 import './style.css'
 import Aside from '../../components/Aside'
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import CardBuscarPublicacoes from '../../components/CardBuscarPublicacoes'
 import secureLocalStorage from 'react-secure-storage'
 import { useState, useEffect } from 'react'
 import api from '../../utils/api'
-import no_imagem from '../../assets/img/img_Baterias.png'
+// import no_imagem from '../../assets/img/img_Baterias.png'
 
 function BuscarPublicacoes() {
 
     const [anuncios, setAnuncios] = useState<any[]>([])
     const [produtos, setProdutos] = useState<any[]>([])
-    const [userId, setUserId] = useState<any>({})
-    const dadosCombinados = [...anuncios, ...produtos]
-    const dadosFiltrados: any = []
-
+    // const [userId] = useState<any>(secureLocalStorage.getItem("userId"));
+    
     useEffect(() => {
         document.title = "Buscar por Publicações - Ecosystem e Recycle"
 
-        const userObj: string | number | boolean | object | null = secureLocalStorage.getItem("userId");
-        setUserId(userObj)
-
-        listarAnuncios()
-        listarProdutos()
-    }, [setUserId])
+        listarAnuncios();
+        listarProdutos();
+    }, [])
 
     function listarAnuncios() {
         api.get("anuncio")
@@ -33,74 +28,41 @@ function BuscarPublicacoes() {
             })
     }
 
-    function listarProdutos() {
-        api.get("produto")
-            .then((responseProduto: any) => {
-                console.log(responseProduto.data)
-                let organizaProduto: any = []
-                organizaProduto = responseProduto.data
-                setProdutos(organizaProduto)
-                
-            })
-        // function organizarDados() {
-        //     if(produtos.anuncio_id == )
-        // }
+    function listarProdutos(){
+        api.get("/produto").then((resListaProduto: any)=>{
+            let listaProdutos:any = []
+            listaProdutos = resListaProduto.data
+            setProdutos(listaProdutos);
+            console.log(listaProdutos)
+        })
     }
 
-//     function filtrarProdutos(anuncio:any){
-//         let produto:any = []
-//         produtos.forEach((item:any):any => {   
-//             if(item.anuncio.id === anuncio.id){
-//                 if (typeof item ==="object" && item.length != 0){
-//                     if(item != undefined && item !=null){
-//                         if(typeof item != 'undefined'){
-//                             // console.log(typeof item)
-//                             produto.push(item)      
-//                         }
-//                     }
-//                 }
-//             }
+    function filtrarProdutos(anuncio:any){
+        let produto:any = []
+        produtos.forEach((item:any):any => {   
+            if(item.anuncio.id === anuncio.id){
+                if (typeof item ==="object" && item.length != 0){
+                    if(item != undefined && item !=null){
+                        if(typeof item != 'undefined'){
+                            produto.push(item)      
+                        }
+                    }
+                }
+            }
 
-//         });
-//         return produto
-// }
+        });
+        console.log(produto);
+        return produto;
+    }
 
+    function somarProdutos(anuncio:any):number{
+        let soma = 0; 
 
-
-    // const {idUsuario} = useParams()
-
-    // const [nome, setNome] = useState<string>("" )
-
-    // let teste = secureLocalStorage.getItem("user")
-    // console.log(teste)
-
-    // let testeNovo
-    // testeNovo=(JSON.parse(teste))
-
-
-
-
-
-    //Abaixo um teste realizado para validar a busca de dados com base do id do cliente logado. Processo realizado sem sucesso.
-
-    // useEffect(() => {
-    //     document.title = "perfil de " + nome 
-
-    //     buscarUsuarioPorID()   
-
-
-    // }, [])
-
-    // function buscarUsuarioPorID(){
-    //     api.get("users/" + idUsuario).then((response:any) => {
-    //         // setNome(response.data.nome)
-    //         // console.log(nome)
-    //         return
-
-    //     } ).catch((error) => {
-    //         console.log(error)
-    //     }) 
-    // }
+            for(var i =0;i<anuncio.length;i++){ 
+                soma+=anuncio[i].quantidade; 
+            } 
+          return soma;
+    }
 
     return (
         <>
@@ -116,15 +78,16 @@ function BuscarPublicacoes() {
                             </div>
                             {
                             anuncios.map((dadosCombinados: any, index: number) => {
-                                return <div key={index}>
+                                return <div key={dadosCombinados.id}>
                                     <CardBuscarPublicacoes
+                                        imagem={ dadosCombinados.url_imagem }
                                         titulo={dadosCombinados.titulo}
                                         data={dadosCombinados.data_cadastro}
-                                        quantidade={dadosCombinados.nome}
-                                        // descricao={.nome}
-                                        cidade={dadosCombinados.nome}
-                                        // src={dadosCombinados.url_imagem}
-                                        src={no_imagem}
+                                        quantidade={somarProdutos(filtrarProdutos(dadosCombinados))}
+                                        descricoes={ filtrarProdutos(dadosCombinados) }
+                                        cidade={dadosCombinados.usuario_doador.endereco.cidade}
+                                        estado={dadosCombinados.usuario_doador.endereco.estado}
+                                        id={ dadosCombinados.id }
                                     />
                                 </div>
                             })}
