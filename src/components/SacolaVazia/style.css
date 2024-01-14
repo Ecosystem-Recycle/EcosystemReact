@@ -1,5 +1,5 @@
-#mainMinhasDoacoes .Conteudo_Sacola,
-#mainDoacoesFinalizadas .Conteudo_Sacola {
+.Conteudo_Sacola,
+.Conteudo_Sacola {
     font-family: var(--font2);
     font-size: 40px;
     text-align: center;
@@ -8,8 +8,8 @@
     padding: 111px 100px 115px 100px;
 }
 
-#mainMinhasDoacoes .imgCadeado,
-#mainDoacoesFinalizadas .imgCadeado {
+.imgCadeado,
+.imgCadeado {
     display: flex;
     justify-content: center;
     padding-bottom: 50px;
@@ -17,8 +17,8 @@
 
 /* ### Seção @Media ### */
 @media screen and (max-width: 812px) {
-#mainMinhasDoacoes .Conteudo_Sacola,
-#mainDoacoesFinalizadas .Conteudo_Sacola {
+    .Conteudo_Sacola,
+    .Conteudo_Sacola {
         display: grid;
         grid-template-columns: 1fr;
         justify-items: center;
@@ -28,22 +28,22 @@
         padding: 100px 100px 50px 100px;
     }
 
-#mainMinhasDoacoes .imgCadeado,
-#mainDoacoesFinalizadas .imgCadeado {
+    .imgCadeado,
+    .imgCadeado {
         width: 90%;
         align-self: center;
     }
 
-#mainMinhasDoacoes .imgCadeado>img,
-#mainDoacoesFinalizadas .imgCadeado>img {
+    .imgCadeado>img,
+    .imgCadeado>img {
         width: 30%;
     }
 
 }
 
 @media screen and (max-width: 727px) {
-#mainMinhasDoacoes .Conteudo_Sacola,
-#mainDoacoesFinalizadas .Conteudo_Sacola {
+    .Conteudo_Sacola,
+    .Conteudo_Sacola {
         padding: 0;
         width: 180px;
         margin: 60px 0;
@@ -51,8 +51,8 @@
 }
 
 @media screen and (max-width: 580px) {
-    #mainMinhasDoacoes .Conteudo_Sacola,
-#mainDoacoesFinalizadas .Conteudo_Sacola {
+    .Conteudo_Sacola,
+    .Conteudo_Sacola {
         width: 80%;
     }
 }

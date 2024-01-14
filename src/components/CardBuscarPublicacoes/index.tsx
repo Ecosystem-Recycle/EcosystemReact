@@ -24,11 +24,16 @@ export default function CardBuscarPublicacoes(props: any) {
 
     function agendarColeta(id:any):any{
         api.get("anuncio/" + id).then((responseAnuncio: any)=>{
-            // //Salva usuario[objetoU]
-            secureLocalStorage.setItem("anuncioInfo", responseAnuncio.data);
+            if(responseAnuncio.data){
+                secureLocalStorage.setItem("anuncioInfo", responseAnuncio.data);
+                navigate("/agendarcoleta") 
+                return true;
+            } else {
+                return false;
+            }
+            
         })
-        console.log(id);      
-        //  navigate("/agendarcoleta") 
+        
     }
 
     return (
@@ -57,19 +62,19 @@ export default function CardBuscarPublicacoes(props: any) {
                     </div>
                     <p>{props.cidade} - {props.estado}</p>
                 </div>
-
-                {/* <button type='button'
-                    onClick={ agendarColeta(props.id) }
-                >
-                    Agendar
-                </button> */}
-                    <Link 
-                        onClick={ agendarColeta(props.id) }
+                    {/* <Link 
+                        onClick={ () => agendarColeta(props.id) }
                         to="/agendarcoleta"
                     >
                         Agendar
-                    </Link>
+                    </Link> */}
 
+                    <button 
+                        type="button"
+                        onClick={ () => agendarColeta(props.id) }
+                    >
+                        Agendar
+                    </button>
             </div>
         </div>
     )

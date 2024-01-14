@@ -3,266 +3,351 @@ import './style.css'
 import Aside from '../../components/Aside'
 import { useState, useEffect } from 'react';
 import api from '../../utils/api';
-import secureLocalStorage from 'react-secure-storage'
-import { redirectDocument, useParams } from 'react-router-dom';
-
-
+import { useNavigate } from "react-router-dom";
+import secureLocalStorage from "react-secure-storage";
 
 function EditarPefilColetor() {
 
+    const navigate = useNavigate()
+    const [userId] = useState<any>(secureLocalStorage.getItem("userId"));
+
+
+    // const [nomeEmpresa, setNomeEmpresa] = useState<string>("")
+    // const [razaoSocial, setRazaoSocial] = useState<string>("")
+    // const [email, setEmail] = useState<string>("")
+    // const [senha, setSenha] = useState<string>("")
+    // const [telefone, setTelefone] = useState<string>("")
+    // const [cnpj, setCnpj] = useState<string>("")
+    // const [endereco, setEndereco] = useState<string>("")
+    // const [cidade, setCidade] = useState<string>("")
+    // const [uf, setUf] = useState<string>("")
+    // const [cep, setCep] = useState<string>("")
+    const [ nome, setNome ] = useState<string>("")
+    const [ cpf_cnpj, setCpf_cnpj ] = useState<string>("")
+    const [ email, setEmail ] = useState<string>("")
+    const [ senha, setSenha ] = useState<string>("")
+    const [ telefone, setTelefone ] = useState<string>("")
+    const [ genero, setGenero ] = useState<string>("")
+    const [ logradouro, setLogradouro ] = useState<string>("")
+    const [ cidade, setCidade ] = useState<string>("")
+    const [ uf, setUf ] = useState<string>("")
+    const [ cep, setCep ] = useState<string>("")
+    const [ bairro, setBairro ] = useState<string>("")
+    const [ numero, setNumero ] = useState<string>("")
+
+    useEffect( () => {
+        document.title = "Editar Perfil Doador - Ecosystem e Recycle"
+        preencherCampos();
+    }, [] )
+
+    function preencherCampos(){
+        setNome(userId.nome);
+        setEmail(userId.email);
+        setCpf_cnpj(userId.cpf_Cnpj);
+        setTelefone(userId.telefone);
+        setGenero(userId.Genero);
+        setCep(userId.endereco.cep);
+        setLogradouro(userId.endereco.logradouro);
+        setNumero(userId.endereco.numero);
+        setBairro(userId.endereco.bairro);
+        setCidade(userId.endereco.cidade);
+        setUf(userId.endereco.estado);
+    }
+
+    function editarUsuario(event: any ){
+        event.preventDefault();
+        const formData = new FormData();
+
+          formData.append("id", userId.id)
+          formData.append("nome", nome)
+          formData.append("email", email)
+          formData.append("senha", senha);
+          formData.append("telefone", telefone);
+          formData.append("genero", genero);   
+          formData.append("cpf_Cnpj", cpf_cnpj);
+          formData.append("tipo_User", userId.tipousuario.nome);
+          formData.append("endereco_id", userId.endereco.id);
+
+
+        api.put("http://localhost:8090/usuarios/media/" + userId.id, formData)
+        .then((responseUser: any) => {
+            const formDataEndereco = new FormData();
+
+            formDataEndereco.append("id", userId.endereco.id)
+            formDataEndereco.append("logradouro", logradouro)
+            formDataEndereco.append("numero", numero)
+            formDataEndereco.append("bairro", bairro);
+            formDataEndereco.append("cidade", cidade);
+            formDataEndereco.append("estado", uf);   
+            formDataEndereco.append("cep", cep);
+
+            api.put("http://localhost:8090/endereco/media/" + userId.endereco.id, formDataEndereco)
+            .then((responseEndereco: any) => {
+                localStorage.removeItem("userId");
+                api.get("usuarios/email/" + email).then((responseEmail: any)=>{
+                    secureLocalStorage.setItem("userId", responseEmail.data);
+                    alert("Dados Alterados Com Sucesso");
+                    navigate(0)
+                })      
+
+            });
+
+        });
+    }
     
 
-
-    const [nomeEmpresa, setNomeEmpresa] = useState<string>("")
-    const [razaoSocial, setRazaoSocial] = useState<string>("")
-    const [email, setEmail] = useState<string>("")
-    const [senha, setSenha] = useState<string>("")
-    const [telefone, setTelefone] = useState<string>("")
-    const [cnpj, setCnpj] = useState<string>("")
-    const [endereco, setEndereco] = useState<string>("")
-    const [cidade, setCidade] = useState<string>("")
-    const [uf, setUf] = useState<string>("")
-    const [cep, setCep] = useState<string>("")
-
-
-    const { idUsuario } = useParams()
-    const [nome, setNome] = useState<string>("")
-
-
-
-    // useEffect(() => {
-    //     document.title = "perfil de " + nome
-
-    //     buscarUsuarioPorID()
-
-
-    // }, [])
-
-
-    // function buscarUsuarioPorID() {
-    //     api.get("users/" + idUsuario).then((response: any) => {
-    //         setNome(response.data.nome)
-
-    //     }).catch((error) => {
-    //         console.log(error)
-    //     })
-    // }
-
-
-    function msgSalvarPerfil() {
-        alert('Dados Cadastrado com Sucesso');
+  function buscarCep() {
+    if(cep == ""){
+        alert("Campo de CEP não pode ser Vazio?")
+        return
     }
+    const options = {
+        method: "GET",
+        mode: "cors",
+        headers: {
+            'content-type': 'application/json;charset=utf-8',
+        }
+    } 
+    api.get("https://viacep.com.br/ws/" + cep + "/json/", options)
+      .then((response: any) => {
+        setLogradouro(response.data.logradouro)
+        setCidade(response.data.localidade)
+        setUf(response.data.uf)
+        setBairro(response.data.bairro)
+      });
+  }
 
-    function cadastroDadosColetor(event: any) {
-        event.preventDefault()
-
-        
-
-        const formData = new FormData()
-
-        // api.get("users").then((response) => {
-        //     console.log(response)
-
-        //     secureLocalStorage.setItem("user", response.data)
-
-        //     console.log(response.data.map(user => user.id))
-
-        // }
-        // )
-        // return
-
-
-        formData.append("nome_empresa", nomeEmpresa)
-        formData.append("razao_social", razaoSocial)
-        formData.append("email", email)
-        formData.append("password", senha)
-        formData.append("telefone", telefone)
-        formData.append("cnpj", cnpj)
-        formData.append("endereco", endereco)
-        formData.append("cidade", cidade)
-        formData.append("uf", uf)
-        formData.append("cep", cep)
-
-        api.post("users", formData)
-        .then((response) => {
-            console.log(response)
-            alert("cadastro ok")
-        })
-        .catch((error) => {
-            console.log(error)
-        })
-    }
 
     return (
         <>
-            <main id='mainEditarPerfilColetor'>
-                <h1>página editar perfil do coletor ecosystem &amp; recycle</h1>
-                <section>
-                    <div className="conteudo_doacoes wrapper">
-                        <Aside idSeletor={3} />
-                        <div className="menu_Direito">
-                            <div className="title">
-                                <h2>Editar Perfil</h2>
-                                <p>Atualize ou edite dados do seu perfil.</p>
+          <main id="mainEditarPerfilDoador">
+            <h1>Editar Perfil Doador ecosystem & recycle</h1>
+            <section>
+              <div className="conteudo_doacoes wrapper">
+                <Aside idSeletor={3} />
+                <div className="menu_Direito">
+                  <div className="title">
+                    <h2>Editar Perfil</h2>
+                    <p>Atualize ou edite dados do seu perfil.</p>
+                  </div>
+                  <div>
+                    <div className="Conteudo">
+                      <section className="formulario">
+                        <form className="formDoador" onSubmit={ editarUsuario } method="put">
+                          <h2>Dados Gerais:</h2>
+                          <div className="campo-form">
+                            <label htmlFor="nomeUsuario">Nome Completo:</label>
+                            <input
+                              value={nome}
+                              type="text"
+                              name="nomeUsuario"
+                              id="nomeUsuario"
+                              placeholder="Digite o nome completo para cadastro..."
+                              required
+                              onChange={(event) => setNome(event.target.value)}
+                            />
+                          </div>
+                          <div className="campo-form">
+                            <label htmlFor="email">E-mail:</label>
+                            <input
+                              value={email}
+                              type="email"
+                              name="email"
+                              id="email"
+                              placeholder="Digite o seu email para cadastro..."
+                              required
+                              onChange={(event) => setEmail(event.target.value)}
+                            />
+                          </div>
+                          <div className="campo-form">
+                            <label htmlFor="senha">Senha:</label>
+                            <input
+                              value={senha}
+                              type="password"
+                              name="senha"
+                              id="senha"
+                              placeholder="Digite sua senha..."
+                              required
+                              onChange={(event) => setSenha(event.target.value)}
+                            />
+                          </div>
+                          <div className="campo-form">
+                            <label htmlFor="cpf_cnpj">CPF ou CNPJ:</label>
+                            <input
+                              value={cpf_cnpj}
+                              type="text"
+                              name="cpf_cnpj"
+                              id="cpf_cnpj"
+                              placeholder="Digite o seu CPF ou CNPJ..."
+                              required
+                              onChange={(event) => setCpf_cnpj(event.target.value)}
+                            />
+                          </div>
+                          <div className="campo-form">
+                            <label htmlFor="telefone">Telefone:</label>
+                            <input
+                              value={telefone}
+                              type="tel"
+                              name="telefone"
+                              id="telefone"
+                              placeholder="Digite o seu telefone Ex. (DDD) 91234-5678..."
+                            //   pattern="([0-9]){2} [0-9]{4}-[0-9]{4}"
+                              required
+                              onChange={(event) => setTelefone(event.target.value)}
+                            />
+                          </div>
+                          <div className="campo-form">
+                            <label htmlFor="selectGenero">Genero:</label>
+                            <select
+                              className="selectGenero"
+                              name="selectGenero"
+                              id="selectGenero"
+                              required
+                              value={genero}
+                              onChange={(event) => setGenero(event.target.value)}
+                            >
+                              {" "}
+                              <option disabled value="">
+                                Selecione
+                              </option>
+                              <option value="masculino">Masculino</option>
+                              <option value="feminino">Feminino</option>
+                              <option value="outros">Outros</option>
+                            </select>
+                          </div>
+                          <h2>Endereço:</h2>
+                          <div className="camposDuplo-cep">
+                            <div className="campo-form-cep buscarCep">
+                              <label htmlFor="cep">CEP:</label>
+                              <input
+                                value={cep}
+                                type="text"
+                                id="cep"
+                                name="cep"
+                                placeholder="Digite seu CEP..."
+                                required
+                                onChange={(event) => setCep(event.target.value)}
+                              />
                             </div>
-                            <div>
-                                <div className="Conteudo">
-                                    <div className="nada_consta">
-
-                                        <div className="nomeMarca">
-                                            <form onSubmit={cadastroDadosColetor} method='POST'>
-                                                <label htmlFor="name">Nome da Empresa:</label>
-                                                <input
-                                                    className="input"
-                                                    type="text"
-                                                    id="nameEmpresa"
-                                                    name="name"
-                                                    onChange={(event) => setNomeEmpresa(event.target.value)}
-                                                />
-                                                <br />
-                                                <br />
-                                                <label htmlFor="name">Razão Social:</label>
-                                                <input
-                                                    className="input"
-                                                    type="text"
-                                                    id="nameRazao"
-                                                    name="nameRazao"
-                                                    onChange={(event) => setRazaoSocial(event.target.value)}
-                                                />
-                                                <br />
-                                                <br />
-                                                <label htmlFor="email">E-mail:</label>
-                                                <input
-                                                    className="input"
-                                                    type="email"
-                                                    id="email"
-                                                    name="email"
-                                                    onChange={(event) => setEmail(event.target.value)}
-                                                />
-                                                <br />
-                                                <br />
-                                                <label htmlFor="senha">Password</label>
-                                                <input
-                                                    className="input"
-                                                    type="password"
-                                                    id="senha"
-                                                    name="senha"
-                                                    onChange={(event) => setSenha(event.target.value)}
-                                                />
-                                                <br />
-                                                <br />
-                                                <label htmlFor="telefone">Telefone:</label>{" "}
-                                                <br />
-                                                <input
-                                                    className="input"
-                                                    type="tel"
-                                                    id="telefone"
-                                                    name="telefone"
-                                                    placeholder="(11) 1234-5678"
-                                                    // pattern="([0-9]){2} [0-9]{4}-[0-9]{4}"
-                                                    onChange={(event) => setTelefone(event.target.value)}
-                                                />
-                                                <br />
-                                                <br />
-                                                <label htmlFor="cnpj">CNPJ:</label>
-                                                <br />
-                                                <input
-                                                    className="input"
-                                                    type="text"
-                                                    id="cnpj"
-                                                    name="cnpj"
-                                                    onChange={(event) => setCnpj(event.target.value)}
-                                                />
-                                                <br />
-                                                <br />
-                                                <label htmlFor="endereco">Endereço:</label>
-                                                <input
-                                                    className="input"
-                                                    type="text"
-                                                    id="endereco"
-                                                    name="endereco"
-                                                    onChange={(event) => setEndereco(event.target.value)}
-                                                />
-                                                <br />
-                                                <br />
-                                                <div className="regiao">
-                                                    <div>
-                                                        <label htmlFor="endereco">Cidade:</label>
-                                                        <input
-                                                            className="cidade"
-                                                            type="text"
-                                                            id="cidade"
-                                                            name="cidade"
-                                                            onChange={(event) => setCidade(event.target.value)}
-                                                        />
-                                                    </div>
-                                                    <div>
-                                                        <label htmlFor="selecao uf">UF:</label>
-                                                        <select 
-                                                        className="selecao" 
-                                                        name="uf" 
-                                                        id="uf"
-                                                        value={ uf }
-                                                        onChange={(event) => setUf(event.target.value)}
-                                                        >
-                                                            <option value="">Selecione</option>
-                                                            <option value="acre">AC</option>
-                                                            <option value="alagoas">AL</option>
-                                                            <option value="amapa">AP</option>
-                                                            <option value="amazonas">AM</option>
-                                                            <option value="bahia">BA</option>
-                                                            <option value="ceara">CE</option>
-                                                            <option value="distritoFederal">DF</option>
-                                                            <option value="espiritoSanto">ES</option>
-                                                            <option value="goias">GO</option>
-                                                            <option value="maranhao">MA</option>
-                                                            <option value="matoGrosso">MT</option>
-                                                            <option value="matoGrossoDoSul">MS</option>
-                                                            <option value="minasGerais">MG</option>
-                                                            <option value="para">PA</option>
-                                                            <option value="paraiba">PB</option>
-                                                            <option value="parana">PR</option>
-                                                            <option value="pernambuco">PE</option>
-                                                            <option value="piaui">PI</option>
-                                                            <option value="rioDeJaneiro">RJ</option>
-                                                            <option value="rioGrandeDoSul">RS</option>
-                                                            <option value="rondonia">RO</option>
-                                                            <option value="roraima">RR</option>
-                                                            <option value="santaCatarina">SC</option>
-                                                            <option value="saoPaulo">SP</option>
-                                                            <option value="sergipe">SE</option>
-                                                            <option value="tocantins">TO</option>
-                                                        </select>
-                                                    </div>
-                                                    <br />
-                                                    <br />
-                                                </div>
-                                                <label>CEP:</label>
-                                                {/* <label>Ex: 12345-678</label> */}
-                                                <input
-                                                    className="input"
-                                                    type="text"
-                                                    id="cep"
-                                                    placeholder='12345-000'
-                                                    onChange={(event) => setCep(event.target.value)}
-                                                // required pattern="" 
-                                                />
-                                                <div className="btnVoltar">
-                                                    <button type="submit">Salvar</button>
-                                                </div>
-
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
+                            <div className="but_cep">
+                              <input
+                                type="button"
+                                value="Buscar"
+                                onClick={ buscarCep }
+                              />
                             </div>
-                        </div>
+                          </div>
+                          <div className="camposDuplo">
+                            <div className="campo-form">
+                                <label htmlFor="logradouro">Logradouro:</label>
+                                <input
+                                value={logradouro}
+                                type="text"
+                                name="logradouro"
+                                id="logradouro"
+                                placeholder="Digite o seu endereço..."
+                                required
+                                onChange={(event) => setLogradouro(event.target.value)}
+    
+                                />
+                            </div>
+                            <div className="campo-form">
+                                <label htmlFor="numero">Numero:</label>
+                                <input
+                                value={numero}
+                                type="text"
+                                name="numero"
+                                id="numero"
+                                placeholder="Digite o seu Número..."
+                                required
+                                onChange={(event) => setNumero(event.target.value)}
+                                
+                                />
+                            </div>
+                          </div>
+                          <div className="campo-form">
+                                <label htmlFor="bairro">Bairro:</label>
+                                <input
+                                value={bairro}
+                                type="text"
+                                name="bairro"
+                                id="bairro"
+                                placeholder="Digite o seu Bairro..."
+                                required
+                                onChange={(event) => setBairro(event.target.value)}
+                                />
+                            </div>
+                          <div className="camposDuplo">
+                            <div className="campo-form">
+                              <label htmlFor="cidade">Cidade:</label>
+                              <input
+                                value={cidade}
+                                type="text"
+                                id="cidade"
+                                name="cidade"
+                                placeholder="Digite sua cidade..."
+                                required
+                                onChange={(event) => setCidade(event.target.value)}
+                                
+                              />
+                            </div>
+                            <div className="campo-form">
+                              <label htmlFor="selecao_uf">UF:</label>
+                              <select
+                                className="selecao_uf"
+                                name="selecao_uf"
+                                id="selecao_uf"
+                                required
+                                value={uf}
+                                onChange={(event) => setUf(event.target.value)}
+                              >
+                                <option disabled value="">
+                                  Selecione:
+                                </option>
+                                <option value="AC">AC</option>
+                                <option value="AL">AL</option>
+                                <option value="AP">AP</option>
+                                <option value="AM">AM</option>
+                                <option value="BA">BA</option>
+                                <option value="CE">CE</option>
+                                <option value="DF">DF</option>
+                                <option value="ES">ES</option>
+                                <option value="GO">GO</option>
+                                <option value="MA">MA</option>
+                                <option value="MT">MT</option>
+                                <option value="MS">MS</option>
+                                <option value="MG">MG</option>
+                                <option value="PA">PA</option>
+                                <option value="PB">PB</option>
+                                <option value="PR">PR</option>
+                                <option value="PE">PE</option>
+                                <option value="PI">PI</option>
+                                <option value="RJ">RJ</option>
+                                <option value="RS">RS</option>
+                                <option value="RO">RO</option>
+                                <option value="RR">RR</option>
+                                <option value="SC">SC</option>
+                                <option value="SP">SP</option>
+                                <option value="SE">SE</option>
+                                <option value="TO">TO</option>
+                              </select>
+                            </div>
+                          </div>              
+                            <div className="btnEditar">
+                                <button type="submit">
+                                    Salvar
+                                </button>
+                            </div>
+                        </form>
+                      </section>
                     </div>
-                </section>
-            </main>
-
+                  </div>
+                </div>
+              </div>
+            </section>
+          </main>
         </>
-    )
-}
+      );
+    }
 
 export default EditarPefilColetor;

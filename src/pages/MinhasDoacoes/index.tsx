@@ -47,7 +47,7 @@ function MinhasDoacoes() {
                 responseAnuncios.data.forEach((anuncio:any) => {
                     //Verifica se ID do Anuncio = Id do usuarioLogado
                     if( (anuncio.usuario_doador.id == userId.id) && (anuncio.tipo_status_anuncio.nome != "Coleta Finalizada") ){
-                            
+                            console.log(anuncio)
                             dadosAnuncio.push(anuncio);
                     }
                 });

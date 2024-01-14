@@ -9,34 +9,47 @@ export default function Card(props: any) {
     function msgDeletarColeta() {
         alert('A doação foi cancelada! O doador irá ser notificado');
     };
+
+    function FormataStringData(data:string):string {
+        //formata a data do MYSQL -> (1900-12-25) para (25/12/1900)
+        let ano  = data.split("-")[0];
+        let mes  = data.split("-")[1];
+        let dia  = data.split("-")[2];
+      
+        return dia + '/' + ("0"+mes).slice(-2) + '/' + ("0"+ano).slice(-2);
+        // Utilizo o .slice(-2) para garantir o formato com 2 digitos.
+    }
+
     return (
         <div id='CardColetaAtiva'>
         <div className="cards">
-            <h4>{props.tituloCard ? props.tituloCard : "Título"}</h4>
-            {/* Arrumar rota de imagem */}
+            <h4>{ props.tituloCard }</h4>
             <img
-                src={ props.imgBackground }
-                alt="Imagem com sucata de aparelhos celulares gsm"
+                src={"http://localhost:8090/img/" + props.imgBackground }
+                alt={"Imagem "+ props.index +" da Galeria de fotos"} 
             />
             <div className="WrapperCard">
-                <p>Data de publicação: {props.conteudoCardData ? props.conteudoCardData : "dd/mm/aaaa"} </p>
-                <p>Quantidade de iten(s): {props.conteudoCardQuantidade ? props.conteudoCardQuantidade : "x"}</p>
+                <p>Data de publicação: { FormataStringData(props.conteudoCardData) } </p>
+                <p>Quantidade: { props.conteudoCardQuantidade ? props.conteudoCardQuantidade : "x"}</p>
                 <p>Responsável: {props.conteudoCardOwner ? props.conteudoCardOwner : "owner"}</p>
 
                 <div className="Descricaocards">
                     <p>Descrição: </p>
                     <div>
-                        <p>{props.quantidadeProduto1 ? props.quantidadeProduto1 : ''} {'x'} {props.descricao1 ? props.descricao1 : "-"}</p>
-                        <p>{props.quantidadeProduto2 ? props.quantidadeProduto2 : ''} {'x'} {props.descricao2 ? props.descricao2 : "-"}</p>
+                        { 
+                            props.descricoes.map((descricao: any, index: number) => {
+                                return <p key={ index }>{ descricao.quantidade+"x "+ descricao.nome }</p>
+                            })
+                        } 
                     </div>
                 </div>
-                <p>Localização: <strong>{props.localizacao ? props.localizacao : "localização"}</strong></p>
-
-                {/* usar validador abaixo para alterar conforme o status*/}
+                <p>Localização: <strong>{props.cidade + "-" + props.estado}</strong></p>
 
                 <div className="card_Status">
-                    <div className="circle_Status circle_Yellow"></div>
-                    <p> <span>Status: Aguardando confirmação de horário </span>{" "} </p>
+                    <div className={"circle_Status " + props.corStatus}></div>
+                    <p>
+                        <span>Status:</span> {props.status}
+                    </p>
                 </div>
 
 

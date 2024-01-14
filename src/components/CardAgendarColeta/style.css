@@ -11,10 +11,10 @@
 
 .cardEsquerda>h2 {
     font-family: var(--font2);
-    font-size: 18px;
+    font-size: 20px;
     font-weight: bold;
     text-transform: capitalize;
-    margin-bottom: 20px;
+    margin-bottom: 22px;
 }
 
 #cardAgendarColeta .cardEsquerda>img{
@@ -46,8 +46,9 @@
 }
 
 .cardDireitaConteudo>h2 {
-    font-family: var(--font1);
-    font-size: 22px;
+    font-family: var(--font2);
+    font-size: 18px;
+
 }
 
 .cardDireitaConteudo>p {

@@ -144,6 +144,7 @@ function EditarPerfilDoador() {
                           type="email"
                           name="email"
                           id="email"
+                          autoComplete="off"
                           placeholder="Digite o seu email para cadastro..."
                           required
                           onChange={(event) => setEmail(event.target.value)}
@@ -158,6 +159,7 @@ function EditarPerfilDoador() {
                           id="senha"
                           placeholder="Digite sua senha..."
                           required
+                          autoComplete="new-password"
                           onChange={(event) => setSenha(event.target.value)}
                         />
                       </div>

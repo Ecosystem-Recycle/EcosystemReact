@@ -15,10 +15,8 @@ export default function CardAgendarColeta(props:any) {
     return (
         <div className="card" id='cardAgendarColeta'>
             <div className="cardEsquerda">
-                {/* <h2>Celulares antigos de diversas marcas e modelos</h2> */}
-                <h2>{props.titulo ? props.titulo : "Título"}</h2>
-                {/* <img src={ "http://localhost:8090/img/" + props.imagem  } alt="Imagem da publicação" /> */}
-                <img src={ image } alt="Imagem da publicação" />
+                <h2>{ props.titulo }</h2>
+                <img src={ "http://localhost:8090/img/" + props.imagem  } alt="Imagem da publicação" />
             </div>
             <div className="cardDireita">
                 <div className="cardDireitaConteudo">

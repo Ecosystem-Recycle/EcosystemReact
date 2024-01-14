@@ -23,7 +23,7 @@ function CardDoador(props:any) {
     return (
         <>
             <div id='imgDoador'>
-                <h4>{props.title}</h4>
+                <h4>{ props.title }</h4>
             
             
                 <img className="fotoAnuncio"

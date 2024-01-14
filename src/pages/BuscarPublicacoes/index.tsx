@@ -1,8 +1,8 @@
 import './style.css'
 import Aside from '../../components/Aside'
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import CardBuscarPublicacoes from '../../components/CardBuscarPublicacoes'
-import secureLocalStorage from 'react-secure-storage'
+// import secureLocalStorage from 'react-secure-storage'
 import { useState, useEffect } from 'react'
 import api from '../../utils/api'
 // import no_imagem from '../../assets/img/img_Baterias.png'
@@ -77,7 +77,7 @@ function BuscarPublicacoes() {
                                 <p>Veja todas as publicações ativas mais próximas de você!</p>
                             </div>
                             {
-                            anuncios.map((dadosCombinados: any, index: number) => {
+                            anuncios.map((dadosCombinados: any) => {
                                 return <div key={dadosCombinados.id}>
                                     <CardBuscarPublicacoes
                                         imagem={ dadosCombinados.url_imagem }
