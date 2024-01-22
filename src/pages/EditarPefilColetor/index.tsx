@@ -11,17 +11,6 @@ function EditarPefilColetor() {
     const navigate = useNavigate()
     const [userId] = useState<any>(secureLocalStorage.getItem("userId"));
 
-
-    // const [nomeEmpresa, setNomeEmpresa] = useState<string>("")
-    // const [razaoSocial, setRazaoSocial] = useState<string>("")
-    // const [email, setEmail] = useState<string>("")
-    // const [senha, setSenha] = useState<string>("")
-    // const [telefone, setTelefone] = useState<string>("")
-    // const [cnpj, setCnpj] = useState<string>("")
-    // const [endereco, setEndereco] = useState<string>("")
-    // const [cidade, setCidade] = useState<string>("")
-    // const [uf, setUf] = useState<string>("")
-    // const [cep, setCep] = useState<string>("")
     const [ nome, setNome ] = useState<string>("")
     const [ cpf_cnpj, setCpf_cnpj ] = useState<string>("")
     const [ email, setEmail ] = useState<string>("")

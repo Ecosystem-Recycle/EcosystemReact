@@ -24,6 +24,7 @@ function BuscarPublicacoes() {
         api.get("anuncio")
             .then((responseAnuncio: any) => {
                 console.log(responseAnuncio.data)
+
                 setAnuncios(responseAnuncio.data)
             })
     }
@@ -78,18 +79,21 @@ function BuscarPublicacoes() {
                             </div>
                             {
                             anuncios.map((dadosCombinados: any) => {
-                                return <div key={dadosCombinados.id}>
-                                    <CardBuscarPublicacoes
-                                        imagem={ dadosCombinados.url_imagem }
-                                        titulo={dadosCombinados.titulo}
-                                        data={dadosCombinados.data_cadastro}
-                                        quantidade={somarProdutos(filtrarProdutos(dadosCombinados))}
-                                        descricoes={ filtrarProdutos(dadosCombinados) }
-                                        cidade={dadosCombinados.usuario_doador.endereco.cidade}
-                                        estado={dadosCombinados.usuario_doador.endereco.estado}
-                                        id={ dadosCombinados.id }
-                                    />
-                                </div>
+                                //Se o Status do anuncio for "Aguardando Agendamento" ele o exibirá, caso negativo não exibe
+                                if(dadosCombinados.tipo_status_anuncio.nome == "Aguardando Agendamento"){
+                                    return <div key={dadosCombinados.id}>
+                                        <CardBuscarPublicacoes
+                                            imagem={ dadosCombinados.url_imagem }
+                                            titulo={dadosCombinados.titulo}
+                                            data={dadosCombinados.data_cadastro}
+                                            quantidade={somarProdutos(filtrarProdutos(dadosCombinados))}
+                                            descricoes={ filtrarProdutos(dadosCombinados) }
+                                            cidade={dadosCombinados.usuario_doador.endereco.cidade}
+                                            estado={dadosCombinados.usuario_doador.endereco.estado}
+                                            id={ dadosCombinados.id }
+                                        />
+                                    </div>
+                                }
                             })}
 
                         </div>

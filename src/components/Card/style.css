@@ -19,6 +19,8 @@
 
 #CardColetaAtiva .cards img {
     width: 100%;
+    max-width: 350px; 
+    max-height: 200px;
 }
 
 #CardColetaAtiva .cards h4 {
@@ -63,6 +65,10 @@
 
 #CardColetaAtiva .circle_Orange {
     background: #ED7016;
+}
+
+#CardColetaAtiva .circle_Green {
+    background: var(--verde2);
 }
 
 #CardColetaAtiva .card_Status span {

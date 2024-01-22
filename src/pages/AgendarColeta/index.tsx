@@ -42,6 +42,7 @@ function AgendarColeta() {
 
         api.post("coleta/media", formData).then( (responseAnuncio:any) => {
                 alert("Anuncio Cadastrado com Sucesso")
+                atualizarStatusAnuncio(anuncioInfo.id)
                 secureLocalStorage.removeItem("anuncioId")
                 navigate("/coletasagendadas")
                 navigate(0)
@@ -51,7 +52,13 @@ function AgendarColeta() {
            })
     }
 
-
+    function atualizarStatusAnuncio(id: string){
+        const atualizarStatus: { tipo_status: string } = { tipo_status: "Coleta Agendada" }
+        api.patch("anuncio/status/" + id, atualizarStatus).then( (responseStatus:any) => {
+       }).catch( (error:any) => {
+           console.log(error)
+       })
+    }
 
 
     function carregarProdutos(){
@@ -60,7 +67,6 @@ function AgendarColeta() {
             
             resListaProduto.data.forEach((item:any):any => {   
                 if(item.anuncio.id === anuncioInfo.id){
-                // if(item.anuncio.id == "724dbf16-0041-497b-981b-477714d5b4e7"){
                     if(typeof item != 'undefined'){
                         listaProdutos.push(item)      
                     }
@@ -111,7 +117,7 @@ function AgendarColeta() {
                             <div className="form_text">
                                 <h3>Agendar Retirada</h3>
                             </div>
-                                <form onSubmit={cadastroAgendamento} className="cardBottom">
+                                <form onSubmit={ cadastroAgendamento } className="cardBottom">
                                     <div className="cardBottomPt1">
                                         <div className="campo-form">
                                             <label htmlFor='data'>Data:</label>
