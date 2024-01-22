@@ -1,11 +1,15 @@
 import './style.css'
 import iconeEmail from "../../assets/img/icone_email_footer.png"
 import iconeWhatsApp from "../../assets/img/icone_whats_footer.png"
-import { Link } from "react-router-dom";
+import { useRef, useState } from 'react';
+import emailjs from '@emailjs/browser';
+
 
 
 function Contato() {
 
+    const form:any = useRef();
+    const [done, setDone] = useState(false)
     // const [nome, setNome] = useState<string>("")
     // const [email, setEmail] = useState<string>("")
     // const [telefone, setTelefone] = useState<string>("")
@@ -15,6 +19,19 @@ function Contato() {
         alert('Sua mensagem foi enviada com sucesso.');
       };
 
+      function sendEmail(e:React.FormEvent<HTMLFormElement>){
+        e.preventDefault();
+
+        emailjs.sendForm('service_sot9b9w', 'template_newMess', e.currentTarget, 'NvrSMkZ1YOmgWkIBm')
+        .then((result) => {
+            console.log(result.text);
+            setDone(true);
+        }, (error) => {
+            console.log(error.text);
+        });
+        e.currentTarget.reset()
+    }
+
     return (
         <>
             <main id='mainContato'>
@@ -22,13 +39,14 @@ function Contato() {
                 <section>
                     <div className=" telaContato wrapper">
                         <h2>contato</h2>
+                        <form ref={form} onSubmit={ sendEmail }>
                         <div id='idContatoFormulario' className="cardContato flex">
-                            <form>
-                                <textarea placeholder="Nome Completo" defaultValue={""} />
-                                <textarea placeholder="E-mail" defaultValue={""} />
-                                <textarea placeholder="Telefone" defaultValue={""} />
-                                <textarea placeholder="Assunto" defaultValue={""} />
-                            </form>
+                            
+                                <textarea name='nome_usuario' placeholder="Nome Completo" defaultValue={""} />
+                                <textarea name='email_usuario' placeholder="E-mail" defaultValue={""} />
+                                <textarea name='tel_usuario'placeholder="Telefone" defaultValue={""} />
+                                <textarea name="message" placeholder="Assunto" defaultValue={""} />
+                            
                             <div className="mensagemContato">
                                 <p>
                                     Preencha o formulário ao lado para entrar em contato com a ECO
@@ -51,8 +69,9 @@ function Contato() {
                             </div>
                         </div>
                         {/* <a href="#">Enviar</a> */}
-                        <Link to="/contato" onClick={ msgFormularioContato }>Enviar</Link>
-
+                        {/* <Link to="/contato" onClick={ msgFormularioContato }>Enviar</Link> */}
+                        <button type="submit">Enviar</button>
+                        </form>
                     </div>
                 </section>
             </main>
