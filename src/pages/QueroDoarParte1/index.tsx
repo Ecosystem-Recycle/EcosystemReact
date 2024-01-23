@@ -3,6 +3,7 @@ import './style.css'
 import api from "../../utils/api"
 import { useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
+import emailjs from '@emailjs/browser';
 import secureLocalStorage from 'react-secure-storage'
 
 import AsideDoador from '../../components/AsideDoador'
@@ -37,7 +38,6 @@ function QueroDoarParte1() {
     periodo: ""
   });
 
-
   useEffect( () => {
     document.title = "Quero Doar - Ecosystem e Recycle"
 
@@ -46,6 +46,7 @@ function QueroDoarParte1() {
     
     carregarProduto();
 }, [userId] )
+
   
   //Verificar o tipo de arquivo da Imagem
   function verificarCampoUpload( event: any ) {
@@ -101,7 +102,22 @@ function QueroDoarParte1() {
           }
           
           api.post("anuncio", formData).then( (responseAnuncio:any) => {
+            var templateParams = {
+              email_usuario: userId.email,
+              titulo_anuncio: valoresInput2.titulo,
+              nome_usuario: userId.email
+            };
+           
+            alert(userId.nome)
+            alert(valoresInput2.titulo)
+            alert(userId.id)
 
+            emailjs.send('service_sot9b9w', 'template_newAnuncio', templateParams, 'NvrSMkZ1YOmgWkIBm')
+              .then(function(response) {
+                 console.log('SUCCESS!', response.status, response.text);
+              }, function(error) {
+                 console.log('FAILED...', error);
+            });
            salvarProduto(responseAnuncio.data.id)
            
           }).catch( (error:any) => {
@@ -145,7 +161,7 @@ function QueroDoarParte1() {
       alert('Anuncio Registrado com sucesso')
       navigate(0);
       
-    }
+      }
   
     function cancelarAnuncio(){
       limparLista();
