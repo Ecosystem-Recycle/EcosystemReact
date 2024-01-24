@@ -24,11 +24,13 @@ function AgendarColeta() {
         document.title = "Agendar Coleta - Ecosystem e Recycle"
         if(produtosAnuncio.length==0){
             carregarProdutos()
+            
         }
 
     }, [] )
 
     useEffect(() => {
+        console.log(anuncioInfo)
       }, [produtosAnuncio]); 
 
     function cadastroAgendamento(event: any) {
@@ -42,10 +44,19 @@ function AgendarColeta() {
         formData.append("usuario_id", userId.id)
 
         api.post("coleta/media", formData).then( (responseAnuncio:any) => {
-                alert("Anuncio Cadastrado com Sucesso")
+                
                 atualizarStatusAnuncio(anuncioInfo.id)
-                // enviarEmail(anuncioInfo.nome)
-                secureLocalStorage.removeItem("anuncioId")
+                //Função de Enviar Email com os parâmetros de dados do anuncio
+                enviarEmail(
+                    anuncioInfo.usuario_doador.nome,
+                    anuncioInfo.usuario_doador.email,
+                    anuncioInfo.titulo,
+                    data,
+                    anuncioInfo.periodo
+                )
+
+                secureLocalStorage.removeItem("anuncioInfo")
+                alert("Coleta Agendada com Sucesso")
                 navigate("/coletasagendadas")
                 navigate(0)
 
@@ -55,6 +66,7 @@ function AgendarColeta() {
     }
 
     function enviarEmail(_nomeDoador:string, _emailDoador:string, _tituloAnuncio:string,_dataAnuncio:string,_periodoAnuncio:string){
+        //Objeto com as variáveis do template de Email
         var templateParams = {
             nome_doador: _nomeDoador,
             email_doador: _emailDoador,
@@ -64,7 +76,7 @@ function AgendarColeta() {
             nome_coletor: userId.nome,
             email_coletor: userId.email
           };
-
+        //Funcao para enviar o EmaiJS passando o Serviço, nomeTemplate, parametros e chavePublica
         emailjs.send('service_0en0u75', 'template_nova_coleta', templateParams, 'YZMWXN82GCbwyOvsW')
         .then(function(response) {
              console.log('SUCCESS!', response.status, response.text);

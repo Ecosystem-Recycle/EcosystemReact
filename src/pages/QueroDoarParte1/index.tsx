@@ -105,7 +105,7 @@ function QueroDoarParte1() {
             var templateParams = {
               email_usuario: userId.email,
               titulo_anuncio: valoresInput2.titulo,
-              nome_usuario: userId.email
+              nome_usuario: userId.nome
             };
 
             emailjs.send('service_sot9b9w', 'template_newAnuncio', templateParams, 'NvrSMkZ1YOmgWkIBm')
