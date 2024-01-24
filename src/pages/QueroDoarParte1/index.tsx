@@ -107,10 +107,6 @@ function QueroDoarParte1() {
               titulo_anuncio: valoresInput2.titulo,
               nome_usuario: userId.email
             };
-           
-            alert(userId.nome)
-            alert(valoresInput2.titulo)
-            alert(userId.id)
 
             emailjs.send('service_sot9b9w', 'template_newAnuncio', templateParams, 'NvrSMkZ1YOmgWkIBm')
               .then(function(response) {

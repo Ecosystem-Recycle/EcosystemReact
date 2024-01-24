@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import './style.css';
 
 import Aside from '../../components/Aside';
+import emailjs from '@emailjs/browser';
 import { useNavigate } from 'react-router-dom';
 import CardAgendarColeta from '../../components/CardAgendarColeta';
 import secureLocalStorage from 'react-secure-storage';
@@ -43,6 +44,7 @@ function AgendarColeta() {
         api.post("coleta/media", formData).then( (responseAnuncio:any) => {
                 alert("Anuncio Cadastrado com Sucesso")
                 atualizarStatusAnuncio(anuncioInfo.id)
+                // enviarEmail(anuncioInfo.nome)
                 secureLocalStorage.removeItem("anuncioId")
                 navigate("/coletasagendadas")
                 navigate(0)
@@ -50,6 +52,25 @@ function AgendarColeta() {
            }).catch( (error:any) => {
                console.log(error)
            })
+    }
+
+    function enviarEmail(_nomeDoador:string, _emailDoador:string, _tituloAnuncio:string,_dataAnuncio:string,_periodoAnuncio:string){
+        var templateParams = {
+            nome_doador: _nomeDoador,
+            email_doador: _emailDoador,
+            titulo_anuncio: _tituloAnuncio,
+            data_anuncio: _dataAnuncio,
+            periodo_anuncio: _periodoAnuncio,
+            nome_coletor: userId.nome,
+            email_coletor: userId.email
+          };
+
+        emailjs.send('service_0en0u75', 'template_nova_coleta', templateParams, 'YZMWXN82GCbwyOvsW')
+        .then(function(response) {
+             console.log('SUCCESS!', response.status, response.text);
+          }, function(error) {
+             console.log('FAILED...', error);
+        });
     }
 
     function atualizarStatusAnuncio(id: string){
